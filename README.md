@@ -6,3 +6,6 @@ Potential Master Address Data Available From:
 2. https://aws.amazon.com/public-datasets/osm/
 3. https://www.data.gov/
 4. https://openaddresses.io/
+
+General Reminder Notes:
+- install ArcGIS for Python in order to use the TIGER files from the Census Bureau and add city/state information to the open addresses
