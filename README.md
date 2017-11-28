@@ -9,3 +9,8 @@ Potential Master Address Data Available From:
 
 General Reminder Notes:
 - install ArcGIS for Python in order to use the TIGER files from the Census Bureau and add city/state information to the open addresses
+
+Approaches for Address Parsing:
+1. unigram language model to parse address and match to master data for tagging
+2. random markov
+3. CRF
