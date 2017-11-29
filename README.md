@@ -12,5 +12,5 @@ General Reminder Notes:
 
 Approaches for Address Parsing:
 1. unigram language model to parse address and match to master data for tagging
-2. random markov
+2. hidden markov
 3. CRF
