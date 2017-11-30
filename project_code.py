@@ -24,3 +24,7 @@ file_path, headers = urllib.request.urlretrieve("https://raw.githubusercontent.c
 us_streets = pd.read_csv(file_path, header=None)
 us_streets.columns = ['st_abbrev', 'street_type']
 
+#Set of Compass Points for Address Street Names
+compass_points_set = {'N','S','E','W','NE','NW','SE','SW','NORTH','SOUTH','EAST','WEST'} #Do we want to include North, South, East, and West as compass points or are they really part of the Street Names themselves?
+
+
