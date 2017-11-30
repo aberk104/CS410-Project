@@ -14,3 +14,4 @@ Approaches for Address Parsing:
 1. unigram language model to parse address and match to master data for tagging
 2. hidden markov
 3. CRF
+4. maybe use KNN for matching?
