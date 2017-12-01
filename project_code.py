@@ -16,8 +16,8 @@ def training_file(filename, filetype, unstruct_fields, parsed_fields):
 
     address_training_data['Record_ID'] = address_training_data.index
 
-    unstruct_fields_list = [unstruct_fields]
-    unstruct_fields_list.append('Record_ID')
+    unstruct_fields_list = ['Record_ID', unstruct_fields]
+    parsed_fields.insert(0,'Record_ID')
 
     unstruct_addresses, parsed_addresses = split_training_file(address_training_data, unstruct_fields_list, parsed_fields)
     return unstruct_addresses, parsed_addresses
@@ -49,14 +49,43 @@ def compass_points(include_full_names: bool = True):
         compass_points_set = {'N', 'S', 'E', 'W', 'NE', 'NW', 'SE', 'SW'}
     return compass_points_set
 
-# Parse Raw Training Data using Naive Parser
-# for row in range(max(raw_address_training_data.index)):
-#    for item in pars.naive_parse(raw_address_training_data.loc[row, 'Single String Address']):
+# Parse Raw Training Data using Unigram Like Parser and the Naive Parser in the parsers file
+def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street_types):
+    parsed_data_columns = ['Record_ID','Street Number','Unit Type','Unit Number','Pre Street Direction','Street Name','Street Type','Post Street Direction','City','State','Zip','Country']
+    parsed_address_data = pd.DataFrame(index=range(max(raw_addresses.index)),columns=parsed_data_columns)
+    us_state_post_codes = list(us_states['Postal Code'])
+
+    for row in range(max(raw_addresses.index)):
+        record_id = raw_addresses.loc[row, 'Record_ID']
+        parsed_address_data.loc[row,'Record_ID'] = record_id
+        parsed_data = list(pars.naive_parse(raw_addresses.loc[row, unstruct_field_name]))
+        parsed_data.reverse()
+
+        parsed_data_copy = parsed_data.copy()
+
+        for item in parsed_data:
+            item = item.strip(',')
+            if (len(item) == 5 and item.isdigit()) or (len(item) == 10 and item[:4].isdigit() and item[6:].isdigit() and item[5] == "-"):
+                parsed_address_data.loc[record_id, 'Zip'] = item
+                parsed_data_copy.remove(item)
+            elif item in us_state_post_codes:
+                parsed_address_data.loc[record_id, 'State'] = item
+                parsed_data_copy.remove(item)
+
+
+        if row == 5:
+            break
+#        if row < 10:
+            #print (parsed_data, parsed_address_data)
+#        else:
+#            break
 #        '''
 #        need to tag each item returned from the naive parse keyed by the Record ID
 #        i.e., create multi-column table by Record ID and populating the number, street name, etc.
 #        then compare the parsed output against the parsed_address_training_data
 #        '''
-#        pass
+
+
+
 
 #print (comp.naive_compare("123 Main","Main 123"))
