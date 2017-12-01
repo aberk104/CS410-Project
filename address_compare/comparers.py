@@ -28,4 +28,3 @@ def list_compare(l1, l2, comparer = naive_compare, threshold = 0):
                 matches.append((i, l2.pop(n), i_scores.pop(n)))
 
     return matches
-

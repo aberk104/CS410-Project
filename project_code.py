@@ -4,7 +4,8 @@
 
 import pandas as pd
 import urllib
-
+from address_compare import parsers as pars
+from address_compare import comparers as comp
 
 #file for training/testing
 file_name = "small subset Washington State Addresses.xlsx"
@@ -27,4 +28,14 @@ us_streets.columns = ['st_abbrev', 'street_type']
 #Set of Compass Points for Address Street Names
 compass_points_set = {'N','S','E','W','NE','NW','SE','SW','NORTH','SOUTH','EAST','WEST'} #Do we want to include North, South, East, and West as compass points or are they really part of the Street Names themselves?
 
+#Parse Raw Training Data using Naive Parser
+for row in range(max(raw_address_training_data.index)):
+    for item in pars.naive_parse(raw_address_training_data.loc[row, 'Single String Address']):
+        '''
+        need to tag each item returned from the naive parse keyed by the Record ID
+        i.e., create multi-column table by Record ID and populating the number, street name, etc.
+        then compare the parsed output against the parsed_address_training_data
+        '''
+        pass
 
+print (comp.naive_compare("123 Main","Main 123"))
