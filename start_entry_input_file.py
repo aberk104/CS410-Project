@@ -8,11 +8,12 @@ from tkinter import *
 
 master = Tk()
 
-variable = StringVar(master)
-variable.set("")
+variable = StringVar()
+variable.set("csv")
 
 Label(master, text="File Name Containing the Training Data").grid(row=0)
-OptionMenu(master, variable, "csv", "excel").grid(row=1)
+Label(master, text="Select the File Type for the Training Data").grid(row=1)
+OptionMenu(master, variable, "csv", "excel").grid(row=1, column=1)
 Label(master, text="Field Name Containing the Unstructured Addresses").grid(row=2)
 Label(master, text="Field with Parsed Street Number").grid(row=3)
 Label(master, text="Field with Parsed Unit Type").grid(row=4)
@@ -45,12 +46,11 @@ e12 = Entry(master)
 e13 = Entry(master)
 e14 = Entry(master)
 e15 = Entry(master)
-e16 = Entry(master)
 
 e1.grid(row=0, column=1)
-e3.grid(row=2, column=1)
+e2.grid(row=2, column=1)
 
-parsed_field_names_inputs = [e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14]
+parsed_field_names_inputs = [e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13]
 
 row_num = 3
 column_num = 1
@@ -58,8 +58,8 @@ for item in parsed_field_names_inputs:
     item.grid(row = row_num, column = column_num)
     row_num += 1
 
-e15.grid(row=14, column=1)
-e16.grid(row=15, column=1)
+e14.grid(row=14, column=1)
+e15.grid(row=15, column=1)
 
 mainloop()
 
@@ -70,8 +70,4 @@ parsed_field_names = list()
 
 for item in parsed_field_names_inputs:
     parsed_field_names.append(item.get())
-
-
-
-
 
