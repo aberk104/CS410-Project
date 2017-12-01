@@ -5,16 +5,40 @@
 import pandas as pd
 import urllib
 from address_compare import parsers as pars
-from address_compare import comparers as comp
+#from address_compare import comparers as comp
 
 #file for training/testing
-file_name = "small subset Washington State Addresses.xlsx"
-address_training_data = pd.read_excel(file_name, dtype= str )
-address_training_data['Record_ID'] = address_training_data.index
+def training_file(filename, filetype, unstruct_fields, parsed_fields):
+    if filetype == "csv":
+        address_training_data = pd.read_csv(filename, dtype= str)
+    else:
+        address_training_data = pd.read_excel(filename, dtype= str)
+
+    address_training_data['Record_ID'] = address_training_data.index
+
+    unstruct_fields_list = [unstruct_fields]
+    unstruct_fields_list.append('Record_ID')
+
+    unstruct_addresses, parsed_addresses = split_training_file(address_training_data, unstruct_fields_list, parsed_fields)
+
+
+
+
+
+#file_name = "small subset Washington State Addresses.xlsx"
+#address_training_data = pd.read_excel(file_name, dtype= str )
+#address_training_data['Record_ID'] = address_training_data.index
 
 #split training file into raw data and parsed data
-raw_address_training_data = address_training_data[['Record_ID','Single String Address']].copy()
-parsed_address_training_data = address_training_data[['Record_ID', 'NUMBER', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction', 'CITY', 'STATE', 'POSTCODE']].copy()
+def split_training_file(trainingdata, unstruct_fields, parsed_fields):
+    raw_address_training_data = trainingdata[unstruct_fields].copy()
+    parsed_address_training_data = trainingdata[parsed_fields].copy()
+    return raw_address_training_data, parsed_address_training_data
+
+
+
+#raw_address_training_data = address_training_data[['Record_ID','Single String Address']].copy()
+#parsed_address_training_data = address_training_data[['Record_ID', 'NUMBER', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction', 'CITY', 'STATE', 'POSTCODE']].copy()
 
 #US State Names and Abbreviations from the Open Addresses project on Github
 file_path, headers = urllib.request.urlretrieve("https://raw.githubusercontent.com/openaddresses/openaddresses/master/us-data/codes.txt")
@@ -38,4 +62,4 @@ for row in range(max(raw_address_training_data.index)):
         '''
         pass
 
-print (comp.naive_compare("123 Main","Main 123"))
+#print (comp.naive_compare("123 Main","Main 123"))
