@@ -20,6 +20,7 @@ def training_file(filename, filetype, unstruct_fields, parsed_fields):
     unstruct_fields_list.append('Record_ID')
 
     unstruct_addresses, parsed_addresses = split_training_file(address_training_data, unstruct_fields_list, parsed_fields)
+    return unstruct_addresses, parsed_addresses
 
 
 
@@ -53,13 +54,13 @@ us_streets.columns = ['st_abbrev', 'street_type']
 compass_points_set = {'N','S','E','W','NE','NW','SE','SW','NORTH','SOUTH','EAST','WEST'} #Do we want to include North, South, East, and West as compass points or are they really part of the Street Names themselves?
 
 #Parse Raw Training Data using Naive Parser
-for row in range(max(raw_address_training_data.index)):
-    for item in pars.naive_parse(raw_address_training_data.loc[row, 'Single String Address']):
-        '''
-        need to tag each item returned from the naive parse keyed by the Record ID
-        i.e., create multi-column table by Record ID and populating the number, street name, etc.
-        then compare the parsed output against the parsed_address_training_data
-        '''
-        pass
+#for row in range(max(raw_address_training_data.index)):
+#    for item in pars.naive_parse(raw_address_training_data.loc[row, 'Single String Address']):
+#        '''
+#        need to tag each item returned from the naive parse keyed by the Record ID
+#        i.e., create multi-column table by Record ID and populating the number, street name, etc.
+#        then compare the parsed output against the parsed_address_training_data
+#        '''
+#        pass
 
 #print (comp.naive_compare("123 Main","Main 123"))
