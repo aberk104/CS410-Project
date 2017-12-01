@@ -1,8 +1,8 @@
 # this file contains functions for performing comparisons on address strings and
 # lists of address strings.
 
-import usaddress
-from . import parsers
+#import usaddress
+import parsers
 
 
 def naive_compare(s1: str, s2: str, parser: 'function' = parsers.naive_parse,
