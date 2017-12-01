@@ -83,4 +83,7 @@ else:
     parsed_field_names = ['NUMBER', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction', 'CITY', 'STATE', 'POSTCODE']
 
 raw_addresses, parsed_addresses = prjc.training_file(file_name, file_type, unstructured_training_data, parsed_field_names)
+us_streets = prjc.all_us_street_types()
+us_states = prjc.all_us_states()
+compass_points = prjc.compass_points()
 
