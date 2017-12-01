@@ -5,6 +5,9 @@ Users will also be able to input 2 separate files that will use the trained mode
 '''
 
 from tkinter import *
+import project_code as prjc
+
+use_default_values = 1
 
 master = Tk()
 
@@ -63,11 +66,21 @@ e15.grid(row=15, column=1)
 
 mainloop()
 
-file_name = e1.get()
-unstructured_training_data = e2.get()
 
-parsed_field_names = list()
+if not use_default_values == 1:
+    file_name = e1.get()
+    unstructured_training_data = e2.get()
+    file_type = variable.get()
 
-for item in parsed_field_names_inputs:
-    parsed_field_names.append(item.get())
+    parsed_field_names = list()
+
+    for item in parsed_field_names_inputs:
+        parsed_field_names.append(item.get())
+else:
+    file_name = "small subset Washington State Addresses.xlsx"
+    file_type = "excel"
+    unstructured_training_data = 'Single String Address'
+    parsed_field_names = ['NUMBER', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction', 'CITY', 'STATE', 'POSTCODE']
+
+raw_addresses, parsed_addresses = prjc.training_file(file_name, file_type, unstructured_training_data, parsed_field_names)
 
