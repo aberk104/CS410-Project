@@ -5,6 +5,7 @@
 import pandas as pd
 import urllib
 from address_compare import parsers as pars
+import collections
 # from address_compare import comparers as comp
 
 # file for training/testing
@@ -41,6 +42,15 @@ def all_us_street_types():
     us_streets.columns = ['st_abbrev', 'street_type']
     return us_streets
 
+# US Zip Codes with Acceptable City Names and States
+def all_us_cities_zips():
+    all_fields_us_cities_zips = pd.read_excel("zip_code_database.xlsx", dtype=str)
+    all_fields_us_cities_zips['zip'] = all_fields_us_cities_zips['zip'].str.zfill(5)
+
+    us_cities_zips = all_fields_us_cities_zips[['zip','primary_city','acceptable_cities','unacceptable_cities','state']].copy()
+
+    return us_cities_zips
+
 # Set of Compass Points for Address Street Names
 def compass_points(include_full_names: bool = True):
     if include_full_names:
@@ -50,10 +60,28 @@ def compass_points(include_full_names: bool = True):
     return compass_points_set
 
 # Parse Raw Training Data using Unigram Like Parser and the Naive Parser in the parsers file
-def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street_types):
+def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street_types, us_cities_zips):
     parsed_data_columns = ['Record_ID','Street Number','Unit Type','Unit Number','Pre Street Direction','Street Name','Street Type','Post Street Direction','City','State','Zip','Country']
     parsed_address_data = pd.DataFrame(index=range(max(raw_addresses.index)),columns=parsed_data_columns)
     us_state_post_codes = list(us_states['Postal Code'])
+
+    city_state_combos_dict = collections.defaultdict(set)
+    for row in range(max(us_cities_zips.index)):
+        cities = list()
+
+        primary_city = us_cities_zips.loc[row, 'primary_city'].split(',')
+        cities.extend(primary_city)
+
+        acceptable_cities = us_cities_zips.loc[row, 'acceptable_cities'].split(',')
+        cities.extend(acceptable_cities)
+
+        unacceptable_cities = us_cities_zips.loc[row, 'unacceptable_cities'].split(',')
+        cities.extend(unacceptable_cities)
+
+        for city in cities:
+            city = city.strip()
+            if not city == 'nan':
+                city_state_combos_dict[us_cities_zips.loc[row, 'state']].add(city)
 
     for row in range(max(raw_addresses.index)):
         record_id = raw_addresses.loc[row, 'Record_ID']
@@ -64,19 +92,24 @@ def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street
         parsed_data_copy = parsed_data.copy()
 
         for item in parsed_data:
-            item = item.strip(',')
-            if (len(item) == 5 and item.isdigit()) or (len(item) == 10 and item[:4].isdigit() and item[6:].isdigit() and item[5] == "-"):
-                parsed_address_data.loc[record_id, 'Zip'] = item
+            no_comma_item = item.strip(',')
+            titlecase_item = no_comma_item.title()
+            if (len(no_comma_item) == 5 and no_comma_item.isdigit()) or (len(no_comma_item) == 10 and no_comma_item[:4].isdigit() and no_comma_item[6:].isdigit() and no_comma_item[5] == "-"):
+                parsed_address_data.loc[record_id, 'Zip'] = no_comma_item
                 parsed_data_copy.remove(item)
-            elif item in us_state_post_codes:
-                parsed_address_data.loc[record_id, 'State'] = item
+            elif no_comma_item in us_state_post_codes:
+                parsed_address_data.loc[record_id, 'State'] = no_comma_item
+                parsed_data_copy.remove(item)
+            elif titlecase_item in city_state_combos_dict[parsed_address_data.loc[record_id, 'State']]:
+                parsed_address_data.loc[record_id, 'City'] = no_comma_item
                 parsed_data_copy.remove(item)
 
 
-        if row == 5:
-            break
+
+#        if row == 5:
+#            break
 #        if row < 10:
-            #print (parsed_data, parsed_address_data)
+#            print (parsed_data, parsed_address_data)
 #        else:
 #            break
 #        '''

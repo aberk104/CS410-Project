@@ -9,6 +9,7 @@ import project_code as prjc
 
 use_default_values = 1
 
+'''
 master = Tk()
 
 variable = StringVar()
@@ -65,7 +66,7 @@ e14.grid(row=14, column=1)
 e15.grid(row=15, column=1)
 
 mainloop()
-
+'''
 
 if not use_default_values == 1:
     file_name = e1.get()
@@ -86,5 +87,7 @@ raw_addresses, parsed_addresses = prjc.training_file(file_name, file_type, unstr
 us_streets = prjc.all_us_street_types()
 us_states = prjc.all_us_states()
 compass_points = prjc.compass_points()
-print (raw_addresses[5:10])
-parsed_raw_data = prjc.unigram_like_parser(raw_addresses, unstructured_training_data, us_states, us_streets)
+us_cities_zips = prjc.all_us_cities_zips()
+
+
+parsed_raw_data = prjc.unigram_like_parser(raw_addresses, unstructured_training_data, us_states, us_streets, us_cities_zips)
