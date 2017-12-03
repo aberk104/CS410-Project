@@ -1,8 +1,30 @@
 import pandas as pd
-import collections
+from . import constants as const
 
+def all_us_street_types():
+    us_streets = pd.read_csv("data\\us_street_types.csv")
+    return us_streets
 
-def less_naive_parser(address_string, street_types, compass_points, switched_compass_points, unit_types):
+def compass_points():
+    compass_points_dict = const.COMPASS_POINTS_DICT
+    switched_key_val_compass_points = dict()
+    for key, valset in compass_points_dict.items():
+        for val in valset:
+            switched_key_val_compass_points[val] = key
+
+    return compass_points_dict, switched_key_val_compass_points
+
+def all_us_unit_types():
+    us_unit_types = pd.read_csv("data\\us_unit_types.csv")
+    return us_unit_types
+
+us_streets = all_us_street_types()
+#us_states = prjc.all_us_states()
+compass_points_def, key_val_switch_compass_pts = compass_points()
+#us_cities_zips = prjc.all_us_cities_zips()
+us_unit_types = all_us_unit_types()
+
+def less_naive_parser(address_string, street_types = us_streets, compass_points = compass_points_def, switched_compass_points = key_val_switch_compass_pts, unit_types = us_unit_types):
     all_caps_addresses = address_string.upper()
 
     # all_caps_street_types = pd.DataFrame(columns=['st_abbrev','street_type'])
