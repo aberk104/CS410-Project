@@ -6,6 +6,8 @@ import pandas as pd
 import urllib
 from address_compare import parsers as pars
 import collections
+
+# sys.path.append("address_compare")
 # from address_compare import comparers as comp
 
 # file for training/testing
@@ -121,4 +123,5 @@ def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street
 
 
 
-#print (comp.naive_compare("123 Main","Main 123"))
+print (pars.naive_parse("123 Main"))
+

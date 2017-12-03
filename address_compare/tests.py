@@ -1,12 +1,16 @@
 from unittest import TestCase
-import parsers as parse
-import comparers as comp
+import address_compare.parsers as parse
+import address_compare.comparers as comp
 
 
 class TestNaive_parse(TestCase):
     def test_naive_parse(self):
         self.assertEqual(parse.naive_parse("a b c"), ["a", "b", "c"])
         self.assertEqual(parse.naive_parse("A b c", tolower=True), ["a", "b", "c"])
+
+class TestHyphen_parse(TestCase):
+    def test_hyphen_parse(self):
+        self.assertEqual(parse.hyphen_parse("A-b"), ["A", "-", "b"])
 
 class TestNaive_compare(TestCase):
     def test_naive_parse_no_kwargs(self):

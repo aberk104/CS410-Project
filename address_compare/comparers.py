@@ -2,13 +2,13 @@
 # lists of address strings.
 
 #import usaddress
-import parsers
+from . import parsers
 
 
 def naive_compare(s1: str, s2: str, parser: 'function' = parsers.naive_parse,
                   **parse_kwargs) -> int:
     ps1, ps2 = parser(s1, **parse_kwargs), parser(s2, **parse_kwargs)
-    return int(set(ps1) == set(ps2))
+    return set(ps1) == set(ps2)
 
 def crf_compare(s1: str, s2: str):
     pass
