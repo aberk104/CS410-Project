@@ -24,7 +24,7 @@ compass_points_def, key_val_switch_compass_pts = compass_points()
 #us_cities_zips = prjc.all_us_cities_zips()
 us_unit_types = all_us_unit_types()
 
-def less_naive_parser(address_string, street_types = us_streets, compass_points = compass_points_def, switched_compass_points = key_val_switch_compass_pts, unit_types = us_unit_types):
+def less_naive_parser_fnc(address_string: str, street_types = us_streets, compass_points = compass_points_def, switched_compass_points = key_val_switch_compass_pts, unit_types = us_unit_types):
     all_caps_addresses = address_string.upper()
 
     # all_caps_street_types = pd.DataFrame(columns=['st_abbrev','street_type'])
@@ -65,6 +65,12 @@ def less_naive_parser(address_string, street_types = us_streets, compass_points 
             street_type_index = total_items_address_list - item_index_number
             reversed_address_list_copy.pop(item_index_number_to_remove)
             item_index_number_to_remove -= 1
+        else:
+            '''
+            Need to add an Else condition to lookup against the long form street names
+            '''
+
+            pass
         if item in switched_compass_points.keys():
             if street_type_index == None:
                 parsed_address_string.loc[0,'post_street_direction'] = switched_compass_points[item]
@@ -81,6 +87,11 @@ def less_naive_parser(address_string, street_types = us_streets, compass_points 
             unit_type_index = total_items_address_list - item_index_number
             reversed_address_list_copy.pop(item_index_number_to_remove)
             item_index_number_to_remove -= 1
+        else:
+            '''
+            Need to add an Else condition to lookup against the long form unit types
+            '''
+            pass
         item_index_number += 1
         item_index_number_to_remove += 1
 
@@ -120,10 +131,11 @@ def less_naive_parser(address_string, street_types = us_streets, compass_points 
 
     remaining_items_in_list = reversed_address_list_copy.copy()
     if len(remaining_items_in_list) > 1:
-        remaining_items_in_list = remaining_items_in_list.reverse()
+        remaining_items_in_list.reverse()
     concat_street_number = str()
-    for item in remaining_items_in_list:
-        concat_street_number += item + " "
+    if len(remaining_items_in_list) > 0:
+        for item in remaining_items_in_list:
+            concat_street_number += item + " "
     concat_street_number = concat_street_number.strip()
 
     parsed_address_string.loc[0, 'street_name'] = concat_street_name

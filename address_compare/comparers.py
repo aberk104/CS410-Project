@@ -31,7 +31,7 @@ def list_compare(l1, l2, comparer = naive_compare, threshold = 0):
     return matches
 
 
-def less_naive_compare(s1: str, s2: str, parser: 'function' = less_naive_parser.less_naive_parser(),
+def less_naive_compare(s1: str, s2: str, parser: 'function' = less_naive_parser.less_naive_parser_fnc,
                   **parse_kwargs) -> int:
     ps1, ps2 = parser(s1, **parse_kwargs), parser(s2, **parse_kwargs)
     return list(ps1) == list(ps2)

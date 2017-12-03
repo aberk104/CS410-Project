@@ -103,4 +103,4 @@ us_unit_types = prjc.all_us_unit_types()
 
 #parsed_raw_data = prjc.unigram_like_parser(raw_addresses, unstructured_training_data, us_states, us_streets, us_cities_zips)
 
-lnp.less_naive_parser("1 e elm george main st w", us_streets, compass_points, key_val_switch_compass_pts, us_unit_types)
+lnp.less_naive_parser_fnc("1 e elm george main st w", us_streets, compass_points, key_val_switch_compass_pts, us_unit_types)
