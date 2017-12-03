@@ -16,4 +16,5 @@ def hyphen_parse(s: str, tolower: bool = False) -> list:
     :param tolower: convert to lowercase?
     """
     s = s.replace("-", " - ")
-    return [k.lower() for k in s.split()] if tolower else s.split()
+    parsed = [k.lower() for k in s.split()] if tolower else s.split()
+    return [p for p in parsed if p]
