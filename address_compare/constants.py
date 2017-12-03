@@ -397,6 +397,7 @@ STREET_TYPES = ['alley',
                 'wy',
                 'xing',
                 'xrd']
+
 UNIT_TYPES = ['apt',
               'basement',
               'bsmt',
@@ -443,3 +444,13 @@ UNIT_TYPES = ['apt',
               'unit',
               'upper',
               'uppr']
+
+COMPASS_POINTS_DICT = {'NORTH': {'N','NORTH','N.'},
+                       'SOUTH': {'S','SOUTH','S.'},
+                       'EAST': {'E','EAST','E.'},
+                       'WEST': {'W','WEST','W.'},
+                       'NE': {'NE','NE.','N.E.','NORTHEAST'},
+                       'NW': {'NW','NW.','N.W.','NORTHWEST'},
+                       'SE': {'SE','SE.','S.E.','SOUTHEAST'},
+                       'SW': {'SW','SW.','S.W.','SOUTHWEST'}}
+

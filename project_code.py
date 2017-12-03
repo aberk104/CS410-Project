@@ -5,6 +5,7 @@
 import pandas as pd
 import urllib
 from address_compare import parsers as pars
+from address_compare import constants as const
 import collections
 
 # sys.path.append("address_compare")
@@ -39,29 +40,35 @@ def all_us_states():
     us_states = pd.read_csv(file_path, sep='\t')
     return us_states
 
-# US Street Type Abbreviations and Full Names from the Open Addresses project on Github
+# US Street Type Abbreviations and Full Names originally sourced from the Open Addresses project on Github
 def all_us_street_types():
-    file_path, headers = urllib.request.urlretrieve("https://raw.githubusercontent.com/openaddresses/expand/master/maps/us")
-    us_streets = pd.read_csv(file_path, header=None)
-    us_streets.columns = ['st_abbrev', 'street_type']
+    us_streets = pd.read_csv("data\\us_street_types.csv")
     return us_streets
 
 # US Zip Codes with Acceptable City Names and States
 def all_us_cities_zips():
-    all_fields_us_cities_zips = pd.read_excel("zip_code_database.xlsx", dtype=str)
+    all_fields_us_cities_zips = pd.read_excel("data\\zip_code_database.xlsx", dtype=str)
     all_fields_us_cities_zips['zip'] = all_fields_us_cities_zips['zip'].str.zfill(5)
 
     us_cities_zips = all_fields_us_cities_zips[['zip','primary_city','acceptable_cities','unacceptable_cities','state']].copy()
 
     return us_cities_zips
 
-# Set of Compass Points for Address Street Names
-def compass_points(include_full_names: bool = True):
-    if include_full_names:
-        compass_points_set = {'N','S','E','W','NE','NW','SE','SW','NORTH','SOUTH','EAST','WEST'}
-    else:
-        compass_points_set = {'N', 'S', 'E', 'W', 'NE', 'NW', 'SE', 'SW'}
-    return compass_points_set
+# Compass Points for Address Street Names
+def compass_points():
+    compass_points_dict = const.COMPASS_POINTS_DICT
+    switched_key_val_compass_points = dict()
+    for key, valset in compass_points_dict.items():
+        for val in valset:
+            switched_key_val_compass_points[val] = key
+
+    return compass_points_dict, switched_key_val_compass_points
+
+# US Unit Types Originally Sourced from the USPS
+def all_us_unit_types():
+    us_unit_types = pd.read_csv("data\\us_unit_types.csv")
+    return us_unit_types
+
 
 # Parse Raw Training Data using Unigram Like Parser and the Naive Parser in the parsers file
 def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street_types, us_cities_zips):
@@ -120,9 +127,4 @@ def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street
 #        i.e., create multi-column table by Record ID and populating the number, street name, etc.
 #        then compare the parsed output against the parsed_address_training_data
 #        '''
-
-
-
-
-print (pars.naive_parse("123 Main"))
 

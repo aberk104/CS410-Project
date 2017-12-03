@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.metrics import confusion_matrix
 from address_compare.comparers import naive_compare
+from address_compare.comparers import less_naive_compare
 
 DEFAULT_TEST_DATA = './data/compare_train.csv'
 
