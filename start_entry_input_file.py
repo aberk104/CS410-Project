@@ -6,6 +6,7 @@ Users will also be able to input 2 separate files that will use the trained mode
 
 from tkinter import *
 import project_code as prjc
+from address_compare import less_naive_parser as lnp
 
 use_default_values = 1
 
@@ -73,32 +74,43 @@ e15.grid(row=15, column=1)
 mainloop()
 '''
 
-if not use_default_values == 1:
-    file_name = e1.get()
-    unstructured_training_data = e2.get()
-    file_type = variable.get()
+# if not use_default_values == 1:
+#     file_name = e1.get()
+#     unstructured_training_data = e2.get()
+#     file_type = variable.get()
+#
+#     city_state_field_names = list()
+#     for item in city_state_field_names_inputs:
+#         city_state_field_names.append(item.get())
+#
+#     parsed_field_names = list()
+#     for item in parsed_field_names_inputs:
+#         parsed_field_names.append(item.get())
+# else:
+#     file_name = "data\washington state address training data.xlsx"
+#     file_type = "excel"
+#     unstructured_training_data = 'Single String Address'
+#     city_state_field_names = ['CITY', 'STATE', 'POSTCODE']
+#     parsed_field_names = ['Street Number', 'Unit Type', 'Unit Number', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction']
 
-    city_state_field_names = list()
-    for item in city_state_field_names_inputs:
-        city_state_field_names.append(item.get())
-
-    parsed_field_names = list()
-    for item in parsed_field_names_inputs:
-        parsed_field_names.append(item.get())
-else:
-    file_name = "washington state address training data.xlsx"
-    file_type = "excel"
-    unstructured_training_data = 'Single String Address'
-    city_state_field_names = ['CITY', 'STATE', 'POSTCODE']
-    parsed_field_names = ['Street Number', 'Unit Type', 'Unit Number', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction']
-
-raw_addresses, parsed_addresses = prjc.training_file(file_name, file_type, unstructured_training_data, city_state_field_names, parsed_field_names)
+#raw_addresses, parsed_addresses = prjc.training_file(file_name, file_type, unstructured_training_data, city_state_field_names, parsed_field_names)
 us_streets = prjc.all_us_street_types()
-us_states = prjc.all_us_states()
+#us_states = prjc.all_us_states()
 compass_points = prjc.compass_points()
-us_cities_zips = prjc.all_us_cities_zips()
+#us_cities_zips = prjc.all_us_cities_zips()
 
-print (raw_addresses.head())
-print (parsed_addresses.head())
+# remove compass points from us_streets and add st,street
+us_streets.loc[max(us_streets.index) + 1, 'st_abbrev'] = 'st'
+us_streets.loc[max(us_streets.index), 'street_type'] = 'street'
+compass_point_list = list()
+for val_set in compass_points.values():
+    for val in val_set:
+        compass_point_list.append(val.lower())
+
+us_streets_no_compass = us_streets.query('street_type not in @compass_point_list')
+us_streets_no_compass.dropna()
+us_streets_no_compass = us_streets_no_compass.reset_index(drop=True)
 
 #parsed_raw_data = prjc.unigram_like_parser(raw_addresses, unstructured_training_data, us_states, us_streets, us_cities_zips)
+
+lnp.less_naive_parser("1 e elm george main st w", us_streets_no_compass, compass_points)

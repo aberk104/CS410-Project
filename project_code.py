@@ -48,7 +48,7 @@ def all_us_street_types():
 
 # US Zip Codes with Acceptable City Names and States
 def all_us_cities_zips():
-    all_fields_us_cities_zips = pd.read_excel("zip_code_database.xlsx", dtype=str)
+    all_fields_us_cities_zips = pd.read_excel("data\zip_code_database.xlsx", dtype=str)
     all_fields_us_cities_zips['zip'] = all_fields_us_cities_zips['zip'].str.zfill(5)
 
     us_cities_zips = all_fields_us_cities_zips[['zip','primary_city','acceptable_cities','unacceptable_cities','state']].copy()
@@ -58,10 +58,12 @@ def all_us_cities_zips():
 # Set of Compass Points for Address Street Names
 def compass_points(include_full_names: bool = True):
     if include_full_names:
-        compass_points_set = {'N','S','E','W','NE','NW','SE','SW','NORTH','SOUTH','EAST','WEST'}
+        compass_points_dict = {'NORTH': {'N','NORTH','N.'}, 'SOUTH': {'S','SOUTH','S.'}, 'EAST': {'E','EAST','E.'}, 'WEST': {'W','WEST','W.'},
+                               'NE': {'NE','NE.','N.E.','NORTHEAST'},'NW': {'NW','NW.','N.W.','NORTHWEST'}, 'SE': {'SE','SE.','S.E.','SOUTHEAST'}, 'SW': {'SW','SW.','S.W.','SOUTHWEST'}}
     else:
-        compass_points_set = {'N', 'S', 'E', 'W', 'NE', 'NW', 'SE', 'SW'}
-    return compass_points_set
+        compass_points_dict = {'NORTH': {'N','N.'}, 'SOUTH': {'S','S.'}, 'EAST': {'E','E.'}, 'WEST': {'W','W.'},
+                               'NE': {'NE','NE.','N.E.'},'NW': {'NW','NW.','N.W.'}, 'SE': {'SE','SE.','S.E.'}, 'SW': {'SW','SW.','S.W.'}}
+    return compass_points_dict
 
 # Parse Raw Training Data using Unigram Like Parser and the Naive Parser in the parsers file
 def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street_types, us_cities_zips):
@@ -120,9 +122,4 @@ def unigram_like_parser(raw_addresses, unstruct_field_name, us_states, us_street
 #        i.e., create multi-column table by Record ID and populating the number, street name, etc.
 #        then compare the parsed output against the parsed_address_training_data
 #        '''
-
-
-
-
-print (pars.naive_parse("123 Main"))
 
