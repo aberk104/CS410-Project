@@ -19,17 +19,17 @@ Label(master, text="File Name Containing the Training Data").grid(row=0)
 Label(master, text="Select the File Type for the Training Data").grid(row=1)
 OptionMenu(master, variable, "csv", "excel").grid(row=1, column=1)
 Label(master, text="Field Name Containing the Unstructured Addresses").grid(row=2)
-Label(master, text="Field with Parsed Street Number").grid(row=3)
-Label(master, text="Field with Parsed Unit Type").grid(row=4)
-Label(master, text="Field with Parsed Unit Number").grid(row=5)
-Label(master, text="Field with Parsed Pre Street Name Direction").grid(row=6)
-Label(master, text="Field with Parsed Street Name").grid(row=7)
-Label(master, text="Field with Parsed Street Type").grid(row=8)
-Label(master, text="Field with Parsed Post Street Type Direction").grid(row=9)
-Label(master, text="Field with Parsed City").grid(row=10)
-Label(master, text="Field with Parsed State").grid(row=11)
-Label(master, text="Field with Parsed Country").grid(row=12)
-Label(master, text="Field with Parsed Zip Code").grid(row=13)
+Label(master, text="City Field Name").grid(row=3)
+Label(master, text="State Field Name").grid(row=4)
+Label(master, text="Country Field Name").grid(row=5)
+Label(master, text="Zip Code Field Name").grid(row=6)
+Label(master, text="Field with Parsed Street Number").grid(row=7)
+Label(master, text="Field with Parsed Unit Type").grid(row=8)
+Label(master, text="Field with Parsed Unit Number").grid(row=9)
+Label(master, text="Field with Parsed Pre Street Name Direction").grid(row=10)
+Label(master, text="Field with Parsed Street Name").grid(row=11)
+Label(master, text="Field with Parsed Street Type").grid(row=12)
+Label(master, text="Field with Parsed Post Street Type Direction").grid(row=13)
 Label(master, text="File 1 Containing Unstructured Addresses").grid(row=14)
 Label(master, text="File 2 Containing Unstructured Addresses").grid(row=15)
 
@@ -54,10 +54,15 @@ e15 = Entry(master)
 e1.grid(row=0, column=1)
 e2.grid(row=2, column=1)
 
-parsed_field_names_inputs = [e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13]
+city_state_field_names_inputs = [e3, e4, e5, e6]
+parsed_field_names_inputs = [e7, e8, e9, e10, e11, e12, e13]
 
 row_num = 3
 column_num = 1
+for item in city_state_field_names_inputs:
+    item.grid(row = row_num, column = column_num)
+    row_num += 1
+
 for item in parsed_field_names_inputs:
     item.grid(row = row_num, column = column_num)
     row_num += 1
@@ -73,21 +78,27 @@ if not use_default_values == 1:
     unstructured_training_data = e2.get()
     file_type = variable.get()
 
-    parsed_field_names = list()
+    city_state_field_names = list()
+    for item in city_state_field_names_inputs:
+        city_state_field_names.append(item.get())
 
+    parsed_field_names = list()
     for item in parsed_field_names_inputs:
         parsed_field_names.append(item.get())
 else:
-    file_name = "small subset Washington State Addresses.xlsx"
+    file_name = "washington state address training data.xlsx"
     file_type = "excel"
     unstructured_training_data = 'Single String Address'
-    parsed_field_names = ['NUMBER', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction', 'CITY', 'STATE', 'POSTCODE']
+    city_state_field_names = ['CITY', 'STATE', 'POSTCODE']
+    parsed_field_names = ['Street Number', 'Unit Type', 'Unit Number', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction']
 
-raw_addresses, parsed_addresses = prjc.training_file(file_name, file_type, unstructured_training_data, parsed_field_names)
+raw_addresses, parsed_addresses = prjc.training_file(file_name, file_type, unstructured_training_data, city_state_field_names, parsed_field_names)
 us_streets = prjc.all_us_street_types()
 us_states = prjc.all_us_states()
 compass_points = prjc.compass_points()
 us_cities_zips = prjc.all_us_cities_zips()
 
+print (raw_addresses.head())
+print (parsed_addresses.head())
 
-parsed_raw_data = prjc.unigram_like_parser(raw_addresses, unstructured_training_data, us_states, us_streets, us_cities_zips)
+#parsed_raw_data = prjc.unigram_like_parser(raw_addresses, unstructured_training_data, us_states, us_streets, us_cities_zips)
