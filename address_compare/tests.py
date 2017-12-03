@@ -10,7 +10,9 @@ class TestNaive_parse(TestCase):
 
 class TestHyphen_parse(TestCase):
     def test_hyphen_parse(self):
-        self.assertEqual(parse.hyphen_parse("A-b"), ["A", "-", "b"])
+        self.assertEqual(parse.hyphen_parse("A-b"), ["a-", "b"])
+        self.assertEqual(parse.hyphen_parse('A-b', False), ['A-', 'b'])
+        self.assertEqual(parse.hyphen_parse('A - b'))
 
 class TestNaive_compare(TestCase):
     def test_naive_parse_no_kwargs(self):
