@@ -64,7 +64,33 @@ def less_naive_parser(address_string, street_types, compass_points, switched_com
         for num in range(num_items_for_name):
             concat_street_name += split_address[pre_street_direction_index + num + 1] + " "
         concat_street_name = concat_street_name.strip()
+    else:
+        '''
+        Need to add ELIFs for when the pre_street_direction_index is None.
+        I.e., in that situation what is the starting point for the street name and what is the ending point
+        Also need to consider what to do when street_type_index is None as there is at least 1 Washington Address called Broadway without a street type
+        '''
+        pass
+
+    concat_unit_number = str()
+    if unit_type_index != None:
+        if pre_street_direction_index != None:
+            num_items_for_unit = pre_street_direction_index - unit_type_index - 1
+            for num in range(num_items_for_unit):
+                concat_unit_number += split_address[unit_type_index + num + 1] + " "
+            concat_unit_number = concat_unit_number.strip()
+        else:
+            '''
+            Need to add ELIFs for when the pre_street_direction_index is None.
+            I.e., in that situation, what is the ending point for the unit number (how to determine the starting point of the thing after the unit number
+            Also need to consider the situation where the unit number is before the unit type.  Need to determine how many items prior to the unit type would make up the unit number in this case
+            Also need to consider the situation where the unit type and number come at the end of the street
+            So need separate If and Elses for pre_street_direction_index != None for when the difference is 1 and for when the difference is negative
+            '''
+
+            pass
 
     parsed_address_string.loc[0,'street_name'] = concat_street_name
+    parsed_address_string.loc[0,'unit_number'] = concat_unit_number
     print (parsed_address_string)
 
