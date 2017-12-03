@@ -1,1 +1,1822 @@
-[{"raw_address": "612 S ALASKA ST", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "540 RONLEE LN NW STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "624 SUNSET PARK DR", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1874 BATUM RD N  STE 100", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "15026 E BREVIER RD SUITE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "750 E WAPATO LAKE RD UNIT C", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "123 ELWHA RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "221 OMAK RIVER RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "298 POORMAN CREEK RD #A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2505 N COMMERCIAL AVE UNIT C/D", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2200 N RIVER RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1123 351ST ST STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2407 TALLEY WAY", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1811 BAKER WAY", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "3660 LINDSAY RD SUITE 1M", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "4055 HAMMER DR STE 103", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1788 3RD AVE W", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "8531 POSTMA RD STE P", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "3895 MALAGA AVE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "4020 34TH AVE NE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "676 S INDUSTRIAL WAY", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "126 NEWMAN CREEK UNIT 4", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2524 N MACHIAS RD UNIT B", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "43095 CHALLENGER RD  LOT 10", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "512 E PACIFIC AVE", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "133302 W JOHNSON RD STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "5805 E SHARP AVE STE C6", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "560-2 HAWK HAVEN RD", "tags": ["STREET_NUMBER", "STREET_NUMBER", "UNIT_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "7019 RD 9 NW STE S", "tags": ["STREET_NUMBER", "STREET_TYPE", "STREET_NAME", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "5016 E ELK TO HWY RD  STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "171 FAIRWAY CT STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "55 RED CEDAR", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME"]}, {"raw_address": "1191 PETERSON SWAMP RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "15505 WEBBER CANYON RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "3005 CHANDLER ST", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "2009 W JOHANSEN RD STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "221 BRUENN AVE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "17835 59TH AVE NE BLDG 8 STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2504 HARTFORD DR", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "4562 MERIDIAN ST #A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2900 LIND AVE SW STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "16810 415TH AVE SE BLDG D #2", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER", "UNIT_NUMBER"]}, {"raw_address": "4260 PACIFIC HWY", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "11509 W 21ST AVE BLD 2", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "680 HAYS RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "8820 152ND ST SE STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2121 LINCOLN ST", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "28011 NE 4TH PL", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "142 PEMBERTON PL STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "420 E 18TH ST UNIT B", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "212 SE BANJO LN", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "7019 RD 9 NW STE J", "tags": ["STREET_NUMBER", "STREET_TYPE", "STREET_NAME", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "24 STRINGTOWN ROAD STE 1", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "16315 N COUGAR LN STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "27613 127TH AVE NE SUITE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2018 IRON ST STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "19310 128TH AVE SE #B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_NUMBER"]}, {"raw_address": "24862 BENHAM RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1520 CENTER ST  STE D", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "16940 VIRCON DR SW #A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_NUMBER"]}, {"raw_address": "1550 W GALLAGHER RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "116 B SOUTH STATE FRONTAGE RD", "tags": ["STREET_NUMBER", "STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "2797 TURNING POINTE LOOP", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1919 E FRANCIS AVE STE B", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1631 E PORTLAND AVE", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1610 NW 8TH STREET SUITE B", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1199 W CUNNINGHAM RD STE C-E1", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "6212 NE 152ND AVE", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "669 N RICHARDS RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "49 BAILEY LOOP DRIVE STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "23410 HIDDEN VALLEY RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2000 ROZA DR STE B1", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2310 W SUTTON RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "166 BENSON CREEK DR", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "500 ROCKY RIVER RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "55 REEVAS BASIN RD STE C", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "39355 E ORCHARD RD  STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "26404 PIONEER WAY NW STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "7903 BEAVER VALLEY RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "26815 N HARDESTY RD STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "13610 SW 240TH ST STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1445 INDUSTRIAL WAY", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "4030 99TH AVE NE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "11 CASEY'S RANCH RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2400 W SKOKOMISH VALLEY RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "22330 15TH AVE NE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "511 WAUTOMA RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "200115 E GAME FARM RD STE B", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "9840 MARTIN LUTHER KING JR WAY", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "4165 HANNEGAN RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "21418 SE 436TH", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME"]}, {"raw_address": "7457 S MADISON ST STE C", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "381 DELAMETER RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "8531 POSTMA RD STE T", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "485 STATE ROUTE 409", "tags": ["STREET_NUMBER", "STREET_TYPE", "STREET_TYPE", "STREET_NAME"]}, {"raw_address": "9730 LATHROP INDUSTRIAL DR SW", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "1891 LEE ROAD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "5506 LACKEY CT STE 1", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "141 W WESTFILED CT STE B", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "56005 N THOMAS RD STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "26268 12 TREES LN NW BLDG6 110", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "5373 GUIDE MERIDIAN RD STE D3", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2916 STATE STREET   STE 301", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "311 E EXPORT RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "4611 S LINKE RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "7836 GOODWIN RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "3303 S 35TH ST STE B-21", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "18791 CEDARDALE RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "27 HARRELL RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "8500 14TH AVE S STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2668 HIGHWAY 20 E LOT T", "tags": ["STREET_NUMBER", "STREET_TYPE", "STREET_NAME", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "13731 250TH ST NE SUITE C", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "421 CHESAW RD   STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "111 SARGISON LOOP", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "3368 EAST HWY 101", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "6101 NE 127TH AVE SUITE 400", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "5004 WEISHAAR RD E", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "652 SQUIRES RD STE 1", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "7118 E JENNIE LN #A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "9790 PADILLA HEIGHTS RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "55 REVIS BASIN RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "186 CHEROKEE RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "7990 NE ECOLOGY RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "6369 MT BAKER HWY STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "3 BLUE MOON RD #A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "181 KATIES LN SUITE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "6503 DELPHI RD NW STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2451 N FERGUSON RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "3171 GOLDIE RD BLDG E", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "234 OMAK RIVER RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "3902 10TH ST SE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "26320 STERETT RD N", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "5373 GUIDE MERIDIAN RD #C1-2", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER", "UNIT_NUMBER", "UNIT_NUMBER"]}, {"raw_address": "8213 STEAM BOAT ISLAND RD NW", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "2232 PORT OF TACOMA RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "16212 MAY CREEK ROAD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "421 CHESAW RD LOT 1, UNIT A   ", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "126 NEWMAN CREEK RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "3049 BAKIE RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1250 W SCHREIBER RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "6123 199TH AVE SE  STE 2", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "145 GREENACRES RD STE 3", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "11503 60TH ST NE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "2916 STATE STREET", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1571 SUMMIT VIEW RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "351 W MERZ RD STE 1", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "5008 226 ST NW STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "3303 W HAMILTON RD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "5990 INDEPENDENCE RD STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "192 W FREDERICKS ST", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "10517 W BALMER RD #A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "105 MILL ST", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "2005 DIVISION ST", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "43112 248TH AVE SE UNIT C", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "8531 POSTMA RD STE G", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1561 WIND RIVER HWY", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1120 S FAIRCHILD ST  STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "23321 HIDDEN VALLEY RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "960 VALLEY HWY STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1502 CENTER ST", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "3303 S 35TH ST STE B-8", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "103 CRESTLOCH RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "10011 173RD AVE SW", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "23095 BAIRD SPRINGS RD #B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "65 SIMMONS RD STE 1", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "5898 MT BAKER HWY B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1401 MOORE RD STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "421 CHESAW RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "1926 PINE CR RD  #3", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2310 WEST SUTTON RD STE D1", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "12917 S SHORT RD STE A", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "17830 DANE LN SW", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "8618 99TH AVE NE STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "2381 COOKE CANYON RD #A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_NUMBER"]}, {"raw_address": "126 NEWMAN CREEK RD UNIT 4", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "931 GOERIG RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "6481 PORTAL WAY STE A", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "1802 BIRCHFIELD RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "5256 UPPER HEDGES ROAD  STE B", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "56104 NORTH THOMAS ROAD", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "26867 156TH PL SE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}, {"raw_address": "8040 DAY RD W BLDG 3 UNIT 2", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_TYPE", "UNIT_NUMBER", "UNIT_TYPE", "UNIT_NUMBER"]}, {"raw_address": "139 GREENACRES RD", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "3214 NE 65TH ST", "tags": ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]}, {"raw_address": "14840 RAINIER VIEW DR SE", "tags": ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION"]}]
+[  
+   {  
+      "raw_address":"612 S ALASKA ST",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"540 RONLEE LN NW STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"624 SUNSET PARK DR",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1874 BATUM RD N  STE 100",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"15026 E BREVIER RD SUITE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"750 E WAPATO LAKE RD UNIT C",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"123 ELWHA RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"221 OMAK RIVER RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"298 POORMAN CREEK RD #A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2505 N COMMERCIAL AVE UNIT C/D",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2200 N RIVER RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1123 351ST ST STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2407 TALLEY WAY",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1811 BAKER WAY",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"3660 LINDSAY RD SUITE 1M",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"4055 HAMMER DR STE 103",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1788 3RD AVE W",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"8531 POSTMA RD STE P",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"3895 MALAGA AVE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"4020 34TH AVE NE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"676 S INDUSTRIAL WAY",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"126 NEWMAN CREEK UNIT 4",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2524 N MACHIAS RD UNIT B",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"43095 CHALLENGER RD  LOT 10",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"512 E PACIFIC AVE",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"133302 W JOHNSON RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"5805 E SHARP AVE STE C6",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"560-2 HAWK HAVEN RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NUMBER",
+         "UNIT_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"7019 RD 9 NW STE S",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_TYPE",
+         "STREET_NAME",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"5016 E ELK TO HWY RD  STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"171 FAIRWAY CT STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"55 RED CEDAR",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME"
+      ]
+   },
+   {  
+      "raw_address":"1191 PETERSON SWAMP RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"15505 WEBBER CANYON RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"3005 CHANDLER ST",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"2009 W JOHANSEN RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"221 BRUENN AVE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"17835 59TH AVE NE BLDG 8 STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2504 HARTFORD DR",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"4562 MERIDIAN ST #A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2900 LIND AVE SW STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"16810 415TH AVE SE BLDG D #2",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"4260 PACIFIC HWY",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"11509 W 21ST AVE BLD 2",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"680 HAYS RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"8820 152ND ST SE STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2121 LINCOLN ST",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"28011 NE 4TH PL",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"142 PEMBERTON PL STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"420 E 18TH ST UNIT B",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"212 SE BANJO LN",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"7019 RD 9 NW STE J",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_TYPE",
+         "STREET_NAME",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"24 STRINGTOWN ROAD STE 1",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"16315 N COUGAR LN STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"27613 127TH AVE NE SUITE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2018 IRON ST STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"19310 128TH AVE SE #B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"24862 BENHAM RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1520 CENTER ST  STE D",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"16940 VIRCON DR SW #A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1550 W GALLAGHER RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"116 B SOUTH STATE FRONTAGE RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"2797 TURNING POINTE LOOP",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1919 E FRANCIS AVE STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1631 E PORTLAND AVE",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1610 NW 8TH STREET SUITE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1199 W CUNNINGHAM RD STE C-E1",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"6212 NE 152ND AVE",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"669 N RICHARDS RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"49 BAILEY LOOP DRIVE STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"23410 HIDDEN VALLEY RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2000 ROZA DR STE B1",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2310 W SUTTON RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"166 BENSON CREEK DR",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"500 ROCKY RIVER RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"55 REEVAS BASIN RD STE C",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"39355 E ORCHARD RD  STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"26404 PIONEER WAY NW STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"7903 BEAVER VALLEY RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"26815 N HARDESTY RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"13610 SW 240TH ST STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1445 INDUSTRIAL WAY",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"4030 99TH AVE NE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"11 CASEY'S RANCH RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2400 W SKOKOMISH VALLEY RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"22330 15TH AVE NE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"511 WAUTOMA RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"200115 E GAME FARM RD STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"9840 MARTIN LUTHER KING JR WAY",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"4165 HANNEGAN RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"21418 SE 436TH",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME"
+      ]
+   },
+   {  
+      "raw_address":"7457 S MADISON ST STE C",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"381 DELAMETER RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"8531 POSTMA RD STE T",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"485 STATE ROUTE 409",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_TYPE",
+         "STREET_TYPE",
+         "STREET_NAME"
+      ]
+   },
+   {  
+      "raw_address":"9730 LATHROP INDUSTRIAL DR SW",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"1891 LEE ROAD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"5506 LACKEY CT STE 1",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"141 W WESTFILED CT STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"56005 N THOMAS RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"26268 12 TREES LN NW BLDG6 110",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"5373 GUIDE MERIDIAN RD STE D3",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2916 STATE STREET   STE 301",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"311 E EXPORT RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"4611 S LINKE RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"7836 GOODWIN RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"3303 S 35TH ST STE B-21",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"18791 CEDARDALE RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"27 HARRELL RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"8500 14TH AVE S STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2668 HIGHWAY 20 E LOT T",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_TYPE",
+         "STREET_NAME",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"13731 250TH ST NE SUITE C",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"421 CHESAW RD   STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"111 SARGISON LOOP",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"3368 EAST HWY 101",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"6101 NE 127TH AVE SUITE 400",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"5004 WEISHAAR RD E",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"652 SQUIRES RD STE 1",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"7118 E JENNIE LN #A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"9790 PADILLA HEIGHTS RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"55 REVIS BASIN RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"186 CHEROKEE RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"7990 NE ECOLOGY RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"6369 MT BAKER HWY STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"3 BLUE MOON RD #A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"181 KATIES LN SUITE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"6503 DELPHI RD NW STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2451 N FERGUSON RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"3171 GOLDIE RD BLDG E",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"234 OMAK RIVER RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"3902 10TH ST SE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"26320 STERETT RD N",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"5373 GUIDE MERIDIAN RD #C1-2",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER",
+         "UNIT_NUMBER",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"8213 STEAM BOAT ISLAND RD NW",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"2232 PORT OF TACOMA RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"16212 MAY CREEK ROAD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"421 CHESAW RD LOT 1, UNIT A   ",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"126 NEWMAN CREEK RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"3049 BAKIE RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1250 W SCHREIBER RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"6123 199TH AVE SE  STE 2",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"145 GREENACRES RD STE 3",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"11503 60TH ST NE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"2916 STATE STREET",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1571 SUMMIT VIEW RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"351 W MERZ RD STE 1",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"5008 226 ST NW STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"3303 W HAMILTON RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"5990 INDEPENDENCE RD STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"192 W FREDERICKS ST",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"10517 W BALMER RD #A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"105 MILL ST",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"2005 DIVISION ST",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"43112 248TH AVE SE UNIT C",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"8531 POSTMA RD STE G",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1561 WIND RIVER HWY",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1120 S FAIRCHILD ST  STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"23321 HIDDEN VALLEY RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"960 VALLEY HWY STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1502 CENTER ST",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"3303 S 35TH ST STE B-8",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"103 CRESTLOCH RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"10011 173RD AVE SW",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"23095 BAIRD SPRINGS RD #B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"65 SIMMONS RD STE 1",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"5898 MT BAKER HWY B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1401 MOORE RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"421 CHESAW RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"1926 PINE CR RD  #3",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2310 WEST SUTTON RD STE D1",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"12917 S SHORT RD STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"17830 DANE LN SW",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"8618 99TH AVE NE STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"2381 COOKE CANYON RD #A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"126 NEWMAN CREEK RD UNIT 4",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"931 GOERIG RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"6481 PORTAL WAY STE A",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"1802 BIRCHFIELD RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"5256 UPPER HEDGES ROAD  STE B",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"56104 NORTH THOMAS ROAD",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"26867 156TH PL SE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   },
+   {  
+      "raw_address":"8040 DAY RD W BLDG 3 UNIT 2",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION",
+         "UNIT_TYPE",
+         "UNIT_NUMBER",
+         "UNIT_TYPE",
+         "UNIT_NUMBER"
+      ]
+   },
+   {  
+      "raw_address":"139 GREENACRES RD",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"3214 NE 65TH ST",
+      "tags":[  
+         "STREET_NUMBER",
+         "PRE_DIRECTION",
+         "STREET_NAME",
+         "STREET_TYPE"
+      ]
+   },
+   {  
+      "raw_address":"14840 RAINIER VIEW DR SE",
+      "tags":[  
+         "STREET_NUMBER",
+         "STREET_NAME",
+         "STREET_NAME",
+         "STREET_TYPE",
+         "POST_DIRECTION"
+      ]
+   }
+]
