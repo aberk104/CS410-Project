@@ -11,7 +11,9 @@ def less_naive_parser(address_string, street_types, compass_points, switched_com
 
     split_address = list(all_caps_addresses.split())
     reversed_address_list = split_address.copy()
-    reversed_address_list.reverse()
+
+    if len(reversed_address_list) > 1:
+        reversed_address_list.reverse()
 
     parsed_address_string = pd.DataFrame(columns=['street_number','unit_type','unit_number','pre_street_direction','street_name','street_type','post_street_direction'])
 
@@ -63,6 +65,7 @@ def less_naive_parser(address_string, street_types, compass_points, switched_com
         num_items_for_name = street_type_index - pre_street_direction_index - 1
         for num in range(num_items_for_name):
             concat_street_name += split_address[pre_street_direction_index + num + 1] + " "
+            reversed_address_list_copy.remove(split_address[pre_street_direction_index + num + 1])
         concat_street_name = concat_street_name.strip()
     else:
         '''
@@ -78,6 +81,7 @@ def less_naive_parser(address_string, street_types, compass_points, switched_com
             num_items_for_unit = pre_street_direction_index - unit_type_index - 1
             for num in range(num_items_for_unit):
                 concat_unit_number += split_address[unit_type_index + num + 1] + " "
+                reversed_address_list_copy.remove(split_address[unit_type_index + num + 1])
             concat_unit_number = concat_unit_number.strip()
         else:
             '''
@@ -90,7 +94,17 @@ def less_naive_parser(address_string, street_types, compass_points, switched_com
 
             pass
 
-    parsed_address_string.loc[0,'street_name'] = concat_street_name
-    parsed_address_string.loc[0,'unit_number'] = concat_unit_number
+    remaining_items_in_list = reversed_address_list_copy.copy()
+    if len(remaining_items_in_list) > 1:
+        remaining_items_in_list = remaining_items_in_list.reverse()
+    concat_street_number = str()
+    for item in remaining_items_in_list:
+        concat_street_number += item + " "
+    concat_street_number = concat_street_number.strip()
+
+    parsed_address_string.loc[0, 'street_name'] = concat_street_name
+    parsed_address_string.loc[0, 'unit_number'] = concat_unit_number
+    parsed_address_string.loc[0, 'street_number'] = concat_street_number
+
     print (parsed_address_string)
 
