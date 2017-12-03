@@ -15,7 +15,9 @@ def less_naive_parser(address_string, street_types, compass_points, switched_com
     if len(reversed_address_list) > 1:
         reversed_address_list.reverse()
 
-    parsed_address_string = pd.DataFrame(columns=['street_number','unit_type','unit_number','pre_street_direction','street_name','street_type','post_street_direction'])
+    parsed_address_columns = ['street_number','pre_street_direction','street_name','street_type','post_street_direction','unit_type','unit_number']
+
+    parsed_address_string = pd.DataFrame(columns=parsed_address_columns, dtype=str)
 
     all_caps_street_types_dict = dict()
     for row in range(street_types.shape[0]):
@@ -106,5 +108,10 @@ def less_naive_parser(address_string, street_types, compass_points, switched_com
     parsed_address_string.loc[0, 'unit_number'] = concat_unit_number
     parsed_address_string.loc[0, 'street_number'] = concat_street_number
 
-    print (parsed_address_string)
+    reconcatenated_address = str()
+    for column in parsed_address_columns:
+        if parsed_address_string.notnull().loc[0, column]:
+            reconcatenated_address += str(parsed_address_string.loc[0, column]) + " "
+    reconcatenated_address = reconcatenated_address.strip()
 
+    return reconcatenated_address
