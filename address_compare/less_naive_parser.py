@@ -18,26 +18,72 @@ def all_us_unit_types():
     us_unit_types = pd.read_csv("data\\us_unit_types.csv")
     return us_unit_types
 
+def split_training_file(trainingdata, unstruct_fields, parsed_fields):
+    raw_address_training_data = trainingdata[unstruct_fields].copy()
+    parsed_address_training_data = trainingdata[parsed_fields].copy()
+    return raw_address_training_data, parsed_address_training_data
+
 us_streets = all_us_street_types()
 #us_states = prjc.all_us_states()
 compass_points_def, key_val_switch_compass_pts = compass_points()
 #us_cities_zips = prjc.all_us_cities_zips()
 us_unit_types = all_us_unit_types()
 
-def less_naive_parser_fnc(address_string: str, street_types = us_streets, compass_points = compass_points_def, switched_compass_points = key_val_switch_compass_pts, unit_types = us_unit_types):
+def test_tagger_parser():
+    testing_data = pd.read_excel("data\\washington state address training data.xlsx", dtype=str)
+    print (testing_data.head())
+    testing_data['Record_ID'] = testing_data.index
+    raw_testing_data, parsed_testing_data = split_training_file(testing_data, ['Record_ID','Single String Address'], ['Record_ID','Tagged Pre Street Direction','Tagged Street Name','Tagged Street Type','Tagged Post Street Direction','Tagged Street Number','Tagged Unit Type','Tagged Unit Number'])
+
+    all_tagger_results = list()
+    for row in range(testing_data.shape[0]):
+        raw_address_string = raw_testing_data[row,'Single String Address']
+        tagged_street_num = parsed_testing_data[row,'Tagged Street Number']
+        tagged_unit_type = parsed_testing_data[row,'Tagged Unit Type']
+        tagged_unit_num = parsed_testing_data[row, 'Tagged Unit Number']
+        tagged_pre_direct = parsed_testing_data[row, 'Tagged Pre Street Direction']
+        tagged_street_name = parsed_testing_data[row, 'Tagged Street Name']
+        tagged_street_type = parsed_testing_data[row, 'Tagged Street Type']
+        tagged_post_direct = parsed_testing_data[row, 'Tagged Post Street Direction']
+
+        fixed_address, tagger_result = less_naive_parser_fnc(raw_address_string, us_streets, compass_points_def, key_val_switch_compass_pts, us_unit_types, tagged_street_num, tagged_unit_type, tagged_unit_num,
+                                                             tagged_pre_direct, tagged_street_name, tagged_street_type, tagged_post_direct)
+        all_tagger_results.append(tagger_result)
+
+    return all_tagger_results
+
+
+
+
+
+
+def less_naive_parser_fnc(address_string: str, street_types = us_streets, compass_points = compass_points_def, switched_compass_points = key_val_switch_compass_pts, unit_types = us_unit_types,
+                          tag_st_num = None, tag_unit_type = None, tag_unit_num = None, tag_pre_direct = None, tag_st_name = None, tag_st_type = None, tag_post_direct = None):
     all_caps_addresses = address_string.upper()
 
     # all_caps_street_types = pd.DataFrame(columns=['st_abbrev','street_type'])
     # all_caps_street_types['st_abbrev'] = street_types['st_abbrev'].str.upper()
     # all_caps_street_types['street_type'] = street_types['street_type'].str.upper()
 
-    split_address = list(all_caps_addresses.split())
+    split_address_copy = list(all_caps_addresses.split())
+    split_address = list()
+    for item in split_address_copy:
+        if item[len(item)-1] in [",","-"] and len(item) > 1:
+            if len(item) == 2:
+                split_address.append(item[0])
+                split_address.append(item[1])
+            else:
+                split_address.append(item[:len(item)-2])
+                split_address.append(item[len(item)-1])
+        elif len(item) > 0:
+            split_address.append(item)
+
     reversed_address_list = split_address.copy()
 
     if len(reversed_address_list) > 1:
         reversed_address_list.reverse()
 
-    parsed_address_columns = ['street_number','pre_street_direction','street_name','street_type','post_street_direction','unit_type','unit_number']
+    parsed_address_columns = ['street_number','pre_street_direction','street_name','street_type','post_street_direction','unit_type','unit_number', 'unit_type2','unit_number2']
 
     parsed_address_string = pd.DataFrame(columns=parsed_address_columns, dtype=str)
 
@@ -58,20 +104,20 @@ def less_naive_parser_fnc(address_string: str, street_types = us_streets, compas
     post_street_direction_index = None
     pre_street_direction_index = None
     unit_type_index = None
+    unit_type_index2 = None
     reversed_address_list_copy = reversed_address_list.copy()
     for item in reversed_address_list:
-        if item in all_caps_street_types_dict.keys():
+        if item in all_caps_street_types_dict.keys() and street_type_index == None:
             parsed_address_string.loc[0,'street_type'] = all_caps_street_types_dict[item]
             street_type_index = total_items_address_list - item_index_number
             reversed_address_list_copy.pop(item_index_number_to_remove)
             item_index_number_to_remove -= 1
-        else:
-            '''
-            Need to add an Else condition to lookup against the long form street names
-            '''
-
-            pass
-        if item in switched_compass_points.keys():
+        elif item in all_caps_street_types_dict.values() and street_type_index == None:
+            parsed_address_string.loc[0,'street_type'] = item
+            street_type_index = total_items_address_list - item_index_number
+            reversed_address_list_copy.pop(item_index_number_to_remove)
+            item_index_number_to_remove -= 1
+        elif item in switched_compass_points.keys() and (post_street_direction_index == None or pre_street_direction_index == None):
             if street_type_index == None:
                 parsed_address_string.loc[0,'post_street_direction'] = switched_compass_points[item]
                 post_street_direction_index = total_items_address_list - item_index_number
@@ -82,16 +128,29 @@ def less_naive_parser_fnc(address_string: str, street_types = us_streets, compas
                 pre_street_direction_index = total_items_address_list - item_index_number
                 reversed_address_list_copy.pop(item_index_number_to_remove)
                 item_index_number_to_remove -= 1
-        if item in all_caps_unit_types_dict.keys():
-            parsed_address_string.loc[0,'unit_type'] = all_caps_unit_types_dict[item]
-            unit_type_index = total_items_address_list - item_index_number
-            reversed_address_list_copy.pop(item_index_number_to_remove)
-            item_index_number_to_remove -= 1
-        else:
-            '''
-            Need to add an Else condition to lookup against the long form unit types
-            '''
-            pass
+        elif item in all_caps_unit_types_dict.keys() and (unit_type_index == None or unit_type_index2 == None):
+            if unit_type_index == None:
+                parsed_address_string.loc[0,'unit_type'] = all_caps_unit_types_dict[item]
+                unit_type_index = total_items_address_list - item_index_number
+                reversed_address_list_copy.pop(item_index_number_to_remove)
+                item_index_number_to_remove -= 1
+            else:
+                parsed_address_string.loc[0,'unit_type2'] = all_caps_unit_types_dict[item]
+                unit_type_index2 = total_items_address_list - item_index_number
+                reversed_address_list_copy.pop(item_index_number_to_remove)
+                item_index_number_to_remove -= 1
+        elif item in all_caps_unit_types_dict.values() and (unit_type_index == None or unit_type_index2 == None):
+            if unit_type_index == None:
+                parsed_address_string.loc[0,'unit_type'] = item
+                unit_type_index = total_items_address_list - item_index_number
+                reversed_address_list_copy.pop(item_index_number_to_remove)
+                item_index_number_to_remove -= 1
+            else:
+                parsed_address_string.loc[0,'unit_type2'] = item
+                unit_type_index2 = total_items_address_list - item_index_number
+                reversed_address_list_copy.pop(item_index_number_to_remove)
+                item_index_number_to_remove -= 1
+
         item_index_number += 1
         item_index_number_to_remove += 1
 
@@ -112,13 +171,23 @@ def less_naive_parser_fnc(address_string: str, street_types = us_streets, compas
 
     concat_unit_number = str()
     if unit_type_index != None:
-        if pre_street_direction_index != None:
+        if pre_street_direction_index != None and (pre_street_direction_index - unit_type_index) > 1:
             num_items_for_unit = pre_street_direction_index - unit_type_index - 1
             for num in range(num_items_for_unit):
-                concat_unit_number += split_address[unit_type_index + num + 1] + " "
-                reversed_address_list_copy.remove(split_address[unit_type_index + num + 1])
+                if split_address[unit_type_index + num + 1] in [",","-"]:
+                    break
+                else:
+                    concat_unit_number += split_address[unit_type_index + num + 1] + " "
+                    reversed_address_list_copy.remove(split_address[unit_type_index + num + 1])
             concat_unit_number = concat_unit_number.strip()
-        else:
+
+        elif post_street_direction_index != None and (unit_type_index > post_street_direction_index):
+            num_items_for_unit = total_items_address_list - unit_type_index
+            for item in split_address[unit_type_index+1:]:
+                concat_unit_number += item + " "
+                reversed_address_list_copy.remove(item)
+            concat_unit_number = concat_unit_number.strip()
+
             '''
             Need to add ELIFs for when the pre_street_direction_index is None.
             I.e., in that situation, what is the ending point for the unit number (how to determine the starting point of the thing after the unit number
@@ -148,4 +217,24 @@ def less_naive_parser_fnc(address_string: str, street_types = us_streets, compas
             reconcatenated_address += str(parsed_address_string.loc[0, column]) + " "
     reconcatenated_address = reconcatenated_address.strip()
 
-    return reconcatenated_address
+    correctly_parsed_address_result = None
+    if not tag_st_name == None:
+        test_street_num = parsed_address_string[0,'street_number']
+        test_unit_type = parsed_address_string[0,'unit_type']
+        test_unit_num = parsed_address_string[0, 'unit_number']
+        test_pre_direct = parsed_address_string[0, 'pre_street_direction']
+        test_street_name = parsed_address_string[0, 'street_name']
+        test_street_type = parsed_address_string[0, 'street_type']
+        test_post_direct = parsed_address_string[0, 'post_street_direction']
+        correctly_parsed_address_result = parsed_address_compare(test_street_num, test_pre_direct, test_street_name, test_street_type, test_post_direct, test_unit_type, test_unit_num, tag_st_num, tag_pre_direct,
+                                                                 tag_st_name, tag_st_type, tag_post_direct, tag_unit_type, tag_unit_num)
+
+    return reconcatenated_address, correctly_parsed_address_result
+
+def parsed_address_compare(test_st_num, test_pre_direct, test_st_name, test_st_type, test_post_direct, test_unit_type, test_unit_num,
+                           tagged_st_num, tagged_pre_direct, tagged_st_name, tagged_st_type, tagged_post_direct, tagged_unit_type, tagged_unit_num):
+
+    if (test_st_num == tagged_st_num) and (test_pre_direct == tagged_pre_direct) and (test_st_name == tagged_st_name) and (test_st_type == tagged_st_type) and (test_post_direct == tagged_post_direct) and (test_unit_type == tagged_unit_type) and (test_unit_num == tagged_unit_num):
+        return True
+    else:
+        return False
