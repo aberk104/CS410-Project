@@ -7,6 +7,7 @@ Users will also be able to input 2 separate files that will use the trained mode
 from tkinter import *
 import project_code as prjc
 from address_compare import less_naive_parser as lnp
+from collections import Counter
 
 # use_default_values = 1
 
@@ -94,13 +95,14 @@ from address_compare import less_naive_parser as lnp
 #     parsed_field_names = ['Street Number', 'Unit Type', 'Unit Number', 'Pre Street Direction', 'Street Name', 'Street Type', 'Post Street Direction']
 
 #raw_addresses, parsed_addresses = prjc.training_file(file_name, file_type, unstructured_training_data, city_state_field_names, parsed_field_names)
-us_streets = prjc.all_us_street_types()
+#us_streets = prjc.all_us_street_types()
 #us_states = prjc.all_us_states()
-compass_points, key_val_switch_compass_pts = prjc.compass_points()
+#compass_points, key_val_switch_compass_pts = prjc.compass_points()
 #us_cities_zips = prjc.all_us_cities_zips()
-us_unit_types = prjc.all_us_unit_types()
+#us_unit_types = prjc.all_us_unit_types()
 
 
 #parsed_raw_data = prjc.unigram_like_parser(raw_addresses, unstructured_training_data, us_states, us_streets, us_cities_zips)
 
-lnp.less_naive_parser_fnc("1 e elm george main st w", us_streets, compass_points, key_val_switch_compass_pts, us_unit_types)
+#lnp.less_naive_parser_fnc("1 e elm george main st w apt 15", us_streets, compass_points, key_val_switch_compass_pts, us_unit_types)
+
