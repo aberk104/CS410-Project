@@ -30,26 +30,26 @@ compass_points_def, key_val_switch_compass_pts = compass_points()
 us_unit_types = all_us_unit_types()
 
 def test_tagger_parser():
-    testing_data = pd.read_excel("data\\washington state address training data.xlsx", dtype=str)
-    print (testing_data.head())
+    testing_data = pd.read_excel("data\\tagged washington state address training data.xlsx", dtype=str)
     testing_data['Record_ID'] = testing_data.index
     raw_testing_data, parsed_testing_data = split_training_file(testing_data, ['Record_ID','Single String Address'], ['Record_ID','Tagged Pre Street Direction','Tagged Street Name','Tagged Street Type','Tagged Post Street Direction','Tagged Street Number','Tagged Unit Type','Tagged Unit Number'])
 
     all_tagger_results = list()
-    for row in range(testing_data.shape[0]):
-        raw_address_string = raw_testing_data[row,'Single String Address']
-        tagged_street_num = parsed_testing_data[row,'Tagged Street Number']
-        tagged_unit_type = parsed_testing_data[row,'Tagged Unit Type']
-        tagged_unit_num = parsed_testing_data[row, 'Tagged Unit Number']
-        tagged_pre_direct = parsed_testing_data[row, 'Tagged Pre Street Direction']
-        tagged_street_name = parsed_testing_data[row, 'Tagged Street Name']
-        tagged_street_type = parsed_testing_data[row, 'Tagged Street Type']
-        tagged_post_direct = parsed_testing_data[row, 'Tagged Post Street Direction']
+#    for row in range(testing_data.shape[0]):
+    for row in range(5):
+        raw_address_string = raw_testing_data.loc[row,'Single String Address']
+        tagged_street_num = parsed_testing_data.loc[row,'Tagged Street Number'].upper()
+        tagged_unit_type = parsed_testing_data.loc[row,'Tagged Unit Type'].upper()
+        tagged_unit_num = parsed_testing_data.loc[row, 'Tagged Unit Number'].upper()
+        tagged_pre_direct = parsed_testing_data.loc[row, 'Tagged Pre Street Direction'].upper()
+        tagged_street_name = parsed_testing_data.loc[row, 'Tagged Street Name'].upper()
+        tagged_street_type = parsed_testing_data.loc[row, 'Tagged Street Type'].upper()
+        tagged_post_direct = parsed_testing_data.loc[row, 'Tagged Post Street Direction'].upper()
 
         fixed_address, tagger_result = less_naive_parser_fnc(raw_address_string, us_streets, compass_points_def, key_val_switch_compass_pts, us_unit_types, tagged_street_num, tagged_unit_type, tagged_unit_num,
                                                              tagged_pre_direct, tagged_street_name, tagged_street_type, tagged_post_direct)
         all_tagger_results.append(tagger_result)
-
+        #print (parsed_testing_data.ix[row])
     return all_tagger_results
 
 
@@ -73,7 +73,7 @@ def less_naive_parser_fnc(address_string: str, street_types = us_streets, compas
                 split_address.append(item[0])
                 split_address.append(item[1])
             else:
-                split_address.append(item[:len(item)-2])
+                split_address.append(item[:len(item)-1])
                 split_address.append(item[len(item)-1])
         elif len(item) > 0:
             split_address.append(item)
@@ -154,12 +154,15 @@ def less_naive_parser_fnc(address_string: str, street_types = us_streets, compas
         item_index_number += 1
         item_index_number_to_remove += 1
 
+
+#### need to figure out a better way to remove a word so that it doesn't cause a failure.  3615 E Front St causes an error as Front is a Unit type and removed from the reversed list which causes a failure since it's also between E and ST which tries to read it as the street name
     concat_street_name = str()
     if pre_street_direction_index != None and street_type_index != None:
         num_items_for_name = street_type_index - pre_street_direction_index - 1
         for num in range(num_items_for_name):
             concat_street_name += split_address[pre_street_direction_index + num + 1] + " "
-            reversed_address_list_copy.remove(split_address[pre_street_direction_index + num + 1])
+            if split_address[pre_street_direction_index + num + 1] in reversed_address_list_copy:
+                reversed_address_list_copy.remove(split_address[pre_street_direction_index + num + 1])
         concat_street_name = concat_street_name.strip()
     else:
         '''
@@ -219,22 +222,48 @@ def less_naive_parser_fnc(address_string: str, street_types = us_streets, compas
 
     correctly_parsed_address_result = None
     if not tag_st_name == None:
-        test_street_num = parsed_address_string[0,'street_number']
-        test_unit_type = parsed_address_string[0,'unit_type']
-        test_unit_num = parsed_address_string[0, 'unit_number']
-        test_pre_direct = parsed_address_string[0, 'pre_street_direction']
-        test_street_name = parsed_address_string[0, 'street_name']
-        test_street_type = parsed_address_string[0, 'street_type']
-        test_post_direct = parsed_address_string[0, 'post_street_direction']
+        test_street_num = parsed_address_string.loc[0,'street_number']
+        test_unit_type = parsed_address_string.loc[0,'unit_type']
+        test_unit_num = parsed_address_string.loc[0, 'unit_number']
+        test_pre_direct = parsed_address_string.loc[0, 'pre_street_direction']
+        test_street_name = parsed_address_string.loc[0, 'street_name']
+        test_street_type = parsed_address_string.loc[0, 'street_type']
+        test_post_direct = parsed_address_string.loc[0, 'post_street_direction']
+        if not tag_st_type == "NAN":
+            try:
+                tag_st_type = all_caps_street_types_dict[tag_st_type]
+            except:
+                tag_st_type = tag_st_type
+        if not tag_unit_type == "NAN":
+            try:
+                tag_unit_type = all_caps_unit_types_dict[tag_unit_type]
+            except:
+                tag_unit_type = tag_unit_type
         correctly_parsed_address_result = parsed_address_compare(test_street_num, test_pre_direct, test_street_name, test_street_type, test_post_direct, test_unit_type, test_unit_num, tag_st_num, tag_pre_direct,
                                                                  tag_st_name, tag_st_type, tag_post_direct, tag_unit_type, tag_unit_num)
-
+    #print (parsed_address_string)
     return reconcatenated_address, correctly_parsed_address_result
 
 def parsed_address_compare(test_st_num, test_pre_direct, test_st_name, test_st_type, test_post_direct, test_unit_type, test_unit_num,
                            tagged_st_num, tagged_pre_direct, tagged_st_name, tagged_st_type, tagged_post_direct, tagged_unit_type, tagged_unit_num):
 
-    if (test_st_num == tagged_st_num) and (test_pre_direct == tagged_pre_direct) and (test_st_name == tagged_st_name) and (test_st_type == tagged_st_type) and (test_post_direct == tagged_post_direct) and (test_unit_type == tagged_unit_type) and (test_unit_num == tagged_unit_num):
+    # print("start")
+    # print (test_st_num, tagged_st_num, test_st_num == tagged_st_num)
+    # print (test_pre_direct, tagged_pre_direct, test_pre_direct == tagged_pre_direct)
+    # print (test_st_name, tagged_st_name, test_st_name == tagged_st_name)
+    # print (test_st_type, tagged_st_type, test_st_type == tagged_st_type)
+    # print (test_post_direct, tagged_post_direct, test_post_direct == tagged_post_direct)
+    # print (test_unit_type, tagged_unit_type, test_unit_type == tagged_unit_type)
+    # print (test_unit_num, tagged_unit_num, test_unit_num == tagged_unit_num)
+    # print ("")
+
+    if ((test_st_num == tagged_st_num) or (str(test_st_num) in ['Nan','NAN','nan', None] and str(tagged_st_num) in ['Nan','NAN','nan'])) and \
+            ((test_pre_direct == tagged_pre_direct) or (str(test_pre_direct) in ['Nan','NAN','nan', None] and str(tagged_pre_direct) in ['Nan','NAN','nan'])) and \
+            ((test_st_name == tagged_st_name) or (str(test_st_name) in ['Nan','NAN','nan', None] and str(tagged_st_name) in ['Nan','NAN','nan'])) and \
+            ((test_st_type == tagged_st_type) or (str(test_st_type) in ['Nan','NAN','nan', None] and str(tagged_st_type) in ['Nan','NAN','nan'])) and \
+            ((test_post_direct == tagged_post_direct) or (str(test_post_direct) in ['Nan','NAN','nan', None] and str(tagged_post_direct) in ['Nan','NAN','nan'])) and \
+            ((test_unit_type == tagged_unit_type) or (str(test_unit_type) in ['Nan','NAN','nan', None] and str(tagged_unit_type) in ['Nan','NAN','nan'])) and \
+            ((test_unit_num == tagged_unit_num) or (str(test_unit_num) in ['Nan','NAN','nan', None] and str(tagged_unit_num) in ['Nan','NAN','nan'])):
         return True
     else:
         return False

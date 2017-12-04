@@ -106,6 +106,3 @@ from collections import Counter
 
 #lnp.less_naive_parser_fnc("1 e elm george main st w apt 15", us_streets, compass_points, key_val_switch_compass_pts, us_unit_types)
 
-results = lnp.test_tagger_parser()
-tallied_results = Counter(results)
-print (tallied_results)
