@@ -20,5 +20,12 @@ def match(address_list_1, address_list_2, compare_function):
             address2_index += 1
         address1_index += 1
 
-    unmatched_address_list_1 = address_list_1_copy.copy()
-    unmatched_address_list_2 = address_list_2.copy()
+    unmatched_address_list_1 = list()
+    for item in address_list_1_copy:
+        unmatched_address_list_1.append((item, "NA")) #this will eventually get changed to Record IDs instead of the full orderedDict
+
+    unmatched_address_list_2 = list()
+    for item in address_list_2:
+        unmatched_address_list_2.append((item, "NA")) #this will eventually get changed to Record IDs instead of the full orderedDict
+
+    
