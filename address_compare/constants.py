@@ -449,8 +449,8 @@ COMPASS_POINTS_DICT = {'NORTH': {'N','NORTH','N.'},
                        'SOUTH': {'S','SOUTH','S.'},
                        'EAST': {'E','EAST','E.'},
                        'WEST': {'W','WEST','W.'},
-                       'NE': {'NE','NE.','N.E.','NORTHEAST'},
-                       'NW': {'NW','NW.','N.W.','NORTHWEST'},
-                       'SE': {'SE','SE.','S.E.','SOUTHEAST'},
-                       'SW': {'SW','SW.','S.W.','SOUTHWEST'}}
+                       'NORTHEAST': {'NE','NE.','N.E.','NORTHEAST'},
+                       'NORTHWEST': {'NW','NW.','N.W.','NORTHWEST'},
+                       'SOUTHEAST': {'SE','SE.','S.E.','SOUTHEAST'},
+                       'SOUTHWEST': {'SW','SW.','S.W.','SOUTHWEST'}}
 
