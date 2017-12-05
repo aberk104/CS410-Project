@@ -1,7 +1,10 @@
 '''
-The reference_data.py file contains functions that create reference tables of US Street Types, US Address Types, and US Unit Types.
+The reference_data.py file contains functions that create reference tables of US Street Types, US States, US Unit Types, and US City/State/Zip combinations.
 These tables will be used in the standardizers.py file to standardize the ordered dictionaries containing the addresses
 '''
+
+import pandas as pd
+from address_compare import constants as const
 
 def all_us_states():
     '''
@@ -41,3 +44,18 @@ def all_us_cities_zips():
     us_cities_zips = all_fields_us_cities_zips[['zip','primary_city','acceptable_cities','unacceptable_cities','state']].copy()
 
     return us_cities_zips
+
+
+def compass_points():
+    '''
+    The compass_points function has no inputs.  It creates 2 dictionaries of compass points with their abbreviated and long forms from the constants.py file
+    :return: compass_points_dict (keys are the long form version of each compass point), switched_key_val_compass_points (keys are the abbreviated version of each compass point
+    '''
+    compass_points_dict = const.COMPASS_POINTS_DICT
+    switched_key_val_compass_points = dict()
+    for key, valset in compass_points_dict.items():
+        for val in valset:
+            switched_key_val_compass_points[val] = key
+
+    return compass_points_dict, switched_key_val_compass_points
+
