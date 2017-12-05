@@ -64,7 +64,7 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
             item = item.strip("#")
             item = item.upper()
             if len(item) == 0:
-                pass
+                continue
             else:
                 try:
                     standardized_list.append(nested_reference_dictionary[key][item])
