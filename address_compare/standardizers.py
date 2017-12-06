@@ -38,6 +38,14 @@ nested_ref_dt_dict['STATE'] = all_caps_states_dict
 
 
 
+#the below function will sort the list of ordered dictionaries to attempt to make the matching/compare functions more efficient/quicker
+def sorter(list_ordered_dict):
+    pass
+
+
+
+
+
 def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict):
     '''
     This function is used to standardize the tagged address components after the CRF tagger is used.
