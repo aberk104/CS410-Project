@@ -3,6 +3,8 @@ The matcher.py file contains a match function to compare 2 lists of addresses.
 It calls the separate exact and learning compare comparers in order to find a matching address in list 2 for each address in list 1
 '''
 
+from address_compare.comparers import exact_compare
+
 def match(address_list_1: list, address_list_2: list, compare_function):
     '''
     The match function takes 2 lists of addresses and passes them to a defined compare function.
@@ -11,7 +13,7 @@ def match(address_list_1: list, address_list_2: list, compare_function):
     :param address_list_1: this is the first list of addresses
     :param address_list_2: this is the second list of addresses
     :param compare_function: the function that will be used to find matching addresses between the 2 lists
-    :return: 
+    :return: matched_pairs (a list of tuples containing record IDs from list 1 and list 2 of matching addresses), unmatched_addresses (record IDs for addresses in 1 list that cannot be found in the other list; if in address list 1, a tuple where NA is the second value. if in address list 2, a tuple where NA is the first value)
     '''
 
 
@@ -31,10 +33,11 @@ def match(address_list_1: list, address_list_2: list, compare_function):
             address2_index += 1
         address1_index += 1
 
-    unmatched_address_list_1 = list()
+    unmatched_addresses = list()
     for item in address_list_1_copy:
-        unmatched_address_list_1.append((item, "NA")) #this will eventually get changed to Record IDs instead of the full orderedDict
+        unmatched_addresses.append((item, "NA")) #this will eventually get changed to Record IDs instead of the full orderedDict
 
-    unmatched_address_list_2 = list()
     for item in address_list_2:
-        unmatched_address_list_2.append((item, "NA")) #this will eventually get changed to Record IDs instead of the full orderedDict
+        unmatched_addresses.append(("NA", item)) #this will eventually get changed to Record IDs instead of the full orderedDict
+
+    return matched_pairs, unmatched_addresses
