@@ -2,9 +2,12 @@
 The master_control_file is the main file.  It calls the functions from all other files and contains the non-functionalized code
 '''
 
-
 from collections import defaultdict
 from address_compare import reference_data as refdt
+from address_compare import standardizers as stndrdzr
+from address_compare import comparers as comps
+from address_compare import matcher as mtch
+
 
 # Initialize the variables containing the reference data for future use
 street_types = refdt.all_us_street_types()
@@ -36,3 +39,52 @@ nested_ref_dt_dict['STREET_TYPE'] = all_caps_street_types_dict
 nested_ref_dt_dict['PRE_DIRECTION'] = key_val_switch_compass_pts
 nested_ref_dt_dict['POST_DIRECTION'] = key_val_switch_compass_pts
 nested_ref_dt_dict['STATE'] = all_caps_states_dict
+
+
+# Placeholder for reading/calling the training data for the CRF Tagger
+
+
+
+
+
+
+# Placeholder for reading/calling the 2 lists of raw addresses
+
+
+
+
+
+
+
+# Placeholder for calling the CRF Tagger with the training data in order to train the model
+
+
+
+
+
+
+
+# Placeholder for calling the trained CRF Tagger on the 2 lists of raw addresses
+
+
+
+
+
+
+# Placeholder for passing the tagged addresses post the CRF Tagger to the Standardizer
+
+
+
+
+
+
+
+# Placeholder for passing the tagged and standardized addresses to the sorter
+
+
+
+
+
+
+
+# Placeholder for passing the tagged, standardized, and sorted addresses to the match function
