@@ -2,6 +2,8 @@ import re
 import pandas as pd
 from typing import List
 from .constants import DIRECTIONS, STREET_TYPES
+from string import punctuation
+
 
 class FeatureFunctionApplicator:
 
@@ -11,22 +13,19 @@ class FeatureFunctionApplicator:
 class WordFeatures1(FeatureFunctionApplicator):
 
     def f_is_street_name(self, s: str):
-        return s.lower() in STREET_TYPES
+        return s.lower().strip(punctuation) in STREET_TYPES
 
     def f_is_direction(self, s: str):
         return s.lower() in DIRECTIONS
 
-    def f_is_lower(self, s: str):
-        return s.islower()
-
     def f_self_tolower(self, s: str):
         return s.lower()
 
-    def f_is_title(self, s: str):
-        return s.title()
-
     def f_is_digit(self, s: str):
         return s.isdigit()
+
+    def f_has_digit(self, s):
+        return re.search('\d', s) is not None
 
     def f_length(self, s: str):
         return len(s)
