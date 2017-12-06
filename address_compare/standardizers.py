@@ -3,6 +3,30 @@ The standardizers.py file contains functions to help standardize tagged strings 
 '''
 
 from collections import OrderedDict
+import pandas as pd
+
+
+# The below function will convert the a list of ordered dictionaries into a pandas dataframe, remove duplicates, and repopulate the ordered dictionary
+def de_duper(list_ordered_dict):
+    addresses = pd.DataFrame(list_ordered_dict)
+    for row in range(addresses.shape[0]):
+        for col in list(addresses):
+            addresses.loc[row, col] = tuple(addresses.loc[row, col])
+    addresses = addresses.drop_duplicates()
+
+    new_list_ordered_dict = list(OrderedDict())
+    for row in range(addresses.shape[0]):
+        row_ordered_dict = OrderedDict()
+        for col in list(addresses):
+            col_list = list(addresses.loc[row,col])
+            row_ordered_dict[col] = col_list
+
+        new_list_ordered_dict.append(row_ordered_dict)
+
+    return new_list_ordered_dict
+
+
+
 
 
 
@@ -14,7 +38,7 @@ def sorter(list_ordered_dict):
 
 
 
-def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict):
+def standardizer(ordered_dict, nested_reference_dictionary):
     '''
     This function is used to standardize the tagged address components after the CRF tagger is used.
     It:
@@ -63,5 +87,17 @@ testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
 ('POST_DIRECTION', ['-']),
 ('UNKNOWN', ['  '])])
 
-print (testdict)
-print (standardizer(testdict))
+testdict2 = OrderedDict([('UNIT_TYPE', ['Ste']),
+('UNIT_NUMBER', ['4']),
+('STREET_NUMBER', ['5']),
+('PRE_DIRECTION', []),
+('STREET_NAME', ['Elm']),
+('STREET_TYPE', ['Avenue']),
+('POST_DIRECTION', []),
+('UNKNOWN', [])])
+
+# list_dict = list()
+# list_dict.append(testdict)
+# list_dict.append(testdict2)
+# list_dict_copy = list_dict.copy()
+# print (list_dict_copy == de_duper(list_dict))
