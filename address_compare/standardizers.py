@@ -40,12 +40,17 @@ nested_ref_dt_dict['STATE'] = all_caps_states_dict
 
 
 # The below function will convert the a list of ordered dictionaries into a pandas dataframe, remove duplicates, and repopulate the ordered dictionary
-def de_duper(list_ordered_dict):
+def de_duper(list_ordered_dict, sorter = True):
     addresses = pd.DataFrame(list_ordered_dict)
     for row in range(addresses.shape[0]):
         for col in list(addresses):
             addresses.loc[row, col] = tuple(addresses.loc[row, col])
     addresses = addresses.drop_duplicates()
+
+    if sorter:
+        addresses = addresses.sort_values(by=['STATE','CITY','STREET_NAME'])
+
+    addresses = addresses.reset_index(drop=True)
 
     new_list_ordered_dict = list(OrderedDict())
     for row in range(addresses.shape[0]):
@@ -57,18 +62,6 @@ def de_duper(list_ordered_dict):
         new_list_ordered_dict.append(row_ordered_dict)
 
     return new_list_ordered_dict
-
-
-
-
-
-
-#the below function will sort the list of ordered dictionaries to attempt to make the matching/compare functions more efficient/quicker
-def sorter(list_ordered_dict):
-    pass
-
-
-
 
 
 def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict):
@@ -118,7 +111,10 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
 # ('STREET_NAME', ['Main', 'Test,', 'Test2-', '#Test3']),
 # ('STREET_TYPE', ['Street', ',Test1', '-Test2', 'Test3#']),
 # ('POST_DIRECTION', ['-']),
-# ('UNKNOWN', ['  '])])
+# ('UNKNOWN', ['  ']),
+# ('CITY', ['SEATTLE']),
+# ('STATE', ['WA']),
+# ('ZIP_CODE', [])])
 #
 # testdict2 = OrderedDict([('UNIT_TYPE', ['Ste']),
 # ('UNIT_NUMBER', ['4']),
@@ -127,12 +123,23 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
 # ('STREET_NAME', ['Elm']),
 # ('STREET_TYPE', ['Avenue']),
 # ('POST_DIRECTION', []),
-# ('UNKNOWN', [])])
+# ('UNKNOWN', []),
+# ('CITY', ['OLYMPIA']),
+# ('STATE', ['WA']),
+# ('ZIP_CODE', [])])
 #
-# print (standardizer(testdict))
+#
+# testdict = (standardizer(testdict))
+# testdict2 = (standardizer(testdict2))
 #
 # list_dict = list()
 # list_dict.append(testdict)
 # list_dict.append(testdict2)
 # list_dict_copy = list_dict.copy()
-# print (list_dict_copy == de_duper(list_dict))
+#
+# list_dict = (de_duper(list_dict))
+#
+#
+# print (list_dict_copy == list_dict)
+#
+# print (list_dict)
