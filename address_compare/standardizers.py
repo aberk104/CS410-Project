@@ -40,7 +40,7 @@ nested_ref_dt_dict['STATE'] = all_caps_states_dict
 
 
 # The below function will convert the a list of ordered dictionaries into a pandas dataframe, remove duplicates, and repopulate the ordered dictionary
-def de_duper(list_ordered_dict, sorter = True):
+def de_dupe_sorter(list_ordered_dict, sorter = True):
     addresses = pd.DataFrame(list_ordered_dict)
     for row in range(addresses.shape[0]):
         for col in list(addresses):
@@ -137,7 +137,7 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
 # list_dict.append(testdict2)
 # list_dict_copy = list_dict.copy()
 #
-# list_dict = (de_duper(list_dict))
+# list_dict = (de_dupe_sorter(list_dict))
 #
 #
 # print (list_dict_copy == list_dict)
