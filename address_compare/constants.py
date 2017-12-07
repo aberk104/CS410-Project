@@ -447,6 +447,8 @@ UNIT_TYPES = ['apt',
               'upper',
               'uppr']
 
+UNIT_TYPES = ['bld', 'bldg', 'bldg', 'lot', 'ste', 'suite', 'unit', 'apt']
+
 COMPASS_POINTS_DICT = {'NORTH': {'N','NORTH','N.'},
                        'SOUTH': {'S','SOUTH','S.'},
                        'EAST': {'E','EAST','E.'},
