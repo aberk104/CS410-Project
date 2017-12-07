@@ -3,44 +3,26 @@ The standardizers.py file contains functions to help standardize tagged strings 
 '''
 
 from collections import OrderedDict
-from collections import defaultdict
+#from collections import defaultdict
 import pandas as pd
-from address_compare import reference_data as refdt
+#from address_compare import reference_data as refdt
+import json
 
-# Initialize the variables containing the reference data for future use
-street_types = refdt.all_us_street_types()
-unit_types = refdt.all_us_unit_types()
-states = refdt.all_us_states()
-compass_points_def, key_val_switch_compass_pts = refdt.compass_points()
 
-# Capitalize the values in the street_types dataframe and convert them into a dictionary
-all_caps_street_types_dict = dict()
-for row in range(street_types.shape[0]):
-    all_caps_street_types_dict[street_types.loc[row, 'st_abbrev'].upper()] = street_types.loc[row, 'street_type'].upper()
-
-# Capitalize the values in the unit_types dataframe and convert them into a dictionary
-all_caps_unit_types_dict = dict()
-for row in range(unit_types.shape[0]):
-    all_caps_unit_types_dict[unit_types.loc[row, 'unit_type_abbrev'].upper()] = unit_types.loc[row, 'unit_type_name'].upper()
-
-# Capitalize the values in the states dataframe and convert them into a dictionary
-all_caps_states_dict = dict()
-for row in range(states.shape[0]):
-    all_caps_states_dict[states.loc[row, 'Postal Code'].upper()] = states.loc[row, 'State'].upper()
-    if states.notnull().loc[row, 'Abbreviation']:
-        all_caps_states_dict[states.loc[row, 'Abbreviation'].upper()] = states.loc[row, 'State'].upper()
-
-# The following creates a nested dictionary where the first keys are the tags in the ordered dictionary.  These keys represent the keys for the tagged addresses that can be standardized via reference data
-nested_ref_dt_dict = defaultdict(dict)
-nested_ref_dt_dict['UNIT_TYPE'] = all_caps_unit_types_dict
-nested_ref_dt_dict['STREET_TYPE'] = all_caps_street_types_dict
-nested_ref_dt_dict['PRE_DIRECTION'] = key_val_switch_compass_pts
-nested_ref_dt_dict['POST_DIRECTION'] = key_val_switch_compass_pts
-nested_ref_dt_dict['STATE'] = all_caps_states_dict
+# Import nested dictionary from neste_ref_dt_dict json file
+with open('data\\ref_dt_dict.json') as json_file:
+    nested_ref_dt_dict = json.load(json_file)
 
 
 # The below function will convert the a list of ordered dictionaries into a pandas dataframe, remove duplicates, and repopulate the ordered dictionary
 def de_dupe_sorter(list_ordered_dict, sorter = True):
+    '''
+    This function converts a list of dictionaries to a pandas dataframe in order to de-duplicate the list.  It is intended to be run after the standardizer function.
+    There is an optional sorter as well to allow the user to determine whether or not the records should also be sorted in the dataframe.
+    :param list_ordered_dict: This is a list of ordered_dictionaries containing the tagged and standardized address data
+    :param sorter: an optional True/False parameter defaulted to True.  If True, the records will be sorted while in the dataframe
+    :return: new_list_ordered_dict = the resultant list of ordered dictionaries after de-duping and sorting
+    '''
     addresses = pd.DataFrame(list_ordered_dict)
     for row in range(addresses.shape[0]):
         for col in list(addresses):
