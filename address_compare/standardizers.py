@@ -3,7 +3,40 @@ The standardizers.py file contains functions to help standardize tagged strings 
 '''
 
 from collections import OrderedDict
+from collections import defaultdict
 import pandas as pd
+from address_compare import reference_data as refdt
+
+# Initialize the variables containing the reference data for future use
+street_types = refdt.all_us_street_types()
+unit_types = refdt.all_us_unit_types()
+states = refdt.all_us_states()
+compass_points_def, key_val_switch_compass_pts = refdt.compass_points()
+
+# Capitalize the values in the street_types dataframe and convert them into a dictionary
+all_caps_street_types_dict = dict()
+for row in range(street_types.shape[0]):
+    all_caps_street_types_dict[street_types.loc[row, 'st_abbrev'].upper()] = street_types.loc[row, 'street_type'].upper()
+
+# Capitalize the values in the unit_types dataframe and convert them into a dictionary
+all_caps_unit_types_dict = dict()
+for row in range(unit_types.shape[0]):
+    all_caps_unit_types_dict[unit_types.loc[row, 'unit_type_abbrev'].upper()] = unit_types.loc[row, 'unit_type_name'].upper()
+
+# Capitalize the values in the states dataframe and convert them into a dictionary
+all_caps_states_dict = dict()
+for row in range(states.shape[0]):
+    all_caps_states_dict[states.loc[row, 'Postal Code'].upper()] = states.loc[row, 'State'].upper()
+    if states.notnull().loc[row, 'Abbreviation']:
+        all_caps_states_dict[states.loc[row, 'Abbreviation'].upper()] = states.loc[row, 'State'].upper()
+
+# The following creates a nested dictionary where the first keys are the tags in the ordered dictionary.  These keys represent the keys for the tagged addresses that can be standardized via reference data
+nested_ref_dt_dict = defaultdict(dict)
+nested_ref_dt_dict['UNIT_TYPE'] = all_caps_unit_types_dict
+nested_ref_dt_dict['STREET_TYPE'] = all_caps_street_types_dict
+nested_ref_dt_dict['PRE_DIRECTION'] = key_val_switch_compass_pts
+nested_ref_dt_dict['POST_DIRECTION'] = key_val_switch_compass_pts
+nested_ref_dt_dict['STATE'] = all_caps_states_dict
 
 
 # The below function will convert the a list of ordered dictionaries into a pandas dataframe, remove duplicates, and repopulate the ordered dictionary
@@ -38,7 +71,7 @@ def sorter(list_ordered_dict):
 
 
 
-def standardizer(ordered_dict, nested_reference_dictionary):
+def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict):
     '''
     This function is used to standardize the tagged address components after the CRF tagger is used.
     It:
@@ -78,24 +111,26 @@ def standardizer(ordered_dict, nested_reference_dictionary):
 
 
 
-testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
-('UNIT_NUMBER', ['1', '1']),
-('STREET_NUMBER', ['1']),
-('PRE_DIRECTION', ['e']),
-('STREET_NAME', ['Main', 'Test,', 'Test2-', '#Test3']),
-('STREET_TYPE', ['Street', ',Test1', '-Test2', 'Test3#']),
-('POST_DIRECTION', ['-']),
-('UNKNOWN', ['  '])])
-
-testdict2 = OrderedDict([('UNIT_TYPE', ['Ste']),
-('UNIT_NUMBER', ['4']),
-('STREET_NUMBER', ['5']),
-('PRE_DIRECTION', []),
-('STREET_NAME', ['Elm']),
-('STREET_TYPE', ['Avenue']),
-('POST_DIRECTION', []),
-('UNKNOWN', [])])
-
+# testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
+# ('UNIT_NUMBER', ['1', '1']),
+# ('STREET_NUMBER', ['1']),
+# ('PRE_DIRECTION', ['e']),
+# ('STREET_NAME', ['Main', 'Test,', 'Test2-', '#Test3']),
+# ('STREET_TYPE', ['Street', ',Test1', '-Test2', 'Test3#']),
+# ('POST_DIRECTION', ['-']),
+# ('UNKNOWN', ['  '])])
+#
+# testdict2 = OrderedDict([('UNIT_TYPE', ['Ste']),
+# ('UNIT_NUMBER', ['4']),
+# ('STREET_NUMBER', ['5']),
+# ('PRE_DIRECTION', []),
+# ('STREET_NAME', ['Elm']),
+# ('STREET_TYPE', ['Avenue']),
+# ('POST_DIRECTION', []),
+# ('UNKNOWN', [])])
+#
+# print (standardizer(testdict))
+#
 # list_dict = list()
 # list_dict.append(testdict)
 # list_dict.append(testdict2)
