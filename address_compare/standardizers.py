@@ -89,6 +89,14 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
 
 
 
+def consolidate_address_list(address_df, column_names = None):
+    if column_names == None:
+        column_names = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
+
+    grouped_df = address_df.groupby(column_names)['Record_ID'].apply(list)
+    return grouped_df
+
+
 # testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
 # ('UNIT_NUMBER', ['1', '1']),
 # ('STREET_NUMBER', ['1']),
