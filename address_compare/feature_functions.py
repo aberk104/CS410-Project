@@ -47,7 +47,7 @@ class WordFeatures2(FeatureFunctionApplicator):
         return s.lower().strip(punctuation) in STREET_TYPES
 
     def f_is_direction(self, s: str):
-        return s.lower() in DIRECTIONS
+        return s.lower().strip(punctuation) in DIRECTIONS
 
     def f_is_digit1(self, s: str):
         return s.isdigit() and len(s) == 1
