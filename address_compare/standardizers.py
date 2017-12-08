@@ -7,10 +7,13 @@ from collections import OrderedDict
 import pandas as pd
 #from address_compare import reference_data as refdt
 import json
+import pkg_resources
+
+NESTED_REF_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'data/ref_dt_dict.json')
 
 
 # Import nested dictionary from neste_ref_dt_dict json file
-with open('data\\ref_dt_dict.json') as json_file:
+with open(NESTED_REF_DT_DICT_PATH) as json_file:
     nested_ref_dt_dict = json.load(json_file)
 
 
