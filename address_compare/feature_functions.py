@@ -79,21 +79,4 @@ class WordFeatures2(FeatureFunctionApplicator):
     def f_ends_in_hyphen(self, s: str):
         return s[-1] == '-'
 
-class AddressTagger(object):
-
-    def __init__(self, model, tokenizer, ff: FeatureFunctionApplicator):
-        self.tagger = pycrfsuite.Tagger()
-        self.tagger.open(model)
-        self.tokenizer = tokenizer
-        self.ff = ff
-
-    def tag(self, s:str):
-        tokens = self.tokenizer(s)
-        features = [self.ff.exec_all(t) for t in tokens]
-        tags = self.tagger.tag(features)
-        parsed_address = OrderedDict(UNIT_TYPE=[], UNIT_NUMBER=[], STREET_NUMBER=[], PRE_DIRECTION=[],
-                                     STREET_NAME=[], STREET_TYPE=[], POST_DIRECTION=[], UNKNOWN=[])
-        for a, b in zip(tokens, tags):
-            parsed_address[b].append(a)
-        return parsed_address
 

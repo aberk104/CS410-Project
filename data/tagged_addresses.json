@@ -3127,7 +3127,7 @@
         "tags":
         ["UNIT_NUMBER", "STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
     },
-                    {
+    {
        "raw_address":"1203-22 Seymour Street",
         "tokens":[
             "1203-",
@@ -3137,5 +3137,19 @@
             ],
         "tags":
         ["UNIT_NUMBER", "STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
+    },
+   {
+       "raw_address":"400 Willowlake Crescent",
+        "tokens":["400", "Willowlake", "Crescent"],
+        "tags":
+        ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
+    },
+   {
+       "raw_address":"400 Alabama Crossing",
+        "tokens":["400", "Willowlake", "Crossing"],
+        "tags":
+        ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
     }
+
+
 ]
