@@ -104,8 +104,6 @@ def record_id_addition(address_df):
     return address_df
 
 
-
-
 # testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
 # ('UNIT_NUMBER', ['1', '1']),
 # ('STREET_NUMBER', ['1']),
