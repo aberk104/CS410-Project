@@ -97,6 +97,15 @@ def consolidate_address_list(address_df, column_names = None):
     return grouped_df
 
 
+
+def record_id_addition(address_df):
+    if 'Record_ID' not in list(address_df):
+        address_df['Record_ID'] = address_df.index
+    return address_df
+
+
+
+
 # testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
 # ('UNIT_NUMBER', ['1', '1']),
 # ('STREET_NUMBER', ['1']),
