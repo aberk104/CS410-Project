@@ -41,3 +41,10 @@ def match(address_list_1: list, address_list_2: list, compare_function):
         unmatched_addresses.append(("NA", item)) #this will eventually get changed to Record IDs instead of the full orderedDict
 
     return matched_pairs, unmatched_addresses
+
+
+
+def exact_matcher(address_dataframe_1, address_dataframe_2):
+    cols_to_join_on = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','CITY','STATE','ZIP_CODE','UNKNOWN']
+    exact_matches = address_dataframe_1.merge(address_dataframe_2, on=cols_to_join_on, suffixes=('_list_1','_list_2'))
+    return exact_matches
