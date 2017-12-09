@@ -92,8 +92,8 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
 def consolidate_address_list(address_df, column_names = None):
     if column_names == None:
         column_names = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
-
-    grouped_df = address_df.groupby(column_names)['Record_ID'].apply(list)
+    grouped_df = address_df.groupby(column_names, as_index=False)['Record_ID'].apply(list).to_frame().reset_index()
+    grouped_df = grouped_df.rename(columns={0:'Record_ID'})
     return grouped_df
 
 
@@ -110,6 +110,18 @@ def empty_column_addition(address_df, column_names):
         if col not in existing_column_names:
             address_df[col] = ""
     return address_df
+
+#
+# test_data = pd.read_excel('data\\sandbox data.xlsx')
+# test_data = record_id_addition(test_data)
+# column_names = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
+# test_data = empty_column_addition(test_data, column_names)
+# print (test_data)
+# column_names = ['Single String Address','UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
+# grouped = consolidate_address_list(test_data, column_names)
+# print (grouped)
+# print (list(grouped))
+#
 
 
 # testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
