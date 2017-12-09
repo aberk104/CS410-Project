@@ -104,6 +104,14 @@ def record_id_addition(address_df):
     return address_df
 
 
+def empty_column_addition(address_df, column_names):
+    existing_column_names = list(address_df)
+    for col in column_names:
+        if col not in existing_column_names:
+            address_df[col] = ""
+    return address_df
+
+
 # testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
 # ('UNIT_NUMBER', ['1', '1']),
 # ('STREET_NUMBER', ['1']),
