@@ -52,12 +52,9 @@ def random_addresses(num_addresses: int):
                     address = item
                 elif len(item) > 0:
                     address += str(" ") + item
-        address = str.replace(address," ,",",")
+        address = str.replace(address," ,",",") if random.choice([True,False]) else address
         new_addresses.append(address)
 
     new_address_df = pd.DataFrame(data=new_addresses, columns=['Single String Address'])
 
     return new_address_df
-
-
-print (random_addresses(100))
