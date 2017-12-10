@@ -9,7 +9,7 @@ available_unit_types = ['APT','BLDG','STE','FL','PH','UNIT',""]
 available_street_types = ['RD','DR','AVE','LN','BLVD','PKWY',""]
 available_street_names = ['MAPLE','ELM','MAIN','WALL','BROAD','GEORGE ALLEN','FULTON']
 available_directionals = ['E','S','N','W',""]
-available_unit_nums = ['1','2','3','4','5','6',""]
+available_unit_nums = ['1','2','3','4','5','6']
 
 def random_addresses(num_addresses: int):
     '''
@@ -28,7 +28,7 @@ def random_addresses(num_addresses: int):
 
         if random.choice([True,False]):
             unit_type = random.choice(available_unit_types)
-            unit_num = random.choice(available_unit_nums)
+            unit_num = random.choice(["#","","","","","",""]) + random.choice(available_unit_nums)
 
         if random.choice([True, False]):
             pre_directional = random.choice(available_directionals)
@@ -40,17 +40,24 @@ def random_addresses(num_addresses: int):
         street_name = random.choice(available_street_names)
         street_type = random.choice(available_street_types)
 
-        portions = [unit_type, unit_num, street_num, pre_directional, street_name, post_directional, street_type]
+        address_formats = {
+            1: [unit_type, unit_num, random.choice(["-","","","","","",""]) if unit_num != None else "", street_num, pre_directional, street_name, post_directional, street_type],
+            2: [street_num, pre_directional, street_name, post_directional, street_type, random.choice([",","","","","","",""]) if unit_num != None else "", unit_type, unit_num]}
 
-        for item in portions:
+        selected_format = random.randint(1,2)
+
+        for item in address_formats[selected_format]:
             if item != None:
                 if address == None and len(item) > 0:
                     address = item
                 elif len(item) > 0:
                     address += str(" ") + item
-
+        address = str.replace(address," ,",",")
         new_addresses.append(address)
 
     new_address_df = pd.DataFrame(data=new_addresses, columns=['Single String Address'])
 
     return new_address_df
+
+
+print (random_addresses(100))
