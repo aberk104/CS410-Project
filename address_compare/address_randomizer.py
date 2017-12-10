@@ -15,6 +15,7 @@ def random_addresses(num_addresses: int, raw_address_col_name = 'Single String A
     '''
     This creates a random list of raw addreses that can be used for testing purposes
     :param num_addresses: this is an integer containing the number of addresses the user wants to create
+    :param raw_address_col_name: this represents the name of the column for the raw addresses.  it will default to 'Single String Address' if not passed in
     :return: new_address_df - a single column dataframe where the column name is "Single String Address" and the values are the randomized raw addresses
     '''
     new_addresses = list()
