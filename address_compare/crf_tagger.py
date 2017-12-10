@@ -7,6 +7,7 @@ from address_compare.parsers import hyphen_parse
 import pandas as pd
 import pkg_resources
 from address_compare.standardizers import standardizer
+from string import punctuation
 
 MODEL = pkg_resources.resource_filename('address_compare', 'trained_models/model3')
 TOKENIZER = hyphen_parse
@@ -29,7 +30,7 @@ class AddressTagger(object):
         parsed_address = OrderedDict(UNIT_TYPE=[], UNIT_NUMBER=[], STREET_NUMBER=[], PRE_DIRECTION=[],
                                      STREET_NAME=[], STREET_TYPE=[], POST_DIRECTION=[], UNKNOWN=[])
         for a, b in zip(tokens, tags):
-            parsed_address[b].append(a)
+            parsed_address[b].append(a.strip(',-'))
         if standardize:
             parsed_address = standardizer(parsed_address)
         if concat:
