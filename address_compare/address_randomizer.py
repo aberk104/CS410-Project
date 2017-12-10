@@ -8,13 +8,14 @@ import random
 available_unit_types = ['APT','BLDG','STE','FL','PH','UNIT',""]
 available_street_types = ['RD','DR','AVE','LN','BLVD','PKWY',""]
 available_street_names = ['MAPLE','ELM','MAIN','WALL','BROAD','GEORGE ALLEN','FULTON']
-available_directionals = ['E','S','N','W',""]
-available_unit_nums = ['1','2','3','4','5','6',""]
+available_directionals = ['E','S','N','W',""*5]
+available_unit_nums = ['1','2','3','4','5','6']
 
-def random_addresses(num_addresses: int):
+def random_addresses(num_addresses: int, raw_address_col_name = 'Single String Address'):
     '''
     This creates a random list of raw addreses that can be used for testing purposes
     :param num_addresses: this is an integer containing the number of addresses the user wants to create
+    :param raw_address_col_name: this represents the name of the column for the raw addresses.  it will default to 'Single String Address' if not passed in
     :return: new_address_df - a single column dataframe where the column name is "Single String Address" and the values are the randomized raw addresses
     '''
     new_addresses = list()
@@ -26,31 +27,35 @@ def random_addresses(num_addresses: int):
         pre_directional = None
         post_directional = None
 
-        if random.choice([True,False]):
+        if random.choice([True,False*4]):
             unit_type = random.choice(available_unit_types)
-            unit_num = random.choice(available_unit_nums)
+            unit_num = random.choice(["#",""*10]) + random.choice(available_unit_nums)
 
-        if random.choice([True, False]):
+        if random.choice([True, False*4]):
             pre_directional = random.choice(available_directionals)
 
-        if random.choice([True, False]):
+        if random.choice([True, False*4]):
             post_directional = random.choice(available_directionals)
 
         street_num = str(random.randint(1, 21))
         street_name = random.choice(available_street_names)
         street_type = random.choice(available_street_types)
 
-        portions = [unit_type, unit_num, street_num, pre_directional, street_name, post_directional, street_type]
+        address_formats = {
+            1: [unit_type, unit_num, random.choice(["-",""*10]) if unit_num != None else "", street_num, pre_directional, street_name, post_directional, street_type],
+            2: [street_num, pre_directional, street_name, post_directional, street_type, random.choice([",",""*10]) if unit_num != None else "", unit_type, unit_num]}
 
-        for item in portions:
+        selected_format = random.randint(1,2)
+
+        for item in address_formats[selected_format]:
             if item != None:
                 if address == None and len(item) > 0:
                     address = item
                 elif len(item) > 0:
                     address += str(" ") + item
-
+        address = str.replace(address," ,",",") if random.choice([True,False]) else address
         new_addresses.append(address)
 
-    new_address_df = pd.DataFrame(data=new_addresses, columns=['Single String Address'])
+    new_address_df = pd.DataFrame(data=new_addresses, columns=[raw_address_col_name])
 
     return new_address_df
