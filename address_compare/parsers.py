@@ -1,7 +1,6 @@
 # this file contains parsers for converting address strings to lists
 # of tokens
 import re
-from nltk import tokenize
 
 def naive_parse(s: str, tolower: bool = False) -> list:
     """
@@ -17,5 +16,6 @@ def hyphen_parse(s: str, tolower: bool = True) -> list:
     :param s: string to be parsed
     :param tolower: convert to lowercase?
     """
-    parts = [re.split('(\w+-)', k) for k in re.split(' |\t', s)]
+    s = re.sub(' +-', '-', s)
+    parts = [re.split('([^\s]+-)', k) for k in re.split(' |\t', s)]
     return [k for sl in parts for k in sl if k and (k != '-')]
