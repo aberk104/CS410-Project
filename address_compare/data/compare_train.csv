@@ -1,121 +1,146 @@
-﻿address_1,address_2,match,origin
-3703 E BROAD AVE              ,3703 east broad ave,TRUE,MarijuanaApplicants.xlsx
-3703 E BROAD AVE              ,3704 E BROAD AVE,FALSE,MarijuanaApplicants.xlsx
-3703 E BROAD AVE              ,3703 E BROAD AV,TRUE,MarijuanaApplicants.xlsx
-3703 E BROAD AVE              ,3703 east broad avenue,TRUE,MarijuanaApplicants.xlsx
-3703 E BROAD AVE              ,3703 e broad avenue,TRUE,MarijuanaApplicants.xlsx
-3703 E BROAD AVE              ,3703 W BROAD AVE,FALSE,MarijuanaApplicants.xlsx
-3703 E BROAD AVE              ,3703 BROAD AVENUE EAST,TRUE,MarijuanaApplicants.xlsx
-250 W AXTON RD                ,250 WEST AXTON RD,TRUE,MarijuanaApplicants.xlsx
-250 W AXTON RD                ,250 EAST AXTON RD,FALSE,MarijuanaApplicants.xlsx
-250 W AXTON RD                ,250 W AXTON ROAD,TRUE,MarijuanaApplicants.xlsx
-250 W AXTON RD                ,250 WEST AXTON ROAD,TRUE,MarijuanaApplicants.xlsx
-250 W AXTON RD                ,250 W AXTON STREET,FALSE,MarijuanaApplicants.xlsx
-250 W AXTON RD                ,4-250 W AXTON RD,FALSE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,UNIT A - 3104 234TH ST E,TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,3104 234TH ST E UNIT B,FALSE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,3104 234 ST E UNIT A,TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,3104 234 ST E STE A,TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,"STE A, 3104 234TH ST E",TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,3104 234TH STREET E UNIT A,TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,3104 234TH ST W UNIT A,FALSE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,3104 234TH ST S UNIT A,FALSE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,"STE A, 3104 234TH ST E",TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,"STE A, 3104 234TH ST E",TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,"STE A, 3104 234TH ST E",TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,3104 234TH ST E #A,TRUE,MarijuanaApplicants.xlsx
-3104 234TH ST E UNIT A        ,3104 234A ST E UNIT A,FALSE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,2835 OCEAN AVENUE #A,TRUE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,#A 2835 OCEAN AVENUE,TRUE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,STE A - 2835 OCEAN AVE,TRUE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,2835 OCEAN AVE #B,FALSE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,2835 OCEAN AVEUE #A,TRUE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,2835 OCEAN WAY #A,FALSE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,2835 SOUTH OCEAN WAY #A,FALSE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,2835 OCEAN PARK AVE #A,FALSE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,2835 SOUTH OCEAN AVE #A,FALSE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,3835 OCEAN AVE #A,FALSE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,"UNIT A, 2835 OCEAN AVE",TRUE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,UNIT A - 2835 OCEAN AVE,TRUE,MarijuanaApplicants.xlsx
-2835 OCEAN AVE #A             ,"UNIT A, 2835 OCEAN AV.",TRUE,MarijuanaApplicants.xlsx
-21037 BUCODA HWY SE           ,21037 BUCODA HIGHWAY SE,TRUE,MarijuanaApplicants.xlsx
-21037 BUCODA HWY SE           ,21037 OCEAN HWY SE,FALSE,MarijuanaApplicants.xlsx
-21037 BUCODA HWY SE           ,21037 BUCODA HIGHWAY SW,FALSE,MarijuanaApplicants.xlsx
-21037 BUCODA HWY SE           ,21037 BUCODA HWY NW,FALSE,MarijuanaApplicants.xlsx
-21037 BUCODA HWY SE           ,21037 SE BUCODA HIGHWAY,TRUE,MarijuanaApplicants.xlsx
-4051 HAMMER DR                ,4051 HAMMER DRIVE,TRUE,MarijuanaApplicants.xlsx
-4051 HAMMER DR                ,5051 HAMMER DR,FALSE,MarijuanaApplicants.xlsx
-4051 HAMMER DR                ,4051 DR. HAMMER ST,FALSE,MarijuanaApplicants.xlsx
-4051 HAMMER DR                ,4051 ST HAMMER DR,FALSE,MarijuanaApplicants.xlsx
-11670 W HWY 28                ,11670 W HIGHWAY 28,TRUE,MarijuanaApplicants.xlsx
-11670 W HWY 28                ,11670 E HWY 28,FALSE,MarijuanaApplicants.xlsx
+address_1,address_2,match,origin
+3703 E BROAD AVE,3703 east broad ave,TRUE,MarijuanaApplicants.xlsx
+3703 E BROAD AVE,3704 E BROAD AVE,FALSE,MarijuanaApplicants.xlsx
+3703 E BROAD AVE,3703 E BROAD AV,TRUE,MarijuanaApplicants.xlsx
+3703 E BROAD AVE,3703 east broad avenue,TRUE,MarijuanaApplicants.xlsx
+3703 E BROAD AVE,3703 e broad avenue,TRUE,MarijuanaApplicants.xlsx
+3703 E BROAD AVE,3703 W BROAD AVE,FALSE,MarijuanaApplicants.xlsx
+3703 E BROAD AVE,3703 BROAD AVENUE EAST,TRUE,MarijuanaApplicants.xlsx
+250 W AXTON RD,250 WEST AXTON RD,TRUE,MarijuanaApplicants.xlsx
+250 W AXTON RD,250 EAST AXTON RD,FALSE,MarijuanaApplicants.xlsx
+250 W AXTON RD,250 W AXTON ROAD,TRUE,MarijuanaApplicants.xlsx
+250 W AXTON RD,250 WEST AXTON ROAD,TRUE,MarijuanaApplicants.xlsx
+250 W AXTON RD,250 W AXTON STREET,FALSE,MarijuanaApplicants.xlsx
+250 W AXTON RD,4-250 W AXTON RD,FALSE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,UNIT A - 3104 234TH ST E,TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,3104 234TH ST E UNIT B,FALSE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,3104 234 ST E UNIT A,TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,3104 234 ST E STE A,TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,"STE A, 3104 234TH ST E",TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,3104 234TH STREET E UNIT A,TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,3104 234TH ST W UNIT A,FALSE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,3104 234TH ST S UNIT A,FALSE,MarijuanaApplicants.xlsx
+3104 234TH ST E APT B,3104 234TH ST W UNIT A,FALSE,MarijuanaApplicants.xlsx
+3100 234TH ST E APT A,3104 234TH ST S UNIT A,FALSE,MarijuanaApplicants.xlsx
+#A - 3104 235TH ST E,3104 234TH ST W UNIT A,FALSE,MarijuanaApplicants.xlsx
+A - 3105 234TH ST E,3104 234TH ST S UNIT A,FALSE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,"STE A, 3104 234TH ST E",TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,"STE A, 3104 234TH ST E",TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,"STE A, 3104 234TH ST E",TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,3104 234TH ST E #A,TRUE,MarijuanaApplicants.xlsx
+3104 234TH ST E UNIT A,3104 234A ST E UNIT A,FALSE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,2835 OCEAN AVENUE #A,TRUE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,#A 2835 OCEAN AVENUE,TRUE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,STE A - 2835 OCEAN AVE,TRUE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,2835 OCEAN AVE #B,FALSE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,2835 OCEAN AVEUE #A,TRUE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,2835 OCEAN WAY #A,FALSE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,2835 SOUTH OCEAN WAY #A,FALSE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,2835 OCEAN PARK AVE #A,FALSE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,2835 SOUTH OCEAN AVE #A,FALSE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,3835 OCEAN AVE #A,FALSE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,"UNIT A, 2835 OCEAN AVE",TRUE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,UNIT A - 2835 OCEAN AVE,TRUE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,"UNIT A, 2835 OCEAN AV.",TRUE,MarijuanaApplicants.xlsx
+21037 BUCODA HWY SE,21037 BUCODA HIGHWAY SE,TRUE,MarijuanaApplicants.xlsx
+21037 BUCODA HWY SE,21037 OCEAN HWY SE,FALSE,MarijuanaApplicants.xlsx
+21037 BUCODA HWY SE,21037 BUCODA HIGHWAY SW,FALSE,MarijuanaApplicants.xlsx
+21037 BUCODA HWY SE,21037 BUCODA HWY NW,FALSE,MarijuanaApplicants.xlsx
+21037 BUCODA HWY SE,21037 SE BUCODA HIGHWAY,TRUE,MarijuanaApplicants.xlsx
+4051 HAMMER DR,4051 HAMMER DRIVE,TRUE,MarijuanaApplicants.xlsx
+4051 HAMMER DR,5051 HAMMER DR,FALSE,MarijuanaApplicants.xlsx
+4051 HAMMER DR,4051 DR. HAMMER ST,FALSE,MarijuanaApplicants.xlsx
+4051 HAMMER DR,4051 ST HAMMER DR,FALSE,MarijuanaApplicants.xlsx
+11670 W HWY 28,11670 W HIGHWAY 28,TRUE,MarijuanaApplicants.xlsx
+11670 W HWY 28,11670 E HWY 28,FALSE,MarijuanaApplicants.xlsx
 4710 E ELK TO HIGHWAY RD STE A,4710 E ELK TO HIGHWAY ROAD STE A,TRUE,MarijuanaApplicants.xlsx
 4710 E ELK TO HIGHWAY RD STE A,4710 EAST ELK TO HIGHWAY RD STE A,TRUE,MarijuanaApplicants.xlsx
 4710 E ELK TO HIGHWAY RD STE A,4710 E ELK TO HWY ROAD STE A,TRUE,MarijuanaApplicants.xlsx
 4710 E ELK TO HIGHWAY RD STE A,4710 E ELK TO HIGHWAY RD STE B,FALSE,MarijuanaApplicants.xlsx
-4710 E ELK TO HIGHWAY RD STE A,STE A - 4710 E ELK TO HIGHWAY RD ,TRUE,MarijuanaApplicants.xlsx
+4710 E ELK TO HIGHWAY RD STE A,STE A - 4710 E ELK TO HIGHWAY RD,TRUE,MarijuanaApplicants.xlsx
 4710 E ELK TO HIGHWAY RD STE A,4710 W ELK TO HIGHWAY RD STE A,FALSE,MarijuanaApplicants.xlsx
 4710 E ELK TO HIGHWAY RD STE A,4710 E ELK TO HIGHWAY RD STE 10,FALSE,MarijuanaApplicants.xlsx
 4710 E ELK TO HIGHWAY RD STE A,4710 E ELK TO HIGHWAY RD STE A,TRUE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 LATHROP INDUSTRIAL DRIVE SOUTHWEST,TRUE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 LATHROP INDUSTRIAL DRIVE SW,TRUE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 LATHROP INDUSTRIAL DR SOUTHWEST,TRUE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 LATHROP INDUSTRIAL DRIVE SW,TRUE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 LATHROP INDUSTRIAL DRIVE SW,TRUE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9740 LATHROP INDUSTRIAL DRIVE SOUTHWEST,FALSE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 LATHROP INDUSTRIAL DR NW,FALSE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 LATHROP INDUSTRIAL STREET SW ,FALSE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 LATHROP DR SW ,FALSE,MarijuanaApplicants.xlsx
-9730 LATHROP INDUSTRIAL DR SW ,9730 INDUSTRIAL DR SW ,FALSE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 NE 117TH AVENUE,TRUE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 NE 117 AVE,TRUE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 NORTHEAST 117TH AVE,TRUE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 117TH AVENUE NE,TRUE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 NE 117TH AV,TRUE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 NE 117 AVENUE,TRUE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 NE 118TH AVENUE,FALSE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 NE 117TH STREET,FALSE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12-313 NE 117TH AVE,FALSE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,12313 N 117TH AVE            ,FALSE,MarijuanaApplicants.xlsx
-12313 NE 117TH AVE            ,NE 12313 117TH AVE         ,FALSE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,21 154 DR SE    STE A       ,TRUE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,21 154 DR SE STE A       ,TRUE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,21 154TH DRIVE SE    STE A       ,TRUE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,STE A  21 154 DR SE         ,TRUE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,STE A - 21 154 DR SE    ,TRUE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,21 154 DR SOUTHEAST    STE A       ,TRUE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,21 155 DR SE    STE A       ,FALSE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,22 154 DR SE STE A       ,FALSE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,21 154TH DR SW    STE A       ,FALSE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,22 154TH ST SE    STE A       ,FALSE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,23 154TH DR SE    STE B       ,FALSE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,STE B  24 154TH DR SE         ,FALSE,MarijuanaApplicants.xlsx
-21 154TH DR SE    STE A       ,21 154A DR SE    STE A       ,FALSE,MarijuanaApplicants.xlsx
-8531 POSTMA RD STE P          ,8531 POSTMA RD STE Z,FALSE,MarijuanaApplicants.xlsx
-8531 POSTMA RD STE Z          ,8531 POSTMA RD STE Z,TRUE,MarijuanaApplicants.xlsx
-31 SHILOH WAY STE A           ,31 SHILOH WAY SUITE A           ,TRUE,MarijuanaApplicants.xlsx
-31 SHILOH WAY STE A           ,STE A 31 SHILOH WAY           ,TRUE,MarijuanaApplicants.xlsx
-31 SHILOH WAY STE A           ,31 SHILOH WAY STE AA   ,FALSE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 S 35 ST STE B-18       ,TRUE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 SOUTH 35TH ST STE B-18       ,TRUE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,STE B-18 - 3303 S 35TH ST ,TRUE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303     S      35TH        ST    STE    B-18       ,TRUE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 S 35TH STREET STE B-18       ,TRUE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 SOUTH 35 STREET STE B-18       ,TRUE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 S 35TH ST STE B-19,FALSE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 S 35TH ST STE A-18,FALSE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 N 35TH ST STE B-18       ,FALSE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 SW 35TH ST STE B-18       ,FALSE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 S 35TH AVE STE B-18       ,FALSE,MarijuanaApplicants.xlsx
-3303 S 35TH ST STE B-18       ,3303 S 35 HWY STE B-18       ,FALSE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19 GUN CLUB RD STE A          ,TRUE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19 GUN CLUB ROAD STE A          ,TRUE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19 GUN CLUB RD SUITE A         ,TRUE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,STE A - 19 GUN CLUB RD ,TRUE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19     GUN CLUB RD STE A,TRUE,MarijuanaApplicants.xlsx
-18 GUN CLUB RD STE A          ,18 GUN CLUB RD STE A          ,FALSE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19 GUN CLUB ST STE A          ,FALSE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19 CLUB RD STE A          ,FALSE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19 JAMES CLUB RD STE A          ,FALSE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19 GUNN CLUB RD STE A          ,FALSE,MarijuanaApplicants.xlsx
-19 GUN CLUB RD STE A          ,19 GUN CLUB RD STE B,FALSE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 LATHROP INDUSTRIAL DRIVE SOUTHWEST,TRUE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 LATHROP INDUSTRIAL DRIVE SW,TRUE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 LATHROP INDUSTRIAL DR SOUTHWEST,TRUE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 LATHROP INDUSTRIAL DRIVE SW,TRUE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 LATHROP INDUSTRIAL DRIVE SW,TRUE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9740 LATHROP INDUSTRIAL DRIVE SOUTHWEST,FALSE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 LATHROP INDUSTRIAL DR NW,FALSE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 LATHROP INDUSTRIAL STREET SW,FALSE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 LATHROP DR SW,FALSE,MarijuanaApplicants.xlsx
+9730 LATHROP INDUSTRIAL DR SW,9730 INDUSTRIAL DR SW,FALSE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 NE 117TH AVENUE,TRUE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 NE 117 AVE,TRUE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 NORTHEAST 117TH AVE,TRUE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 117TH AVENUE NE,TRUE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 NE 117TH AV,TRUE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 NE 117 AVENUE,TRUE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 NE 118TH AVENUE,FALSE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 NE 117TH STREET,FALSE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12-313 NE 117TH AVE,FALSE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,12313 N 117TH AVE,FALSE,MarijuanaApplicants.xlsx
+12313 NE 117TH AVE,NE 12313 117TH AVE,FALSE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,21 154 DR SE    STE A,TRUE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,21 154 DR SE STE A,TRUE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,21 154TH DRIVE SE    STE A,TRUE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,STE A  21 154 DR SE,TRUE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,STE A - 21 154 DR SE,TRUE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,21 154 DR SOUTHEAST    STE A,TRUE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,21 155 DR SE    STE A,FALSE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,22 154 DR SE STE A,FALSE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,21 154TH DR SW    STE A,FALSE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,22 154TH ST SE    STE A,FALSE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,23 154TH DR SE    STE B,FALSE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,STE B  24 154TH DR SE,FALSE,MarijuanaApplicants.xlsx
+21 154TH DR SE    STE A,21 154A DR SE    STE A,FALSE,MarijuanaApplicants.xlsx
+8531 POSTMA RD STE P,8531 POSTMA RD STE Z,FALSE,MarijuanaApplicants.xlsx
+8531 POSTMA RD STE Z,8531 POSTMA RD STE Z,TRUE,MarijuanaApplicants.xlsx
+31 SHILOH WAY STE A,31 SHILOH WAY SUITE A,TRUE,MarijuanaApplicants.xlsx
+31 SHILOH WAY STE A,STE A 31 SHILOH WAY,TRUE,MarijuanaApplicants.xlsx
+31 SHILOH WAY STE A,31 SHILOH WAY STE AA,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 S 35 ST STE B-18,TRUE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 SOUTH 35TH ST STE B-18,TRUE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,STE B-18 - 3303 S 35TH ST,TRUE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303     S      35TH        ST    STE    B-18,TRUE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 S 35TH STREET STE B-18,TRUE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 SOUTH 35 STREET STE B-18,TRUE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 S 35TH ST STE B-19,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 S 35TH ST STE A-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 N 35TH ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 SW 35TH ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 S 35TH AVE STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 W 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 N 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 E 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 SE 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 SW 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,3303 NE 35 HWY STE B-18,FALSE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,19 GUN CLUB RD STE A,TRUE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,19 GUN CLUB ROAD STE A,TRUE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,19 GUN CLUB RD SUITE A,TRUE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,STE A - 19 GUN CLUB RD,TRUE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,19     GUN CLUB RD STE A,TRUE,MarijuanaApplicants.xlsx
+18 GUN CLUB RD STE A,19 GUN CLUB RD STE A,FALSE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,18 GUN CLUB ST STE A,FALSE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,19 CLUB RD STE A,FALSE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,19 JAMES CLUB RD STE A,FALSE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,19 GUNN CLUB RD STE A,FALSE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,19 GUN CLUB RD STE B,FALSE,MarijuanaApplicants.xlsx
+19 GUN CLUB RD STE A,3303 S 35 HWY STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,21 154A DR SE    STE A,FALSE,MarijuanaApplicants.xlsx
+21037 BUCODA HWY SE,19 GUN CLUB RD STE A,FALSE,MarijuanaApplicants.xlsx
+2835 OCEAN AVE #A,3303 S 35 HWY STE B-18,FALSE,MarijuanaApplicants.xlsx
+3703 E BROAD AVE,STE A - 19 GUN CLUB RD,FALSE,MarijuanaApplicants.xlsx
+1-554 ST MARY'S RD,200 12th Street West,FALSE,
+612 S ALASKA ST,540 RONLEE LN NW STE B,FALSE,
+624 SUNSET PARK DR,1874 BATUM RD N  STE 100,FALSE,
+15026 E BREVIER RD SUITE A,750 E WAPATO LAKE RD UNIT C,FALSE,
+298 POORMAN CREEK RD #A,221 OMAK RIVER RD,FALSE,
+3303 S 35TH ST STE B-18,3304 W 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,330 N 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,33032 E 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,33303 SE 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,123 SW 35 ST STE B-18,FALSE,MarijuanaApplicants.xlsx
+3303 S 35TH ST STE B-18,9999 NE 35 HWY STE B-18,FALSE,MarijuanaApplicants.xlsx
