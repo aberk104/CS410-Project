@@ -1,4 +1,5 @@
-DIRECTIONS = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw', 'north', 'south', 'east', 'west']
+DIRECTIONS = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw', 'north', 'south', 'east', 'west',
+              'northeast', 'northwest', 'southeast', 'southwest']
 STREET_TYPES = ['alley',
                 'aly',
                 'annex',
