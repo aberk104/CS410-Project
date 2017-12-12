@@ -10,11 +10,22 @@ import json
 import pkg_resources
 
 NESTED_REF_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'data/ref_dt_dict.json')
+STATE_ZIP_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'data/state_zip_dict.json')
+ZIP_CITY_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'data/zip_prim_city.json')
 
 
 # Import nested dictionary from neste_ref_dt_dict json file
 with open(NESTED_REF_DT_DICT_PATH) as json_file:
     nested_ref_dt_dict = json.load(json_file)
+
+# Import State Zip Dictionary from Json file
+with open(STATE_ZIP_DT_DICT_PATH) as json_file:
+    state_zip_dict = json.load(json_file)
+
+# Import Zip City Dictionary from Json File:
+with open(ZIP_CITY_DT_DICT_PATH) as json_file:
+    zip_city_dict = json.load(json_file)
+
 
 
 # The below function will convert the a list of ordered dictionaries into a pandas dataframe, remove duplicates, and repopulate the ordered dictionary
@@ -98,9 +109,11 @@ def consolidate_address_list(address_df, column_names = None):
 
 
 
-def record_id_addition(address_df):
-    if 'Record_ID' not in list(address_df):
+def record_id_addition(address_df, field_name_rec_id):
+    if field_name_rec_id == None:
         address_df['Record_ID'] = address_df.index
+    else:
+        address_df = address_df.rename(columns={field_name_rec_id:'Record_ID'})
     return address_df
 
 
@@ -110,6 +123,22 @@ def empty_column_addition(address_df, column_names):
         if col not in existing_column_names:
             address_df[col] = ""
     return address_df
+
+
+
+def fix_cities_zips(address_df, state_to_zip_dict = state_zip_dict, zip_prim_city_dict = zip_city_dict):
+    new_address_df = address_df.copy()
+    new_address_df['Zip_Code_Error'] = ""
+    for row in range(address_df.shape[0]):
+        zip_code_for_test = str(new_address_df.loc[row, 'ZIP_CODE'])
+        zip_code_for_test = zip_code_for_test if len(zip_code_for_test) <= 5 else zip_code_for_test[:5]
+        if zip_code_for_test not in state_to_zip_dict[new_address_df.loc[row, 'STATE']]:
+            new_address_df.loc[row, 'Zip_Code_Error'] = "Yes"
+        else:
+            new_address_df.loc[row, 'Zip_Code_Error'] = "No"
+            new_address_df.loc[row, 'CITY'] = zip_prim_city_dict[zip_code_for_test]
+
+    return new_address_df
 
 #
 # test_data = pd.read_excel('data\\sandbox data.xlsx')
