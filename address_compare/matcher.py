@@ -5,6 +5,8 @@ It calls the separate exact and learning compare comparers in order to find a ma
 
 from address_compare.comparers import exact_compare
 
+cols_to_join_on = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','CITY','STATE','ZIP_CODE','UNKNOWN']
+
 def match(address_list_1: list, address_list_2: list, compare_function):
     '''
     The match function takes 2 lists of addresses and passes them to a defined compare function.
@@ -44,8 +46,7 @@ def match(address_list_1: list, address_list_2: list, compare_function):
 
 
 
-def exact_matcher(address_dataframe_1, address_dataframe_2):
-    cols_to_join_on = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','CITY','STATE','ZIP_CODE','UNKNOWN']
-    exact_matches = address_dataframe_1.merge(address_dataframe_2, on=cols_to_join_on, suffixes=('_list_1','_list_2'))
+def exact_matcher(address_dataframe_1, address_dataframe_2, join_on_cols = cols_to_join_on):
+    exact_matches = address_dataframe_1.merge(address_dataframe_2, on=join_on_cols, suffixes=('_list_1','_list_2'))
     return exact_matches
 
