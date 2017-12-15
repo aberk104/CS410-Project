@@ -3,7 +3,7 @@ The matcher.py file contains a match function to compare 2 lists of addresses.
 It calls the separate exact and learning compare comparers in order to find a matching address in list 2 for each address in list 1
 '''
 
-from address_compare.comparers import exact_compare
+#from address_compare.comparers import exact_compare
 
 cols_to_join_on = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','CITY','STATE','ZIP_CODE','UNKNOWN']
 
