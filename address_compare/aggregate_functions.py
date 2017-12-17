@@ -187,19 +187,19 @@ def pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=["
     false_negatives = missing_golden_matches.shape[0]
     false_positives = matches_not_in_golden.shape[0]
 
-    accuracy_list_1 = (total_records_list_1 - (false_negatives + false_positives)) / total_records_list_1
-    accuracy_list_2 = (total_records_list_2 - (false_negatives + false_positives)) / total_records_list_2
-    precision = total_correct_positive_matches / (total_correct_positive_matches + false_positives)
-    recall = total_correct_positive_matches / (total_correct_positive_matches + false_negatives)
-    f1score = (2 * precision * recall) / (precision + recall)
+    accuracy_val_list_1 = (total_records_list_1 - (false_negatives + false_positives)) / total_records_list_1
+    accuracy_val_list_2 = (total_records_list_2 - (false_negatives + false_positives)) / total_records_list_2
+    precision_val = total_correct_positive_matches / (total_correct_positive_matches + false_positives)
+    recall_val = total_correct_positive_matches / (total_correct_positive_matches + false_negatives)
+    f1score_val = (2 * precision_val * recall_val) / (precision_val + recall_val)
 
     metrics_dict = OrderedDict()
 
-    metrics_dict = {'accuracy_list_1': accuracy_list_1,
-                    'accuracy_list_2': accuracy_list_2,
-                    'precision': precision,
-                    'recall': recall,
-                    'f1_score': f1score}
+    metrics_dict = {'accuracy_list_1': accuracy_val_list_1,
+                    'accuracy_list_2': accuracy_val_list_2,
+                    'precision': precision_val,
+                    'recall': recall_val,
+                    'f1_score': f1score_val}
 
     metrics_df = pd.DataFrame(metrics_dict)
 
