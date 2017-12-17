@@ -139,7 +139,7 @@ def pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, ru
 
 def pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=["Exact", "Standardized Exact"]):
     # Create Dataframe for Ground Truths
-    manual_matches = pd.read_excel(groundtruths, dtype=str)
+    manual_matches = pd.read_excel(groundtruths, keep_default_na=False, dtype=str)
 
     # Split out only the applicable Match Types
     golden_exact_matches = manual_matches.where(manual_matches.Match_Type.isin(matchtypes)).dropna().reset_index()
@@ -187,8 +187,8 @@ def pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=["
     false_negatives = missing_golden_matches.shape[0]
     false_positives = matches_not_in_golden.shape[0]
 
-    accuracy_val_list_1 = (total_records_list_1 - (false_negatives + false_positives)) / total_records_list_1
-    accuracy_val_list_2 = (total_records_list_2 - (false_negatives + false_positives)) / total_records_list_2
+    accuracy_val_list_1 = total_correct_positive_matches / total_records_list_1
+    accuracy_val_list_2 = total_correct_positive_matches / total_records_list_2
     precision_val = total_correct_positive_matches / (total_correct_positive_matches + false_positives)
     recall_val = total_correct_positive_matches / (total_correct_positive_matches + false_negatives)
     f1score_val = (2 * precision_val * recall_val) / (precision_val + recall_val)
@@ -239,8 +239,8 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, use_raw_files =
 
     # Create Dataframe from Raw Files or Random Addresses
     if use_raw_files:
-        raw_address_list_1 = pd.read_excel(file1)
-        raw_address_list_2 = pd.read_excel(file2)
+        raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
+        raw_address_list_2 = pd.read_excel(file2, keep_default_na=False, dtype=str)
     else:
         raw_address_list_1 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
         raw_address_list_2 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
@@ -277,8 +277,8 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, use_raw_file
 
     # Create Dataframe from Raw Files or Random Addresses
     if use_raw_files:
-        raw_address_list_1 = pd.read_excel(file1)
-        raw_address_list_2 = pd.read_excel(file2)
+        raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
+        raw_address_list_2 = pd.read_excel(file2, keep_default_na=False, dtype=str)
     else:
         raw_address_list_1 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
         raw_address_list_2 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
@@ -299,8 +299,8 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, use_raw_file
     tagged_address_list_2 = at.series_to_address_df(raw_address_list_2[field_raw_address], standardize=to_standardize)
 
     # Compare Tagger Results to Ground Truths
-    tagger_ground_truths_dict_file1 = pvt_tag_vs_ground_truths(tagged_address_list_1, raw_address_list_1, ground_truth_cols)
-    tagger_ground_truths_dict_file2 = pvt_tag_vs_ground_truths(tagged_address_list_2, raw_address_list_2, ground_truth_cols)
+    tagger_ground_truths_dict_file1 = pvt_tag_vs_ground_truths(tagged_address_list_1, raw_address_list_1)
+    tagger_ground_truths_dict_file2 = pvt_tag_vs_ground_truths(tagged_address_list_2, raw_address_list_2)
 
     # Compare the 2 tagged address lists
     compared_lists_dict = pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode)
