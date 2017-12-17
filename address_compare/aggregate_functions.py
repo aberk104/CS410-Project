@@ -126,7 +126,7 @@ def pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, ru
     unmatched_address_list_2 = grouped_address_list_2.mask(grouped_address_list_2.Record_ID.isin(exact_matches['Record_ID_list_2'])).dropna()
 
     # Dictionary of DataFrames for Excel File
-    dataframes_for_excel = {'raw_addresses_list_1': rawlist1,
+    dataframes_for_excel = {'raw_addresses_list1': rawlist1,
                             'raw_addresses_list2': rawlist2,
                             'zip_errors_list1': error_addresses_list_1,
                             'zip_errors_list2': error_addresses_list_2,
@@ -175,8 +175,8 @@ def pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=["
         subset_columns_exact_matches.row_index.isin(test_vs_golden_compare.row_index_list_1)).dropna()
 
     # Extract Dataframes from Dictionary of the Raw Address Lists
-    rawlist1 = compeddict['raw_addresses_list_1']
-    rawlist2 = compeddict['raw_addresses_list_2']
+    rawlist1 = compeddict['raw_addresses_list1']
+    rawlist2 = compeddict['raw_addresses_list2']
 
     # Calculate Metrics for Model vs. Ground Truths
     total_records_list_1 = rawlist1.shape[0]
@@ -194,11 +194,12 @@ def pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=["
     f1score = (2 * precision * recall) / (precision + recall)
 
     metrics_dict = OrderedDict()
-    metrics_dict['accuracy_list_1'] = accuracy_list_1
-    metrics_dict['accuracy_list_2'] = accuracy_list_2
-    metrics_dict['precision'] = precision
-    metrics_dict['recall'] = recall
-    metrics_dict['f1_score'] = f1score
+
+    metrics_dict = {'accuracy_list_1': accuracy_list_1,
+                    'accuracy_list_2': accuracy_list_2,
+                    'precision': precision,
+                    'recall': recall,
+                    'f1_score': f1score}
 
     metrics_df = pd.DataFrame(metrics_dict)
 
