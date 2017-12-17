@@ -9,23 +9,23 @@ import pkg_resources
 from address_compare.standardizers import standardizer
 from string import punctuation
 
-MODEL = pkg_resources.resource_filename('address_compare', 'trained_models/model3')
-TOKENIZER = hyphen_parse
-FF = ff.WordFeatures2()
+MODEL = pkg_resources.resource_filename('address_compare', 'trained_models/model4')
+TOKENIZER = lambda x: x.split()
+FE = ff.FeatureExtractor(ff.WordFeatures2(), ff.FullAddressFeatures(), 2, 2)
 DF_ORDER = ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION",
             "UNIT_TYPE", "UNIT_NUMBER"]
 
 class AddressTagger(object):
 
-    def __init__(self, model = MODEL, tokenizer: "function" = TOKENIZER, ff: ff.FeatureFunctionApplicator = FF):
+    def __init__(self, model = MODEL, tokenizer: "function" = TOKENIZER, fe: ff.FeatureExtractor = FE):
         self.tagger = pycrfsuite.Tagger()
         self.tagger.open(model)
         self.tokenizer = tokenizer
-        self.ff = ff
+        self.fe = fe
 
     def tag(self, s:str, concat: bool = True, standardize = False):
         tokens = self.tokenizer(s)
-        features = [self.ff.exec_all(t) for t in tokens]
+        features = self.fe.extract_features(tokens)
         tags = self.tagger.tag(features)
         parsed_address = OrderedDict(UNIT_TYPE=[], UNIT_NUMBER=[], STREET_NUMBER=[], PRE_DIRECTION=[],
                                      STREET_NAME=[], STREET_TYPE=[], POST_DIRECTION=[], UNKNOWN=[])
