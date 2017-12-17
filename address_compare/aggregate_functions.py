@@ -201,7 +201,7 @@ def pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=["
                     'recall': recall_val,
                     'f1_score': f1score_val}
 
-    metrics_df = pd.DataFrame(metrics_dict)
+    metrics_df = pd.DataFrame.from_dict(metrics_dict, orient='index')
 
     # Dictionary of DataFrames for Excel File
     dataframes_for_excel = {'model_vs_truths': test_vs_golden_compare,
