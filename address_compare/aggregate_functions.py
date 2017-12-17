@@ -245,8 +245,8 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, use_raw_files =
         raw_address_list_2 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
 
     # Add the Record_ID field if field_rec_id is None
-    raw_address_list_1 = stndrdzr.record_id_addition(file1, field_rec_id)
-    raw_address_list_2 = stndrdzr.record_id_addition(file2, field_rec_id)
+    raw_address_list_1 = stndrdzr.record_id_addition(raw_address_list_1, field_rec_id)
+    raw_address_list_2 = stndrdzr.record_id_addition(raw_address_list_2, field_rec_id)
 
     # Add missing columns (City, State, Zip) to the Dataframes
     raw_address_list_1 = stndrdzr.empty_column_addition(raw_address_list_1, missing_cols)
@@ -283,8 +283,8 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, use_raw_file
         raw_address_list_2 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
 
     # Add the Record_ID field if field_rec_id is None
-    raw_address_list_1 = stndrdzr.record_id_addition(file1, field_rec_id)
-    raw_address_list_2 = stndrdzr.record_id_addition(file2, field_rec_id)
+    raw_address_list_1 = stndrdzr.record_id_addition(raw_address_list_1, field_rec_id)
+    raw_address_list_2 = stndrdzr.record_id_addition(raw_address_list_2, field_rec_id)
 
     # Add missing columns (City, State, Zip) to the Dataframes
     raw_address_list_1 = stndrdzr.empty_column_addition(raw_address_list_1, missing_cols)
