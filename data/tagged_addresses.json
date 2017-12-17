@@ -613,29 +613,6 @@
       ]
    },
    {
-      "raw_address":"17835 59TH AVE NE BLDG 8 STE A",
-      "tags":[
-         "STREET_NUMBER",
-         "STREET_NAME",
-         "STREET_TYPE",
-         "POST_DIRECTION",
-         "UNIT_TYPE",
-         "UNIT_NUMBER",
-         "UNIT_TYPE",
-         "UNIT_NUMBER"
-      ],
-      "tokens":[
-         "17835",
-         "59TH",
-         "AVE",
-         "NE",
-         "BLDG",
-         "8",
-         "STE",
-         "A"
-      ]
-   },
-   {
       "raw_address":"2504 HARTFORD DR",
       "tags":[
          "STREET_NUMBER",
@@ -680,27 +657,6 @@
          "SW",
          "STE",
          "A"
-      ]
-   },
-   {
-      "raw_address":"16810 415TH AVE SE BLDG D #2",
-      "tags":[
-         "STREET_NUMBER",
-         "STREET_NAME",
-         "STREET_TYPE",
-         "POST_DIRECTION",
-         "UNIT_TYPE",
-         "UNIT_NUMBER",
-         "UNIT_NUMBER"
-      ],
-      "tokens":[
-         "16810",
-         "415TH",
-         "AVE",
-         "SE",
-         "BLDG",
-         "D",
-         "#2"
       ]
    },
    {
@@ -1115,8 +1071,7 @@
          "STREET_NAME",
          "STREET_TYPE",
          "UNIT_TYPE",
-         "UNIT_NUMBER",
-          "UNIT_NUMBER"
+         "UNIT_NUMBER"
       ],
       "tokens":[
          "1199",
@@ -1124,8 +1079,7 @@
          "CUNNINGHAM",
          "RD",
          "STE",
-         "C-",
-          "E1"
+         "C-E1"
       ]
    },
    {
@@ -1587,8 +1541,8 @@
       "raw_address":"485 STATE ROUTE 409",
       "tags":[
          "STREET_NUMBER",
-         "STREET_TYPE",
-         "STREET_TYPE",
+         "STREET_NAME",
+         "STREET_NAME",
          "STREET_NAME"
       ],
       "tokens":[
@@ -1791,7 +1745,7 @@
          "STREET_NAME",
          "STREET_TYPE",
          "UNIT_TYPE",
-         "UNIT_NUMBER","UNIT_NUMBER"
+         "UNIT_NUMBER"
       ],
       "tokens":[
          "3303",
@@ -1799,7 +1753,7 @@
          "35TH",
          "ST",
          "STE",
-         "B-","21"
+         "B-21"
       ]
    },
    {
@@ -1925,7 +1879,7 @@
          "STREET_NUMBER",
          "PRE_DIRECTION",
          "STREET_TYPE",
-         "UNIT_NUMBER"
+         "STREET_NAME"
       ],
       "tokens":[
          "3368",
@@ -2220,7 +2174,6 @@
          "STREET_NAME",
          "STREET_NAME",
          "STREET_TYPE",
-         "UNIT_NUMBER",
          "UNIT_NUMBER"
       ],
       "tokens":[
@@ -2228,8 +2181,7 @@
          "GUIDE",
          "MERIDIAN",
          "RD",
-         "#C1-",
-         "2"
+         "#C1-2"
       ]
    },
    {
@@ -2677,7 +2629,7 @@
          "STREET_NAME",
          "STREET_TYPE",
          "UNIT_TYPE",
-         "UNIT_NUMBER", "UNIT_NUMBER"
+         "UNIT_NUMBER"
       ],
       "tokens":[
          "3303",
@@ -2685,7 +2637,7 @@
          "35TH",
          "ST",
          "STE",
-         "B-", "8"
+         "B-8"
       ]
    },
    {
@@ -3083,9 +3035,9 @@
       ]
    },
     {
-       "raw_address":"1250-1500 West Georgia Street",
+       "raw_address":"#1250 1500 West Georgia Street",
         "tokens":[
-            "1250-",
+            "#1250",
             "1500",
             "West",
             "Georgia",
@@ -3095,44 +3047,11 @@
         ["UNIT_NUMBER", "STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE"]
     },
         {
-       "raw_address":"1401-750 Jervis Street",
+       "raw_address":"#1401 750 Jervis Street",
         "tokens":[
-            "1401-",
+            "#1401",
             "750",
             "Jervis",
-            "Street"
-            ],
-        "tags":
-        ["UNIT_NUMBER", "STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
-    },
-            {
-       "raw_address":"1901-22 Hastings Drive",
-        "tokens":[
-            "1901-",
-            "22",
-            "Hastings",
-            "Drive"
-            ],
-        "tags":
-        ["UNIT_NUMBER", "STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
-    },
-                {
-       "raw_address":"6592-9 Victoria Avenue",
-        "tokens":[
-            "6592-",
-            "9",
-            "Victoria",
-            "Avenue"
-            ],
-        "tags":
-        ["UNIT_NUMBER", "STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
-    },
-    {
-       "raw_address":"1203-22 Seymour Street",
-        "tokens":[
-            "1203-",
-            "22",
-            "Seymour",
             "Street"
             ],
         "tags":
@@ -3149,7 +3068,83 @@
         "tokens":["400", "Alabama", "Crossing"],
         "tags":
         ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
+    },
+      {
+       "raw_address":"400 KING GEORGE BOULEVARD",
+        "tokens":["400", "KING", "GEORGE", "BOULEVARD"],
+        "tags":
+        ["STREET_NUMBER", "STREET_NAME", "STREET_NAME", "STREET_TYPE"]
+    },
+         {
+       "raw_address":"980 ELM BOULEVARD",
+        "tokens":["980", "ELM", "BOULEVARD"],
+        "tags":
+        ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
+    },
+            {
+       "raw_address":"#1290 4500 ALABAMA BOULEVARD",
+        "tokens":["#1290", "4500", "ALABAMA ", "BOULEVARD"],
+        "tags":
+        ["UNIT_NUMBER", "STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
+    },
+         {
+       "raw_address":"400 PACIFICBOULEVARD",
+        "tokens":["400", "PACIFIC", "BOULEVARD"],
+        "tags":
+        ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
+    },
+   {
+       "raw_address":"980 HIGHWAY 1",
+        "tokens":["980", "HIGHWAY", "1"],
+        "tags":
+        ["STREET_NUMBER", "STREET_TYPE", "STREET_NAME"]
+    },
+      {
+       "raw_address":"#4 2360 HIGHWAY 99",
+        "tokens":["#4", "2360", "HIGHWAY", "99"],
+        "tags":
+        ["UNIT_NUMBER", "STREET_NUMBER", "STREET_TYPE", "STREET_NAME"]
+    },
+   {
+       "raw_address":"450 COUNTY ROAD 15",
+        "tokens":["450", "COUNTY", "ROAD", "15"],
+        "tags":
+        ["STREET_NUMBER", "STREET_TYPE", "STREET_TYPE", "STREET_NAME"]
+    },
+      {
+       "raw_address":"9512 COUNTY ROAD T",
+        "tokens":["9512", "COUNTY", "ROAD", "T"],
+        "tags":
+        ["STREET_NUMBER", "STREET_TYPE", "STREET_TYPE", "STREET_NAME"]
+    },
+         {
+       "raw_address":"15694 SOUTH COUNTY ROAD 3",
+        "tokens":["15694", "SOUTH", "COUNTY", "ROAD", "3"],
+        "tags":
+        ["STREET_NUMBER", "PRE_DIRECTION", "STREET_TYPE", "STREET_TYPE", "STREET_NAME"]
+    },
+      {
+       "raw_address":"450 COUNTY ROAD 15",
+        "tokens":["450", "COUNTY", "ROAD", "15"],
+        "tags":
+        ["STREET_NUMBER", "STREET_TYPE", "STREET_TYPE", "STREET_NAME"]
+    },
+      {
+       "raw_address":"9512 COUNTY ROAD T",
+        "tokens":["9512", "COUNTY", "ROAD", "T"],
+        "tags":
+        ["STREET_NUMBER", "STREET_TYPE", "STREET_TYPE", "STREET_NAME"]
+    },
+         {
+       "raw_address":"UNIT 5 28 COUNTY ROAD 9",
+        "tokens":["UNIT", "5", "28", "COUNTY", "ROAD", "9"],
+        "tags":
+        ["UNIT_TYPE", "UNIT_NUMBER", "STREET_NUMBER", "STREET_TYPE", "STREET_TYPE", "STREET_NAME"]
+    },
+            {
+       "raw_address":"1546 COUNTY ROAD 7",
+        "tokens":["1546", "COUNTY", "ROAD", "7"],
+        "tags":
+        ["STREET_NUMBER", "STREET_TYPE", "STREET_TYPE", "STREET_NUMBER"]
     }
-
-
 ]
