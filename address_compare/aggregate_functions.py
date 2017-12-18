@@ -7,7 +7,7 @@ from address_compare import tagging as crf
 from address_compare import matcher as mtch
 from address_compare import address_randomizer as add_rndm
 from collections import OrderedDict
-import sklearn
+import sklearn.metrics
 
 
 missing_columns_from_file = ['CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN']
