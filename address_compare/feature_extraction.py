@@ -66,9 +66,9 @@ class WordFeatures2(FeatureFunctions):
 
     def f_has_digit(self, s):
         return re.search('\d', s) is not None
-
-    def f_length(self, s: str):
-        return len(s)
+    #
+    # def f_length(self, s: str):
+    #     return len(s)
 
     def f_pound(self, s: str):
         return '#' in s
@@ -78,6 +78,9 @@ class WordFeatures2(FeatureFunctions):
 
     def f_hwy(self, s: str):
         return s.lower().strip(punctuation) in ['hwy', 'highway']
+
+    def f_county(self, s: str):
+        return s.lower() == 'county'
 
     #
     # def f_ends_in_hyphen(self, s: str):
@@ -94,12 +97,12 @@ class FullAddressFeatures(FeatureFunctions):
     # def f_length(self, l):
     #     return len(l)
 
-    def f_cty_rd(self, l):
-        for j, w in enumerate(l[:-1]):
-            if w.lower() == 'county':
-                if l[j+1].lower() == 'road':
-                    return True
-        return False
+    # def f_cty_rd(self, l):
+    #     for j, w in enumerate(l[:-1]):
+    #         if w.lower() == 'county':
+    #             if l[j+1].lower() == 'road':
+    #                 return True
+    #     return False
 
 
     # def f_contains_highway(self, l):
