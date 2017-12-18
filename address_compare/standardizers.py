@@ -35,7 +35,7 @@ def de_dupe_sorter(list_ordered_dict, sorter = True):
     There is an optional sorter as well to allow the user to determine whether or not the records should also be sorted in the dataframe.
     :param list_ordered_dict: This is a list of ordered_dictionaries containing the tagged and standardized address data
     :param sorter: an optional True/False parameter defaulted to True.  If True, the records will be sorted while in the dataframe
-    :return: new_list_ordered_dict = the resultant list of ordered dictionaries after de-duping and sorting
+    :return new_list_ordered_dict: the resultant list of ordered dictionaries after de-duping and sorting
     '''
     addresses = pd.DataFrame(list_ordered_dict)
     for row in range(addresses.shape[0]):
@@ -145,56 +145,3 @@ def fix_cities_zips(address_df, state_to_zip_dict = state_zip_dict, zip_prim_cit
             new_address_df.loc[row,'Zip_Code_Error'] = "N/A"
 
     return new_address_df
-
-#
-# test_data = pd.read_excel('data\\sandbox data.xlsx')
-# test_data = record_id_addition(test_data)
-# column_names = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
-# test_data = empty_column_addition(test_data, column_names)
-# print (test_data)
-# column_names = ['Single String Address','UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
-# grouped = consolidate_address_list(test_data, column_names)
-# print (grouped)
-# print (list(grouped))
-#
-
-
-# testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
-# ('UNIT_NUMBER', ['1', '1']),
-# ('STREET_NUMBER', ['1']),
-# ('PRE_DIRECTION', ['e']),
-# ('STREET_NAME', ['Main', 'Test,', 'Test2-', '#Test3']),
-# ('STREET_TYPE', ['Street', ',Test1', '-Test2', 'Test3#']),
-# ('POST_DIRECTION', ['-']),
-# ('UNKNOWN', ['  ']),
-# ('CITY', ['SEATTLE']),
-# ('STATE', ['WA']),
-# ('ZIP_CODE', [])])
-#
-# testdict2 = OrderedDict([('UNIT_TYPE', ['Ste']),
-# ('UNIT_NUMBER', ['4']),
-# ('STREET_NUMBER', ['5']),
-# ('PRE_DIRECTION', []),
-# ('STREET_NAME', ['Elm']),
-# ('STREET_TYPE', ['Avenue']),
-# ('POST_DIRECTION', []),
-# ('UNKNOWN', []),
-# ('CITY', ['OLYMPIA']),
-# ('STATE', ['WA']),
-# ('ZIP_CODE', [])])
-#
-#
-# testdict = (standardizer(testdict))
-# testdict2 = (standardizer(testdict2))
-#
-# list_dict = list()
-# list_dict.append(testdict)
-# list_dict.append(testdict2)
-# list_dict_copy = list_dict.copy()
-#
-# list_dict = (de_dupe_sorter(list_dict))
-#
-#
-# print (list_dict_copy == list_dict)
-#
-# print (list_dict)
