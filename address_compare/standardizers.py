@@ -10,11 +10,22 @@ import json
 import pkg_resources
 
 NESTED_REF_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'data/ref_dt_dict.json')
+STATE_ZIP_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'data/state_zip_dict.json')
+ZIP_CITY_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'data/zip_prim_city.json')
 
 
 # Import nested dictionary from neste_ref_dt_dict json file
 with open(NESTED_REF_DT_DICT_PATH) as json_file:
     nested_ref_dt_dict = json.load(json_file)
+
+# Import State Zip Dictionary from Json file
+with open(STATE_ZIP_DT_DICT_PATH) as json_file:
+    state_zip_dict = json.load(json_file)
+
+# Import Zip City Dictionary from Json File:
+with open(ZIP_CITY_DT_DICT_PATH) as json_file:
+    zip_city_dict = json.load(json_file)
+
 
 
 # The below function will convert the a list of ordered dictionaries into a pandas dataframe, remove duplicates, and repopulate the ordered dictionary
@@ -24,7 +35,7 @@ def de_dupe_sorter(list_ordered_dict, sorter = True):
     There is an optional sorter as well to allow the user to determine whether or not the records should also be sorted in the dataframe.
     :param list_ordered_dict: This is a list of ordered_dictionaries containing the tagged and standardized address data
     :param sorter: an optional True/False parameter defaulted to True.  If True, the records will be sorted while in the dataframe
-    :return: new_list_ordered_dict = the resultant list of ordered dictionaries after de-duping and sorting
+    :return new_list_ordered_dict: the resultant list of ordered dictionaries after de-duping and sorting
     '''
     addresses = pd.DataFrame(list_ordered_dict)
     for row in range(addresses.shape[0]):
@@ -92,15 +103,20 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
 def consolidate_address_list(address_df, column_names = None):
     if column_names == None:
         column_names = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
-    grouped_df = address_df.groupby(column_names, as_index=False)['Record_ID'].apply(tuple).to_frame().reset_index()
+    try:
+        grouped_df = address_df.groupby(column_names, as_index=False)['Record_ID'].apply(tuple).to_frame().reset_index()
+    except:
+        grouped_df = address_df.groupby(column_names, as_index=False)['Record_ID'].apply(tuple).reset_index()
     grouped_df = grouped_df.rename(columns={0:'Record_ID'})
     return grouped_df
 
 
 
-def record_id_addition(address_df):
-    if 'Record_ID' not in list(address_df):
+def record_id_addition(address_df, field_name_rec_id):
+    if field_name_rec_id == None:
         address_df['Record_ID'] = address_df.index
+    else:
+        address_df = address_df.rename(columns={field_name_rec_id:'Record_ID'})
     return address_df
 
 
@@ -111,55 +127,21 @@ def empty_column_addition(address_df, column_names):
             address_df[col] = ""
     return address_df
 
-#
-# test_data = pd.read_excel('data\\sandbox data.xlsx')
-# test_data = record_id_addition(test_data)
-# column_names = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
-# test_data = empty_column_addition(test_data, column_names)
-# print (test_data)
-# column_names = ['Single String Address','UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
-# grouped = consolidate_address_list(test_data, column_names)
-# print (grouped)
-# print (list(grouped))
-#
 
 
-# testdict = OrderedDict([('UNIT_TYPE', ['Bldg', 'Apt']),
-# ('UNIT_NUMBER', ['1', '1']),
-# ('STREET_NUMBER', ['1']),
-# ('PRE_DIRECTION', ['e']),
-# ('STREET_NAME', ['Main', 'Test,', 'Test2-', '#Test3']),
-# ('STREET_TYPE', ['Street', ',Test1', '-Test2', 'Test3#']),
-# ('POST_DIRECTION', ['-']),
-# ('UNKNOWN', ['  ']),
-# ('CITY', ['SEATTLE']),
-# ('STATE', ['WA']),
-# ('ZIP_CODE', [])])
-#
-# testdict2 = OrderedDict([('UNIT_TYPE', ['Ste']),
-# ('UNIT_NUMBER', ['4']),
-# ('STREET_NUMBER', ['5']),
-# ('PRE_DIRECTION', []),
-# ('STREET_NAME', ['Elm']),
-# ('STREET_TYPE', ['Avenue']),
-# ('POST_DIRECTION', []),
-# ('UNKNOWN', []),
-# ('CITY', ['OLYMPIA']),
-# ('STATE', ['WA']),
-# ('ZIP_CODE', [])])
-#
-#
-# testdict = (standardizer(testdict))
-# testdict2 = (standardizer(testdict2))
-#
-# list_dict = list()
-# list_dict.append(testdict)
-# list_dict.append(testdict2)
-# list_dict_copy = list_dict.copy()
-#
-# list_dict = (de_dupe_sorter(list_dict))
-#
-#
-# print (list_dict_copy == list_dict)
-#
-# print (list_dict)
+def fix_cities_zips(address_df, state_to_zip_dict = state_zip_dict, zip_prim_city_dict = zip_city_dict):
+    new_address_df = address_df.copy()
+    new_address_df['Zip_Code_Error'] = ""
+    for row in range(address_df.shape[0]):
+        try:
+            zip_code_for_test = str(new_address_df.loc[row, 'ZIP_CODE'])
+            zip_code_for_test = zip_code_for_test if len(zip_code_for_test) <= 5 else zip_code_for_test[:5]
+            if zip_code_for_test not in state_to_zip_dict[new_address_df.loc[row, 'STATE']]:
+                new_address_df.loc[row, 'Zip_Code_Error'] = "Yes"
+            else:
+                new_address_df.loc[row, 'Zip_Code_Error'] = "No"
+                new_address_df.loc[row, 'CITY'] = zip_prim_city_dict[zip_code_for_test]
+        except:
+            new_address_df.loc[row,'Zip_Code_Error'] = "N/A"
+
+    return new_address_df

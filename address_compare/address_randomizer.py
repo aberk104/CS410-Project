@@ -220,5 +220,3 @@ def random_addresses2(n):
             a2s.append(format_address(address2, random.choice(address_formats_with_unit)))
 
     return pd.DataFrame.from_dict({'address_1': a1s, 'address_2': a2s, 'match': match})
-
-print(random_addresses2(1))

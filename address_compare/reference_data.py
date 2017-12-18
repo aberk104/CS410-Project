@@ -44,7 +44,6 @@ def all_us_cities_zips():
     all_fields_us_cities_zips['zip'] = all_fields_us_cities_zips['zip'].str.zfill(5)
 
     us_cities_zips = all_fields_us_cities_zips[['zip','primary_city','acceptable_cities','unacceptable_cities','state']].copy()
-
     return us_cities_zips
 
 
@@ -68,6 +67,7 @@ street_types = all_us_street_types()
 unit_types = all_us_unit_types()
 states = all_us_states()
 compass_points_def, key_val_switch_compass_pts = compass_points()
+city_zip_state = all_us_cities_zips()
 
 # Capitalize the values in the street_types dataframe and convert them into a dictionary
 all_caps_street_types_dict = dict()
@@ -86,6 +86,14 @@ for row in range(states.shape[0]):
     if states.notnull().loc[row, 'Abbreviation']:
         all_caps_states_dict[states.loc[row, 'Abbreviation'].upper()] = states.loc[row, 'State'].upper()
 
+# Capitalize values in the city/state/zip dataframe and convert them into a dictionary
+state_to_zip_dict = defaultdict(list)
+zip_to_primary_city = dict()
+for row in range(city_zip_state.shape[0]):
+    state_to_zip_dict[city_zip_state.loc[row, 'state'].upper()].append(city_zip_state.loc[row, 'zip'])
+    zip_to_primary_city[city_zip_state.loc[row, 'zip']] = city_zip_state.loc[row,'primary_city'].upper()
+
+
 # The following creates a nested dictionary where the first keys are the tags in the ordered dictionary.  These keys represent the keys for the tagged addresses that can be standardized via reference data
 nested_ref_dt_dict = defaultdict(dict)
 nested_ref_dt_dict['UNIT_TYPE'] = all_caps_unit_types_dict
@@ -96,3 +104,9 @@ nested_ref_dt_dict['STATE'] = all_caps_states_dict
 
 with open('data\\ref_dt_dict.json', 'w') as outfile:
     json.dump(nested_ref_dt_dict, outfile)
+
+with open('data\\state_zip_dict.json', 'w') as outfile:
+    json.dump(state_to_zip_dict, outfile)
+
+with open('data\\zip_prim_city.json', 'w') as outfile:
+    json.dump(zip_to_primary_city, outfile)
