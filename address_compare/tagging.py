@@ -8,11 +8,12 @@ import pkg_resources
 import pycrfsuite
 
 import address_compare.feature_extraction as fe
+from address_compare.parsers import omit_hyphens
 from address_compare.standardizers import standardizer
 
 MODEL = pkg_resources.resource_filename('address_compare', 'trained_models/model4')
 # noinspection PyPep8
-FE = fe.FeatureExtractor(lags=0, leads=0)
+FE = fe.FeatureExtractor(tokenizer=omit_hyphens, lags=0, leads=0)
 DF_ORDER = ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION",
             "UNIT_TYPE", "UNIT_NUMBER"]
 
@@ -25,7 +26,7 @@ class AddressTagger(object):
 
     def tag(self, s: str, concat: bool = True, standardize=False):
         tokens = self.feature_extractor.tokenizer(s)
-        features = self.feature_extractor.extract_features_from_token_list(s)
+        features = self.feature_extractor.extract_features_from_token_list(tokens)
         tags = self.tagger.tag(features)
         parsed_address = OrderedDict(UNIT_TYPE=[], UNIT_NUMBER=[], STREET_NUMBER=[], PRE_DIRECTION=[],
                                      STREET_NAME=[], STREET_TYPE=[], POST_DIRECTION=[], UNKNOWN=[])

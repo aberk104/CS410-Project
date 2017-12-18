@@ -403,15 +403,18 @@ DIRECTIONS = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw', 'north', 'south', 'eas
 #
 
 STREET_TYPES = ['ave',
+ 'avenue',
  'boulevard',
  'county',
  'crescent',
  'crossing',
+ 'court',
  'ct',
  'dr',
  'drive',
  'highway',
  'hwy',
+ 'lane',
  'ln',
  'loop',
  'pl',

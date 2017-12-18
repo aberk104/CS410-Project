@@ -10,6 +10,7 @@ from string import punctuation
 from address_compare.feature_extraction import FeatureExtractor, WordFeatures2, FullAddressFeatures
 import numpy as np
 import re
+from address_compare.parsers import omit_hyphens
 
 seed(1729)
 training_size = 0.7  # use 70% for training
@@ -23,7 +24,7 @@ with open('data/tagged_addresses.json') as f:
 
 wf = WordFeatures2()
 fa = FullAddressFeatures()
-fe = FeatureExtractor(lags = 0, leads = 0)
+fe = FeatureExtractor(tokenizer=omit_hyphens, lags = 0, leads = 0)
 
 for item in td:
     g = int(uniform() < training_size)
@@ -40,11 +41,17 @@ test_group = [d for g, d in zip(group, td) if g == 0]
 predicted = [tagger3.tag(fe.extract_features_from_token_list(t['tokens'])) for t in test_group]
 print(json.dumps([(t['raw_address'], fe.extract_features_from_token_list(t['tokens']), t['tags'], p) for t, p in zip(test_group, predicted) if t['tags'] != p],indent=2))
 
-for item in td:
-    g = int(uniform() < training_size)
-    features = fe.extract_features_from_token_list(item['tokens'])
-    if len(features) != len(item['tags']): print(item['tokens'])
-    trainer2.append(xseq = features, yseq = item['tags'], group=g)
-    group.append(g)
+print(tagger3.tag(fe.extract_features_from_string("#5 433 10TH AVE")))
+from address_compare.tagging import AddressTagger
+at = AddressTagger()
+print(at.tag("#5 433 10TH AVE"))
 
-trainer2.train('address_compare/trained_models/model4')
+#
+# for item in td:
+#     g = int(uniform() < training_size)
+#     features = fe.extract_features_from_token_list(item['tokens'])
+#     if len(features) != len(item['tags']): print(item['tokens'])
+#     trainer2.append(xseq = features, yseq = item['tags'], group=g)
+#     group.append(g)
+#
+# trainer2.train('address_compare/trained_models/model4')
