@@ -445,23 +445,6 @@
       ]
    },
    {
-      "raw_address":"560-2 HAWK HAVEN RD",
-      "tags":[
-         "UNIT_NUMBER",
-         "STREET_NUMBER",
-         "STREET_NAME",
-         "STREET_NAME",
-         "STREET_TYPE"
-      ],
-      "tokens":[
-         "560-",
-         "2",
-         "HAWK",
-         "HAVEN",
-         "RD"
-      ]
-   },
-   {
       "raw_address":"7019 RD 9 NW STE S",
       "tags":[
          "STREET_NUMBER",
@@ -1541,8 +1524,8 @@
       "raw_address":"485 STATE ROUTE 409",
       "tags":[
          "STREET_NUMBER",
-         "STREET_NAME",
-         "STREET_NAME",
+         "STREET_TYPE",
+         "STREET_TYPE",
          "STREET_NAME"
       ],
       "tokens":[
@@ -3088,7 +3071,7 @@
         ["UNIT_NUMBER", "STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
     },
          {
-       "raw_address":"400 PACIFICBOULEVARD",
+       "raw_address":"400 PACIFIC BOULEVARD",
         "tokens":["400", "PACIFIC", "BOULEVARD"],
         "tags":
         ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
@@ -3146,5 +3129,17 @@
         "tokens":["1546", "COUNTY", "ROAD", "7"],
         "tags":
         ["STREET_NUMBER", "STREET_TYPE", "STREET_TYPE", "STREET_NUMBER"]
+    },
+               {
+       "raw_address":"#1293 136 JAMES ROAD",
+        "tokens":["#1293", "136", "JAMES", "STREET"],
+        "tags":
+        ["UNIT_NUMBER", "STREET_NUMBER", "STREET_NAME", "STREET_TYPE"]
+    },
+                  {
+       "raw_address":"56946 246TH AVE NW #9",
+        "tokens":["56946", "246TH", "AVE", "NW", "#9"],
+        "tags":
+        ["STREET_NUMBER", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION", "UNIT_NUMBER"]
     }
 ]

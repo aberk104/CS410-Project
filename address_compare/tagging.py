@@ -25,7 +25,7 @@ class AddressTagger(object):
 
     def tag(self, s: str, concat: bool = True, standardize=False):
         tokens = self.feature_extractor.tokenizer(s)
-        features = self.feature_extractor.extract_features_from_token_list(s)
+        features = self.feature_extractor.extract_features_from_token_list(tokens)
         tags = self.tagger.tag(features)
         parsed_address = OrderedDict(UNIT_TYPE=[], UNIT_NUMBER=[], STREET_NUMBER=[], PRE_DIRECTION=[],
                                      STREET_NAME=[], STREET_TYPE=[], POST_DIRECTION=[], UNKNOWN=[])

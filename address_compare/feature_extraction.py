@@ -76,6 +76,9 @@ class WordFeatures2(FeatureFunctions):
     def f_unit_type(self, s: str):
         return s.lower().strip(punctuation) in UNIT_TYPES
 
+    def f_hwy(self, s: str):
+        return s.lower().strip(punctuation) in ['hwy', 'highway']
+
     #
     # def f_ends_in_hyphen(self, s: str):
     #     return s[-1] == '-'
