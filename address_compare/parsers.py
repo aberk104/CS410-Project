@@ -19,3 +19,6 @@ def hyphen_parse(s: str, tolower: bool = True) -> list:
     s = re.sub(' +-', '-', s)
     parts = [re.split('([^\s]+-)', k) for k in re.split(' |\t', s)]
     return [k for sl in parts for k in sl if k and (k != '-')]
+
+def omit_hyphen(s: str) -> list:
+    return [k.strip() for k in s.split() if k and (k != '-')]
