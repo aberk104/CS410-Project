@@ -3,7 +3,7 @@ This file contains aggregated functions to tag and match addresses
 '''
 import pandas as pd
 from address_compare import standardizers as stndrdzr
-from address_compare import crf_tagger as crf
+from address_compare import tagging as crf
 from address_compare import matcher as mtch
 from address_compare import address_randomizer as add_rndm
 from collections import OrderedDict
@@ -101,14 +101,20 @@ def pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, ru
     error_addresses_list_2 = joined_address_list_2.where(joined_address_list_2.Zip_Code_Error == "Yes").dropna()
 
     # Only Addresses without Zip Code Errors (I.e., where the Zip Code is valid for the given state)
-    nonerror_addresses_list_1 = joined_address_list_1.where(joined_address_list_1.Zip_Code_Error == "No").dropna()
-    nonerror_addresses_list_2 = joined_address_list_2.where(joined_address_list_2.Zip_Code_Error == "No").dropna()
+    nonerror_addresses_list_1 = joined_address_list_1.where(joined_address_list_1.Zip_Code_Error.isin(["No","N/A"])).dropna()
+    nonerror_addresses_list_2 = joined_address_list_2.where(joined_address_list_2.Zip_Code_Error.isin(["No","N/A"])).dropna()
 
     # Fix the type of the Record_ID and ZIP_CODE columns
-    nonerror_addresses_list_1 = nonerror_addresses_list_1.astype({'Record_ID': 'int', 'ZIP_CODE': 'int'})
-    nonerror_addresses_list_2 = nonerror_addresses_list_2.astype({'Record_ID': 'int', 'ZIP_CODE': 'int'})
-    nonerror_addresses_list_1 = nonerror_addresses_list_1.astype({'Record_ID': 'str', 'ZIP_CODE': 'str'})
-    nonerror_addresses_list_2 = nonerror_addresses_list_2.astype({'Record_ID': 'str', 'ZIP_CODE': 'str'})
+    try:
+        nonerror_addresses_list_1 = nonerror_addresses_list_1.astype({'Record_ID': 'int', 'ZIP_CODE': 'int'})
+        nonerror_addresses_list_2 = nonerror_addresses_list_2.astype({'Record_ID': 'int', 'ZIP_CODE': 'int'})
+        nonerror_addresses_list_1 = nonerror_addresses_list_1.astype({'Record_ID': 'str', 'ZIP_CODE': 'str'})
+        nonerror_addresses_list_2 = nonerror_addresses_list_2.astype({'Record_ID': 'str', 'ZIP_CODE': 'str'})
+    except:
+        nonerror_addresses_list_1 = nonerror_addresses_list_1.astype({'Record_ID': 'int'})
+        nonerror_addresses_list_2 = nonerror_addresses_list_2.astype({'Record_ID': 'int'})
+        nonerror_addresses_list_1 = nonerror_addresses_list_1.astype({'Record_ID': 'str'})
+        nonerror_addresses_list_2 = nonerror_addresses_list_2.astype({'Record_ID': 'str'})
 
     # Intra-Grouping of Tagged Address Lists to Consolidate Duplicates
     if runmode == 'comparer':

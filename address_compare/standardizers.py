@@ -103,7 +103,10 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
 def consolidate_address_list(address_df, column_names = None):
     if column_names == None:
         column_names = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNKNOWN','CITY','STATE','ZIP_CODE']
-    grouped_df = address_df.groupby(column_names, as_index=False)['Record_ID'].apply(tuple).to_frame().reset_index()
+    try:
+        grouped_df = address_df.groupby(column_names, as_index=False)['Record_ID'].apply(tuple).to_frame().reset_index()
+    except:
+        grouped_df = address_df.groupby(column_names, as_index=False)['Record_ID'].apply(tuple).reset_index()
     grouped_df = grouped_df.rename(columns={0:'Record_ID'})
     return grouped_df
 
@@ -130,13 +133,16 @@ def fix_cities_zips(address_df, state_to_zip_dict = state_zip_dict, zip_prim_cit
     new_address_df = address_df.copy()
     new_address_df['Zip_Code_Error'] = ""
     for row in range(address_df.shape[0]):
-        zip_code_for_test = str(new_address_df.loc[row, 'ZIP_CODE'])
-        zip_code_for_test = zip_code_for_test if len(zip_code_for_test) <= 5 else zip_code_for_test[:5]
-        if zip_code_for_test not in state_to_zip_dict[new_address_df.loc[row, 'STATE']]:
-            new_address_df.loc[row, 'Zip_Code_Error'] = "Yes"
-        else:
-            new_address_df.loc[row, 'Zip_Code_Error'] = "No"
-            new_address_df.loc[row, 'CITY'] = zip_prim_city_dict[zip_code_for_test]
+        try:
+            zip_code_for_test = str(new_address_df.loc[row, 'ZIP_CODE'])
+            zip_code_for_test = zip_code_for_test if len(zip_code_for_test) <= 5 else zip_code_for_test[:5]
+            if zip_code_for_test not in state_to_zip_dict[new_address_df.loc[row, 'STATE']]:
+                new_address_df.loc[row, 'Zip_Code_Error'] = "Yes"
+            else:
+                new_address_df.loc[row, 'Zip_Code_Error'] = "No"
+                new_address_df.loc[row, 'CITY'] = zip_prim_city_dict[zip_code_for_test]
+        except:
+            new_address_df.loc[row,'Zip_Code_Error'] = "N/A"
 
     return new_address_df
 
