@@ -44,5 +44,3 @@ tagger.open('address_compare/trained_models/model4')
 test_group = [d for g, d in zip(group, td) if g == 0]
 predicted = [tagger.tag(fe.extract_features_from_string(t['raw_address'])) for t in test_group]
 print(json.dumps([(t['raw_address'], t['tags'], p, fe.extract_features_from_string(t['raw_address'])) for t, p in zip(test_group, predicted) if t['tags'] != p],indent=2))
-
-trainer.train('address_compare/trained_models/model4')
