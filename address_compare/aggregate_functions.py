@@ -86,11 +86,15 @@ def __pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground
     return dataframes_for_tagger_excel
 
 
-def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, runmode = 'comparer'):
+def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, runmode = 'comparer', to_standardize=True):
 
     # Standardize/Fix Cities and States.  Add a column to denote records with Zip Code Errors
-    rawlist1 = stndrdzr.fix_cities_zips(rawlist1)
-    rawlist2 = stndrdzr.fix_cities_zips(rawlist2)
+    if to_standardize:
+        rawlist1 = stndrdzr.fix_cities_zips(rawlist1)
+        rawlist2 = stndrdzr.fix_cities_zips(rawlist2)
+    else:
+        rawlist1['Zip_Code_Error'] = 'N/A'
+        rawlist2['Zip_Code_Error'] = 'N/A'
 
     # Add Remaining Columns from Raw Address Dataframes to Tagged Address Dataframes
     joined_address_list_1 = taggedlist1.join(rawlist1[['Record_ID', 'CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN', 'Zip_Code_Error']])
@@ -201,9 +205,7 @@ def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=
 
     metrics_dict = OrderedDict()
 
-    metrics_dict = {'accuracy_list_1': accuracy_val_list_1,
-                    'accuracy_list_2': accuracy_val_list_2,
-                    'precision': precision_val,
+    metrics_dict = {'precision': precision_val,
                     'recall': recall_val,
                     'f1_score': f1score_val}
 
@@ -220,13 +222,10 @@ def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=
     return dataframes_for_excel
 
 
-def tagger_vs_ground_truths(file, use_raw_files = True, num_rndm_address = 100, field_rec_id=None, field_raw_address='Single String Address', to_standardize=True, missing_cols=missing_columns_from_file, ground_truth_cols=ground_truth_columns):
+def tagger_vs_ground_truths(file1, field_rec_id=None, field_raw_address='Single String Address', to_standardize=True, missing_cols=missing_columns_from_file, ground_truth_cols=ground_truth_columns):
 
-    # Create Dataframe from Raw Files or Random Addresses
-    if use_raw_files:
-        test_file = pd.read_excel(file1, keep_default_na=False, dtype=str)
-    else:
-        test_file = add_rndm.random_addresses(num_rndm_address, field_raw_address)
+    # Create Dataframe from Raw Files
+    test_file = pd.read_excel(file1, keep_default_na=False, dtype=str)
 
     # Add Record_ID to Dataframe if field_rec_id = None
     test_file = stndrdzr.record_id_addition(test_file, field_rec_id)
@@ -246,15 +245,11 @@ def tagger_vs_ground_truths(file, use_raw_files = True, num_rndm_address = 100, 
     return tagger_ground_truths_dict
 
 
-def tag_and_compare_addresses(file1, file2, groundtruths = None, use_raw_files = True, num_rndm_address = 100, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'comparer', missing_cols = missing_columns_from_file, matchtypes=["Exact", "Standardized Exact"]):
+def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'comparer', missing_cols = missing_columns_from_file, matchtypes=["Exact", "Standardized Exact"]):
 
-    # Create Dataframe from Raw Files or Random Addresses
-    if use_raw_files:
-        raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
-        raw_address_list_2 = pd.read_excel(file2, keep_default_na=False, dtype=str)
-    else:
-        raw_address_list_1 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
-        raw_address_list_2 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
+    # Create Dataframe from Raw Files
+    raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
+    raw_address_list_2 = pd.read_excel(file2, keep_default_na=False, dtype=str)
 
     # Add the Record_ID field if field_rec_id is None
     raw_address_list_1 = stndrdzr.record_id_addition(raw_address_list_1, field_rec_id)
@@ -272,7 +267,7 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, use_raw_files =
     tagged_address_list_2 = at.series_to_address_df(raw_address_list_2[field_raw_address], standardize=to_standardize)
 
     # Compare the 2 tagged address lists
-    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode)
+    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode, to_standardize)
 
     # Model Results vs. Ground Truths
     if (run_mode == 'comparer_truths'):
@@ -284,15 +279,12 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, use_raw_files =
 
 
 
-def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, use_raw_files = True, num_rndm_address = 100, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'all', missing_cols = missing_columns_from_file, ground_truth_cols = ground_truth_columns, matchtypes=["Exact", "Standardized Exact"]):
+def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'all', missing_cols = missing_columns_from_file, ground_truth_cols = ground_truth_columns, matchtypes=["Exact", "Standardized Exact"]):
 
-    # Create Dataframe from Raw Files or Random Addresses
-    if use_raw_files:
-        raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
-        raw_address_list_2 = pd.read_excel(file2, keep_default_na=False, dtype=str)
-    else:
-        raw_address_list_1 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
-        raw_address_list_2 = add_rndm.random_addresses(num_rndm_address, field_raw_address)
+    # Create Dataframe from Raw Files
+    raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
+    raw_address_list_2 = pd.read_excel(file2, keep_default_na=False, dtype=str)
+
 
     # Add the Record_ID field if field_rec_id is None
     raw_address_list_1 = stndrdzr.record_id_addition(raw_address_list_1, field_rec_id)
@@ -314,7 +306,7 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, use_raw_file
     tagger_ground_truths_dict_file2 = __pvt_tag_vs_ground_truths(tagged_address_list_2, raw_address_list_2)
 
     # Compare the 2 tagged address lists
-    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode)
+    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode, to_standardize)
 
     # Model Results vs. Ground Truths
     model_comps_vs_truths_dict = __pvt_address_compare_vs_ground_truths(groundtruths, compared_lists_dict, matchtypes)
