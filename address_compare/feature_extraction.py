@@ -6,7 +6,11 @@ from typing import List
 from address_compare.constants import DIRECTIONS, STREET_TYPES, UNIT_TYPES
 from string import punctuation
 import pycrfsuite
-from address_compare.parsers import hyphen_parse
+from address_compare.parsers import omit_hyphen
+
+DEFAULT_TOKENIZER = omit_hyphen
+DEFAULT_LAGS = 0
+DEFAULT_LEADS = 1
 
 
 class FeatureFunctions:
@@ -110,8 +114,8 @@ class FullAddressFeatures(FeatureFunctions):
 
 class FeatureExtractor(object):
 
-    def __init__(self, tokenizer=lambda x: x.split(), word_features: FeatureFunctions = WordFeatures2(),
-                 sentence_features: FeatureFunctions = FullAddressFeatures(), lags=2, leads = 2):
+    def __init__(self, tokenizer=DEFAULT_TOKENIZER, word_features: FeatureFunctions = WordFeatures2(),
+                 sentence_features: FeatureFunctions = FullAddressFeatures(), lags=DEFAULT_LAGS, leads = DEFAULT_LEADS):
         self.tokenizer = tokenizer
         self.word_features = word_features
         self.sentence_features = sentence_features
@@ -132,10 +136,10 @@ class FeatureExtractor(object):
             word_features.update(sentence_features)
             for j in range(self.lags):
                 if i > j:
-                    word_features.update(self.word_features.exec_all(token_list[i - j - 1], prefix='lag{}_'.format(j)))
+                    word_features.update(self.word_features.exec_all(token_list[i - j - 1], prefix='lag{}_'.format(j+1)))
             for j in range(self.leads):
                 if i + j + 1 < n:
-                    word_features.update(self.word_features.exec_all(token_list[i + j + 1], prefix='lead{}_'.format(j)))
+                    word_features.update(self.word_features.exec_all(token_list[i + j + 1], prefix='lead{}_'.format(j+1)))
 
             token_features.append(word_features)
         return token_features
