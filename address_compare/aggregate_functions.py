@@ -16,7 +16,7 @@ ground_truth_columns = ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street 
                         'Tagged Unit Number']
 
 
-def pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground_truth_columns):
+def __pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground_truth_columns):
 
     # Add Record_ID Field to Tagged Addresses
     crf_tagged_test_file = tagged_file.join(testfile['Record_ID'])
@@ -86,7 +86,7 @@ def pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground_t
     return dataframes_for_tagger_excel
 
 
-def pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, runmode = 'comparer'):
+def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, runmode = 'comparer'):
 
     # Standardize/Fix Cities and States.  Add a column to denote records with Zip Code Errors
     rawlist1 = stndrdzr.fix_cities_zips(rawlist1)
@@ -143,7 +143,7 @@ def pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, ru
     return dataframes_for_excel
 
 
-def pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=["Exact", "Standardized Exact"]):
+def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=["Exact", "Standardized Exact"]):
     # Create Dataframe for Ground Truths
     manual_matches = pd.read_excel(groundtruths, keep_default_na=False, dtype=str)
 
@@ -238,7 +238,7 @@ def tagger_vs_ground_truths(file, field_rec_id=None, field_raw_address='Single S
     tagged_test_file = tagger.series_to_address_df(test_file[field_raw_address], standardize=to_standardize)
 
     # Compare Tagger Results to Ground Truths
-    tagger_ground_truths_dict = pvt_tag_vs_ground_truths(tagged_test_file, test_file, ground_truth_cols)
+    tagger_ground_truths_dict = __pvt_tag_vs_ground_truths(tagged_test_file, test_file, ground_truth_cols)
 
     return tagger_ground_truths_dict
 
@@ -269,11 +269,11 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, use_raw_files =
     tagged_address_list_2 = at.series_to_address_df(raw_address_list_2[field_raw_address], standardize=to_standardize)
 
     # Compare the 2 tagged address lists
-    compared_lists_dict = pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode)
+    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode)
 
     # Model Results vs. Ground Truths
     if (run_mode == 'comparer_truths'):
-        model_comps_vs_truths_dict = pvt_address_compare_vs_ground_truths(groundtruths, compared_lists_dict, matchtypes)
+        model_comps_vs_truths_dict = __pvt_address_compare_vs_ground_truths(groundtruths, compared_lists_dict, matchtypes)
     else:
         model_comps_vs_truths_dict = dict()
 
@@ -307,14 +307,14 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, use_raw_file
     tagged_address_list_2 = at.series_to_address_df(raw_address_list_2[field_raw_address], standardize=to_standardize)
 
     # Compare Tagger Results to Ground Truths
-    tagger_ground_truths_dict_file1 = pvt_tag_vs_ground_truths(tagged_address_list_1, raw_address_list_1)
-    tagger_ground_truths_dict_file2 = pvt_tag_vs_ground_truths(tagged_address_list_2, raw_address_list_2)
+    tagger_ground_truths_dict_file1 = __pvt_tag_vs_ground_truths(tagged_address_list_1, raw_address_list_1)
+    tagger_ground_truths_dict_file2 = __pvt_tag_vs_ground_truths(tagged_address_list_2, raw_address_list_2)
 
     # Compare the 2 tagged address lists
-    compared_lists_dict = pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode)
+    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode)
 
     # Model Results vs. Ground Truths
-    model_comps_vs_truths_dict = pvt_address_compare_vs_ground_truths(groundtruths, compared_lists_dict, matchtypes)
+    model_comps_vs_truths_dict = __pvt_address_compare_vs_ground_truths(groundtruths, compared_lists_dict, matchtypes)
 
     return tagger_ground_truths_dict_file1, tagger_ground_truths_dict_file2, compared_lists_dict, model_comps_vs_truths_dict
 
