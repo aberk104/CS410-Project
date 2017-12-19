@@ -220,10 +220,13 @@ def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, matchtypes=
     return dataframes_for_excel
 
 
-def tagger_vs_ground_truths(file, field_rec_id=None, field_raw_address='Single String Address', to_standardize=True, missing_cols=missing_columns_from_file, ground_truth_cols=ground_truth_columns):
+def tagger_vs_ground_truths(file, use_raw_files = True, num_rndm_address = 100, field_rec_id=None, field_raw_address='Single String Address', to_standardize=True, missing_cols=missing_columns_from_file, ground_truth_cols=ground_truth_columns):
 
-    # Create Dataframe from Raw File
-    test_file = pd.read_excel(file, keep_default_na=False, dtype=str)
+    # Create Dataframe from Raw Files or Random Addresses
+    if use_raw_files:
+        test_file = pd.read_excel(file1, keep_default_na=False, dtype=str)
+    else:
+        test_file = add_rndm.random_addresses(num_rndm_address, field_raw_address)
 
     # Add Record_ID to Dataframe if field_rec_id = None
     test_file = stndrdzr.record_id_addition(test_file, field_rec_id)
