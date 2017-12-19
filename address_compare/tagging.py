@@ -10,9 +10,11 @@ import pycrfsuite
 import address_compare.feature_extraction as fe
 from address_compare.standardizers import standardizer
 
+DEFAULT_LAGS = 0
+DEFAULT_LEADS = 1
 MODEL = pkg_resources.resource_filename('address_compare', 'trained_models/model4')
 # noinspection PyPep8
-FE = fe.FeatureExtractor(lags=0, leads=0)
+FE = fe.FeatureExtractor(lags = DEFAULT_LAGS, leads = DEFAULT_LEADS)
 DF_ORDER = ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "POST_DIRECTION",
             "UNIT_TYPE", "UNIT_NUMBER"]
 
