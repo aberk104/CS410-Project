@@ -312,5 +312,3 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id
     model_comps_vs_truths_dict = __pvt_address_compare_vs_ground_truths(groundtruths, compared_lists_dict, matchtypes)
 
     return tagger_ground_truths_dict_file1, tagger_ground_truths_dict_file2, compared_lists_dict, model_comps_vs_truths_dict
-
-
