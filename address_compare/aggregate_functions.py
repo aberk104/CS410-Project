@@ -86,7 +86,7 @@ def __pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground
     return dataframes_for_tagger_excel
 
 
-def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, runmode = 'comparer', to_standardize=True, matchtype = 'exact_match', threshold = 0.95):
+def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, runmode = 'comparer', to_standardize=True, matchtype = 'exact_match', threshold = 0.95, match5zip = True):
 
     # Standardize/Fix Cities and States.  Add a column to denote records with Zip Code Errors
     if to_standardize:
@@ -128,19 +128,38 @@ def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, 
         grouped_address_list_1 = nonerror_addresses_list_1.copy()
         grouped_address_list_2 = nonerror_addresses_list_2.copy()
 
+    # Create Column with 5 Digit Zips for Matching if Applicable
+    grouped_address_list_1['FULL_ZIP_CODE'] = grouped_address_list_1['ZIP_CODE']
+    grouped_address_list_2['FULL_ZIP_CODE'] = grouped_address_list_2['ZIP_CODE']
+    if match5zip:
+        grouped_address_list_1['ZIP_CODE'] = grouped_address_list_1.FULL_ZIP_CODE.str.slice(stop=5)
+        grouped_address_list_2['ZIP_CODE'] = grouped_address_list_2.FULL_ZIP_CODE.str.slice(stop=5)
+
+
     # Call Either the Exact Match or Learning Match Functions to match the 2 lists
     if matchtype == 'exact_match':
-        matches = mtch.exact_matcher(grouped_address_list_1, grouped_address_list_2)
+        matches_all_cols = mtch.exact_matcher(grouped_address_list_1, grouped_address_list_2)
+        columnorder = ['Record_ID_list_1','Record_ID_list_2','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','UNIT_TYPE','UNIT_NUMBER','UNKNOWN','CITY','STATE','ZIP_CODE','FULL_ZIP_CODE_list_1','FULL_ZIP_CODE_list_2']
+        matches = matches_all_cols[columnorder]
     else:
+#        unique_zips = grouped_address_list_1.ZIP_CODE.unique()
         pm = prob_mtch.ProbMatcher()
+#        prob_matches = pd.DataFrame()
+#        for zipcode in unique_zips:
+#            dflist1 = grouped_address_list_1.where(grouped_address_list_1.ZIP_CODE == zipcode).dropna().reset_index()
+#            dflist2 = grouped_address_list_2.where(grouped_address_list_2.ZIP_CODE == zipcode).dropna().reset_index()
+#            if dflist1.shape[0] > 0 and dflist2.shape[0] > 0:
+#                mtches = pm.match_probabilities(dflist1, dflist2, threshold)
+#            print (mtches)
         matches_all_cols = pm.match_probabilities(grouped_address_list_1, grouped_address_list_2, threshold)
         matches_all_cols = matches_all_cols.merge(grouped_address_list_1,left_on='index_1', right_index=True )
-        matches_all_cols = matches_all_cols.rename(columns={'Record_ID':'Record_ID_list_1'})
-        matches_all_cols = matches_all_cols.merge(grouped_address_list_2,left_on='index_2', right_index=True )
-        matches_all_cols = matches_all_cols.rename(columns={'Record_ID':'Record_ID_list_2'})
-#        output_name = 'data\\raw_to_matched_addresses_all_cols_test.xlsx'
-#        matches_all_cols.to_excel(output_name)
-        matches = matches_all_cols[['Record_ID_list_1','Record_ID_list_2','probs']]
+        matches_all_cols = matches_all_cols.merge(grouped_address_list_2,left_on='index_2', right_index=True, suffixes=('_list_1','_list_2') )
+        columnorder = ['Record_ID_list_1', 'Record_ID_list_2','probs', 'STREET_NUMBER_list_1', 'PRE_DIRECTION_list_1', 'STREET_NAME_list_1',
+                       'STREET_TYPE_list_1', 'POST_DIRECTION_list_1', 'UNIT_TYPE_list_1', 'UNIT_NUMBER_list_1', 'UNKNOWN_list_1', 'CITY_list_1', 'STATE_list_1',
+                       'ZIP_CODE_list_1', 'FULL_ZIP_CODE_list_1', 'STREET_NUMBER_list_2', 'PRE_DIRECTION_list_2', 'STREET_NAME_list_2',
+                       'STREET_TYPE_list_2', 'POST_DIRECTION_list_2', 'UNIT_TYPE_list_2', 'UNIT_NUMBER_list_2', 'UNKNOWN_list_2', 'CITY_list_2', 'STATE_list_2',
+                       'ZIP_CODE_list_2', 'FULL_ZIP_CODE_list_2']
+        matches = matches_all_cols[columnorder]
 
     # Create Separate Dataframe for Unmatched Addresses
     unmatched_address_list_1 = grouped_address_list_1.mask(grouped_address_list_1.Record_ID.isin(matches['Record_ID_list_1'])).dropna()
@@ -151,7 +170,7 @@ def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, 
                             'raw_addresses_list2': rawlist2,
                             'zip_errors_list1': error_addresses_list_1,
                             'zip_errors_list2': error_addresses_list_2,
-                            'exact_matches': matches,
+                            'matches': matches,
                             'unmatched_list_1': unmatched_address_list_1,
                             'unmatched_list_2': unmatched_address_list_2}
 
@@ -166,7 +185,7 @@ def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, groundtruth
     golden_exact_matches = manual_matches.where(manual_matches.Match_Type.isin(groundtruth_matchtypes)).dropna().reset_index()
 
     # Split out Dataframe for Matched Addresses
-    matched_addresses = compeddict['exact_matches']
+    matched_addresses = compeddict['matches']
 
     # Columns with Matched Record IDs
     join_cols = ['Record_ID_list_1', 'Record_ID_list_2']
@@ -212,7 +231,7 @@ def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, groundtruth
     accuracy_val_list_2 = total_correct_positive_matches / total_records_list_2
     precision_val = total_correct_positive_matches / (total_correct_positive_matches + false_positives)
     recall_val = total_correct_positive_matches / (total_correct_positive_matches + false_negatives)
-    f1score_val = (2 * precision_val * recall_val) / (precision_val + recall_val)
+    f1score_val = (2 * precision_val * recall_val) / (precision_val + recall_val) if (precision_val + recall_val) > 0 else 0
 
     metrics_dict = OrderedDict()
 
@@ -256,7 +275,7 @@ def tagger_vs_ground_truths(file1, field_rec_id=None, field_raw_address='Single 
     return tagger_ground_truths_dict
 
 
-def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'comparer', missing_cols = missing_columns_from_file, groundtruth_matchtypes=["Exact", "Standardized Exact"], matchtype = 'exact_match', threshold = 0.95):
+def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'comparer', missing_cols = missing_columns_from_file, groundtruth_matchtypes=["Exact", "Standardized Exact"], matchtype = 'exact_match', threshold = 0.95, match5zip = True):
 
     # Create Dataframe from Raw Files
     raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
@@ -277,8 +296,11 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = 
     tagged_address_list_1 = at.series_to_address_df(raw_address_list_1[field_raw_address], standardize=to_standardize)
     tagged_address_list_2 = at.series_to_address_df(raw_address_list_2[field_raw_address], standardize=to_standardize)
 
+    # Fix the Threshold if not within [0,1]
+    mtch_threshold = min(1,max(0,threshold))
+
     # Compare the 2 tagged address lists
-    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode, to_standardize, matchtype, threshold)
+    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode, to_standardize, matchtype, mtch_threshold, match5zip)
 
     # Model Results vs. Ground Truths
     if (run_mode == 'comparer_truths'):
@@ -292,7 +314,7 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = 
 
 
 
-def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'all', missing_cols = missing_columns_from_file, ground_truth_cols = ground_truth_columns, groundtruth_matchtypes=["Exact", "Standardized Exact"], matchtype = 'exact_match', threshold = 0.95):
+def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'all', missing_cols = missing_columns_from_file, ground_truth_cols = ground_truth_columns, groundtruth_matchtypes=["Exact", "Standardized Exact"], matchtype = 'exact_match', threshold = 0.95, match5zip = True):
 
     # Create Dataframe from Raw Files
     raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
@@ -318,8 +340,11 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id
     tagger_ground_truths_dict_file1 = __pvt_tag_vs_ground_truths(tagged_address_list_1, raw_address_list_1)
     tagger_ground_truths_dict_file2 = __pvt_tag_vs_ground_truths(tagged_address_list_2, raw_address_list_2)
 
+    # Fix the Threshold if not within [0,1]
+    mtch_threshold = min(1,max(0,threshold))
+
     # Compare the 2 tagged address lists
-    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode, to_standardize, matchtype, threshold)
+    compared_lists_dict = __pvt_compare_2_address_lists(raw_address_list_1, raw_address_list_2, tagged_address_list_1, tagged_address_list_2, run_mode, to_standardize, matchtype, mtch_threshold, match5zip)
 
     # Model Results vs. Ground Truths
     if matchtype != 'exact_match':

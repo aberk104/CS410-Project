@@ -22,10 +22,12 @@ file_name_ground_truth_matches = 'data\\marijuana applicants test data - correct
 
 write_output_to_excel = True #if True, the output from the applicable modes will be written to Excel; otherwise, results will be printed in the notebook
 
+match_5_digit_zip = True #if True, the matchers will only look at the 5 digit zips; if False, the matchers will look at all provided digits
+
 matchtype = 'probabilistic_match' #choose from ['exact_match','probabilistic_match']
 prob_threshold = 0.95 #choose a value between 0 and 1, inclusive
 
-compared_dict, matcher_truths_dict = aggf.tag_and_compare_addresses(file_location_raw_addresses_1, file_location_raw_addresses_2, file_name_ground_truth_matches, field_name_record_id, field_name_raw_addresses, standardize_addresses, run_mode, matchtype=matchtype, threshold=prob_threshold)
+compared_dict, matcher_truths_dict = aggf.tag_and_compare_addresses(file_location_raw_addresses_1, file_location_raw_addresses_2, file_name_ground_truth_matches, field_name_record_id, field_name_raw_addresses, standardize_addresses, run_mode, matchtype=matchtype, threshold=prob_threshold, match5zip=match_5_digit_zip)
 
 output_name = 'output\\raw_to_matched_addresses.xlsx'
 tagger_writer = pd.ExcelWriter(output_name, engine='xlsxwriter')
