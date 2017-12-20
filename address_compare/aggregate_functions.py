@@ -1,6 +1,8 @@
 '''
-This file contains aggregated functions to tag and match addresses
+This file contains aggregated functions to tag and match addresses.  These 3 functions can be called independently (self-contained functions) in place of calling separate functions
+within the standardizers.py, matcher.py, prob_matchers.py, and other associated files in the address_compare folder.
 '''
+
 import pandas as pd
 from address_compare import standardizers as stndrdzr
 from address_compare import tagging as crf
@@ -17,6 +19,22 @@ ground_truth_columns = ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street 
 
 
 def __pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground_truth_columns):
+    '''
+    This is a private function and is used within this file to compare the tagged addresses to the ground truth values and return a set of metrics.
+    :param tagged_file: a dataframe with the parsed and tagged addresses from the CRF model
+    :param testfile: a dataframe with the raw data and ground truth columns
+    :param ground_truth_cols: A list of columns representing the ground truth values in the source files.  This is used to split the raw addresses from the ground truth columns in a subsequent function. It is defaulted to ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street Direction', 'Tagged Street Name',
+                        'Tagged Street Type', 'Tagged Post Street Direction', 'Tagged Unit Type',
+                        'Tagged Unit Number']
+    :return: The function returns a dictionary containing:
+            {'test_data_file': a dataframe containing the raw test file,
+            'crf_tagged_output': a dataframe with the tagged output from the model,
+            'crf_output_w_id': a dataframe with the tagged output plus the record id,
+            'ground_truth_test_file': a dataframe with the ground truth versions of each record,
+            'correctly_tagged': a dataframe with all records correctly tagged by the model (i.e., matches the ground truth tags),
+            'incorrectly_tagged': a dataframe with all records incorrectly matched by the model (i.e., does not match the ground truth tags),
+            'tagger_metrics': a dataframe with metrics for how well the model tagged each column along with the overall accuracy of the model as compared to the ground truths}
+    '''
 
     # Add Record_ID Field to Tagged Addresses
     crf_tagged_test_file = tagged_file.join(testfile['Record_ID'])
@@ -87,6 +105,26 @@ def __pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground
 
 
 def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, runmode = 'comparer', to_standardize=True, matchtype = 'exact_match', threshold = 0.95, match5zip = True):
+    '''
+    This is a private function and is used within this file to compare the 2 tagged address lists against each other.
+    :param rawlist1: a dataframe containing the raw addresses from file1
+    :param rawlist2: a dataframe containing the raw addresses from file2
+    :param taggedlist1: a dataframe containing the tagged addresses from file1 after having been run through the CRF model
+    :param taggedlist2: a dataframe containing the tagged addresses from file2 after having been run through the CRF model
+    :param runmode: either 'comparer', 'comparer_truths','all'.  If 'comparer', this function will group addresses inside each list before matching across lists (to de-dupe).  If 'comparer_truths' or 'all', the function will not group addresses inside each list
+    :param to_standardize: A True/False variable that determines whether or not cities will be standardized to the "primary_city" value per the USPS and whether or not invalid zip codes will be flagged.  True means the cities and zip codes will be standardized/validated
+    :param matchtype: This can only be populated with 'exact_match' or 'probabilistic_match' and is defaulted to 'exact_match'. Exact_match means that only identical records in the 2 files will be matched; 'probabilistic_match' will also return matches that are greater than or equal to the specified threshold according to a random forest model
+    :param threshold: If matchtype == 'probabilistic_match', records with a match score from the random_forest model greater than or equal to the threshold will be considered to be matched.
+    :param match5zip: A True/False variable indicating whether the matcher should utilize the 5 digit zip code or all populated digits in the ZIP_CODE field.  If True, the matcher will only use the first 5 digits of the zip code field
+    :return: The function returns a dictionary containing the following:
+            {'raw_addresses_list1': a dataframe containing the raw values from file1,
+                'raw_addresses_list2': a dataframe containing the raw values from file2,
+                'zip_errors_list1': a dataframe containing all records from file1 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+                'zip_errors_list2': a dataframe containing all records from file2 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+                'matches': a dataframe containing all matching records between file1 and file2,
+                'unmatched_list_1': the remaining records from file1 that don't have a match in file2,
+                'unmatched_list_2': the remaining records from file2 that don't have a match in file1}
+    '''
 
     # Standardize/Fix Cities and States.  Add a column to denote records with Zip Code Errors
     if to_standardize:
@@ -178,6 +216,21 @@ def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, 
 
 
 def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, groundtruth_matchtypes=["Exact", "Standardized Exact"]):
+    '''
+    This is a private function and is used within this file to compare the modeled matches against the ground truth matches and return various metrics.
+    :param groundtruths: The location of the file containing the ground truth values for the matched records (i.e., the ground truths for which records should be matched). For this version of the function, this file should contain the following 3 fields:
+    - 'Record_ID_list_1' - the record IDs from file1
+    - 'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
+    - 'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
+    :param compeddict: this is the outputted dictionary from the __pvt_compare_2_address_lists function and is passed into this function
+    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'
+    :return: A dictionary containing the following:
+            {'model_vs_truths': a dataframe containing the matching record IDs from the model that can also be found in the ground truths,
+                'truths_not_in_model': a dataframe containing the matching record IDs in the ground truths file that are not in the model,
+                'model_not_in_truths': a dataframe containing the matching record IDs in the model that are not in the ground truths,
+                'all_metrics': a dataframe showing the precision, recall, and f1 score for the modeled matches against the ground truths}
+    '''
+
     # Create Dataframe for Ground Truths
     manual_matches = pd.read_excel(groundtruths, keep_default_na=False, dtype=str)
 
@@ -253,6 +306,27 @@ def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, groundtruth
 
 
 def tagger_vs_ground_truths(file1, field_rec_id=None, field_raw_address='Single String Address', to_standardize=True, missing_cols=missing_columns_from_file, ground_truth_cols=ground_truth_columns):
+    '''
+    This function parses and tags a list of addresses, standardizes the tagged values if applicable, and compares the tagged results vs. the ground truth results found in the same file.
+    For this version of the function, the ground truth columns must be named: 'Tagged Street Address', 'Tagged Pre Street Direction', 'Tagged Street Name', 'Tagged Street Type',
+    'Tagged Post Street Direction', 'Tagged Unit Type', and 'Tagged Unit Number'.
+    :param file1: The location of the source file containing the raw addresses and associated ground truths
+    :param field_rec_id: The name of the field representing the Record_ID for each record in the file. Defaulted to None if not populated
+    :param field_raw_address: The name of the field representing the raw addresses to be parsed and tagged.  Defaulted to "Single String Address"
+    :param to_standardize: A True/False variable denoting whether or not the tagged address components will be standardized (changed to ALL CAPS, long form names, etc.). True = tagged components will be standardized
+    :param missing_cols: A list of columns that do not exist in the source file but need to be added by the program.  If not populated, will be defaulted to ['CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN']
+    :param ground_truth_cols: A list of columns representing the ground truth values in the source files.  This is used to split the raw addresses from the ground truth columns in a subsequent function. It is defaulted to ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street Direction', 'Tagged Street Name',
+                        'Tagged Street Type', 'Tagged Post Street Direction', 'Tagged Unit Type',
+                        'Tagged Unit Number']
+    :return tagger_ground_truths_dict: The function returns a dictionary containing:
+            {'test_data_file': a dataframe containing the raw test file,
+            'crf_tagged_output': a dataframe with the tagged output from the model,
+            'crf_output_w_id': a dataframe with the tagged output plus the record id,
+            'ground_truth_test_file': a dataframe with the ground truth versions of each record,
+            'correctly_tagged': a dataframe with all records correctly tagged by the model (i.e., matches the ground truth tags),
+            'incorrectly_tagged': a dataframe with all records incorrectly matched by the model (i.e., does not match the ground truth tags),
+            'tagger_metrics': a dataframe with metrics for how well the model tagged each column along with the overall accuracy of the model as compared to the ground truths}
+    '''
 
     # Create Dataframe from Raw Files
     test_file = pd.read_excel(file1, keep_default_na=False, dtype=str)
@@ -276,6 +350,40 @@ def tagger_vs_ground_truths(file1, field_rec_id=None, field_raw_address='Single 
 
 
 def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'comparer', missing_cols = missing_columns_from_file, groundtruth_matchtypes=["Exact", "Standardized Exact"], matchtype = 'exact_match', threshold = 0.95, match5zip = True):
+    '''
+    This function parses and tags 2 lists of addresses, standardizes the tagged values if applicable, and matches the addresses in the 2 files via the specified matchtype.
+    If run_mode == 'comparer_truths', this function will also compare the matched records to the ground truth values found in the groundtruths file.
+    :param file1: The location of the first source file containing the raw addresses to be parsed, tagged, and matched.
+    :param file2: The location of the second source file containing the raw addresses to be parsed, tagged, and matched.
+    :param groundtruths: The location of the file containing the ground truth values for the matched records (i.e., the ground truths for which records should be matched). For this version of the function, this file should contain the following 3 fields:
+    - 'Record_ID_list_1' - the record IDs from file1
+    - 'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
+    - 'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
+    :param field_rec_id: The name of the field representing the Record_ID for each record in the files. Defaulted to None if not populated.  This variable applies to both input files
+    :param field_raw_address: The name of the field representing the raw addresses to be parsed and tagged.  Defaulted to "Single String Address".  This variable applies to both input files
+    :param to_standardize: A True/False variable denoting whether or not the tagged address components will be standardized (changed to ALL CAPS, long form names, etc.). True = tagged components will be standardized.  True also means that cities will be standardized to their primary city based on the Zip Code and that the Zip Codes are validated against the populated State field
+    :param run_mode: This can only be populated with "comparer" or "comparer_truths".  Comparer_truths means that the matched records from the model will be compared against the ground truth matches found in the groundtruths file. Comparer means that this function will only match the 2 lists of addresses
+    :param missing_cols: A list of columns that do not exist in the source files but need to be added by the program.  If not populated, will be defaulted to ['CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN']
+    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'
+    :param matchtype: This can only be populated with 'exact_match' or 'probabilistic_match' and is defaulted to 'exact_match'. Exact_match means that only identical records in the 2 files will be matched; 'probabilistic_match' will also return matches that are greater than or equal to the specified threshold according to a random forest model
+    :param threshold: If matchtype == 'probabilistic_match', records with a match score from the random_forest model greater than or equal to the threshold will be considered to be matched.
+    :param match5zip: A True/False variable indicating whether the matcher should utilize the 5 digit zip code or all populated digits in the ZIP_CODE field.  If True, the matcher will only use the first 5 digits of the zip code field
+    :return: The function returns 2 dictionaries. The first dictionary contains the following:
+            {'raw_addresses_list1': a dataframe containing the raw values from file1,
+                'raw_addresses_list2': a dataframe containing the raw values from file2,
+                'zip_errors_list1': a dataframe containing all records from file1 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+                'zip_errors_list2': a dataframe containing all records from file2 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+                'matches': a dataframe containing all matching records between file1 and file2,
+                'unmatched_list_1': the remaining records from file1 that don't have a match in file2,
+                'unmatched_list_2': the remaining records from file2 that don't have a match in file1}
+            The second dictionary will be empty if run_mode == 'comparer'. If run_mode == 'comparer_truths', it contains the following:
+            {'model_vs_truths': a dataframe containing the matching record IDs from the model that can also be found in the ground truths,
+                'truths_not_in_model': a dataframe containing the matching record IDs in the ground truths file that are not in the model,
+                'model_not_in_truths': a dataframe containing the matching record IDs in the model that are not in the ground truths,
+                'all_metrics': a dataframe showing the precision, recall, and f1 score for the modeled matches against the ground truths}
+    '''
+
+
 
     # Create Dataframe from Raw Files
     raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
@@ -315,6 +423,64 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = 
 
 
 def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'all', missing_cols = missing_columns_from_file, ground_truth_cols = ground_truth_columns, groundtruth_matchtypes=["Exact", "Standardized Exact"], matchtype = 'exact_match', threshold = 0.95, match5zip = True):
+    '''
+    This function is a combination of the tagger_vs_ground_truths and tag_and_compare_addresses functions. It will parse, tag, and standardize the addresses for each file.  It will compare
+    the tagged addresses in each file to the ground truth versions and return the corresponding metrics.  It will then match the addresses in the files according to the specifed matchtype and
+    compare how well the matcher performed against the groundtruths.  Similar to the tagger_vs_ground_truths function, for this version of the function, the ground truth columns must be named: 'Tagged Street Address', 'Tagged Pre Street Direction', 'Tagged Street Name', 'Tagged Street Type',
+    'Tagged Post Street Direction', 'Tagged Unit Type', and 'Tagged Unit Number'.
+    :param file1: The location of the first source file containing the raw addresses to be parsed, tagged, and matched.
+    :param file2: The location of the second source file containing the raw addresses to be parsed, tagged, and matched.
+    :param groundtruths: The location of the file containing the ground truth values for the matched records (i.e., the ground truths for which records should be matched). For this version of the function, this file should contain the following 3 fields:
+    - 'Record_ID_list_1' - the record IDs from file1
+    - 'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
+    - 'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
+    :param field_rec_id: The name of the field representing the Record_ID for each record in the files. Defaulted to None if not populated.  This variable applies to both input files
+    :param field_raw_address: The name of the field representing the raw addresses to be parsed and tagged.  Defaulted to "Single String Address".  This variable applies to both input files
+    :param to_standardize: A True/False variable denoting whether or not the tagged address components will be standardized (changed to ALL CAPS, long form names, etc.). True = tagged components will be standardized.  True also means that cities will be standardized to their primary city based on the Zip Code and that the Zip Codes are validated against the populated State field
+    :param run_mode: This can only be populated with "comparer" or "comparer_truths".  Comparer_truths means that the matched records from the model will be compared against the ground truth matches found in the groundtruths file. Comparer means that this function will only match the 2 lists of addresses
+    :param missing_cols: A list of columns that do not exist in the source files but need to be added by the program.  If not populated, will be defaulted to ['CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN']
+    :param ground_truth_cols: A list of columns representing the ground truth values in the source files.  This is used to split the raw addresses from the ground truth columns in a subsequent function. It is defaulted to ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street Direction', 'Tagged Street Name',
+                        'Tagged Street Type', 'Tagged Post Street Direction', 'Tagged Unit Type',
+                        'Tagged Unit Number']
+    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'
+    :param matchtype: This can only be populated with 'exact_match' or 'probabilistic_match' and is defaulted to 'exact_match'. Exact_match means that only identical records in the 2 files will be matched; 'probabilistic_match' will also return matches that are greater than or equal to the specified threshold according to a random forest model
+    :param threshold: If matchtype == 'probabilistic_match', records with a match score from the random_forest model greater than or equal to the threshold will be considered to be matched.
+    :param match5zip: A True/False variable indicating whether the matcher should utilize the 5 digit zip code or all populated digits in the ZIP_CODE field.  If True, the matcher will only use the first 5 digits of the zip code field
+    :return: The function returns 4 dictionaries.
+
+            The first dictionary contains the following and is applicable to file1:
+            {'test_data_file': a dataframe containing the raw test file,
+            'crf_tagged_output': a dataframe with the tagged output from the model,
+            'crf_output_w_id': a dataframe with the tagged output plus the record id,
+            'ground_truth_test_file': a dataframe with the ground truth versions of each record,
+            'correctly_tagged': a dataframe with all records correctly tagged by the model (i.e., matches the ground truth tags),
+            'incorrectly_tagged': a dataframe with all records incorrectly matched by the model (i.e., does not match the ground truth tags),
+            'tagger_metrics': a dataframe with metrics for how well the model tagged each column along with the overall accuracy of the model as compared to the ground truths}
+
+            The second dictionary contains the following and is applicable to file2:
+            {'test_data_file': a dataframe containing the raw test file,
+            'crf_tagged_output': a dataframe with the tagged output from the model,
+            'crf_output_w_id': a dataframe with the tagged output plus the record id,
+            'ground_truth_test_file': a dataframe with the ground truth versions of each record,
+            'correctly_tagged': a dataframe with all records correctly tagged by the model (i.e., matches the ground truth tags),
+            'incorrectly_tagged': a dataframe with all records incorrectly matched by the model (i.e., does not match the ground truth tags),
+            'tagger_metrics': a dataframe with metrics for how well the model tagged each column along with the overall accuracy of the model as compared to the ground truths}
+
+            The third dictionary contains the following:
+            {'raw_addresses_list1': a dataframe containing the raw values from file1,
+            'raw_addresses_list2': a dataframe containing the raw values from file2,
+            'zip_errors_list1': a dataframe containing all records from file1 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+            'zip_errors_list2': a dataframe containing all records from file2 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+            'matches': a dataframe containing all matching records between file1 and file2,
+            'unmatched_list_1': the remaining records from file1 that don't have a match in file2,
+            'unmatched_list_2': the remaining records from file2 that don't have a match in file1}
+
+            The fourth dictionary contains the following:
+            {'model_vs_truths': a dataframe containing the matching record IDs from the model that can also be found in the ground truths,
+                'truths_not_in_model': a dataframe containing the matching record IDs in the ground truths file that are not in the model,
+                'model_not_in_truths': a dataframe containing the matching record IDs in the model that are not in the ground truths,
+                'all_metrics': a dataframe showing the precision, recall, and f1 score for the modeled matches against the ground truths}
+    '''
 
     # Create Dataframe from Raw Files
     raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
