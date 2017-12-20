@@ -1,6 +1,7 @@
 '''
 The reference_data.py file contains functions that create reference tables of US Street Types, US States, US Unit Types, and US City/State/Zip combinations.
-These tables will be used in the standardizers.py file to standardize the ordered dictionaries containing the addresses
+These tables will be used in the standardizers.py file to standardize the ordered dictionaries containing the addresses.
+This file only needs to be called/run if changes are made to the source data.  Otherwise, all output is written to json files stored in the data folders
 '''
 
 import pandas as pd

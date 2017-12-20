@@ -1,6 +1,7 @@
 '''
 The standardizers.py file contains functions to help standardize tagged strings of addresses.  It starts with the previously computed
-dictionaries and nested dictionaries from the reference_data.py file and stored as JSON files
+dictionaries and nested dictionaries from the reference_data.py file and stored as JSON files.  It includes functions to standardize addresses, cities, find errors in zip codes,
+and add missing columns to the raw address dataframes.
 '''
 
 from collections import OrderedDict
@@ -119,11 +120,11 @@ def consolidate_address_list(address_df, column_names = None):
 
 
 
-def record_id_addition(address_df, field_name_rec_id):
+def record_id_addition(address_df, field_name_rec_id = None):
     '''
     This function is used to add a new field called Record_ID or rename an existing record ID field to the standardized 'Record_ID'
     :param address_df: The dataframe to which the 'Record_ID needs to be added
-    :param field_name_rec_id: the name of the Record_ID field in the dataframe.  If populated with None, there is no record ID in the Dataframe and a new field will be added called Record_ID
+    :param field_name_rec_id: the name of the Record_ID field in the dataframe.  If None, there is no record ID in the Dataframe and a new field will be added called Record_ID
     :return address_df: a new dataframe with the addition of the Record_ID field
     '''
 
