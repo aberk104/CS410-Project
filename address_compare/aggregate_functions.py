@@ -1,6 +1,8 @@
 '''
-This file contains aggregated functions to tag and match addresses
+This file contains aggregated functions to tag and match addresses.  These 3 functions can be called independently (self-contained functions) in place of calling separate functions
+within the standardizers.py, matcher.py, prob_matchers.py, and other associated files in the address_compare folder.
 '''
+
 import pandas as pd
 from address_compare import standardizers as stndrdzr
 from address_compare import tagging as crf
@@ -253,6 +255,27 @@ def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, groundtruth
 
 
 def tagger_vs_ground_truths(file1, field_rec_id=None, field_raw_address='Single String Address', to_standardize=True, missing_cols=missing_columns_from_file, ground_truth_cols=ground_truth_columns):
+    '''
+    This function parses and tags a list of addresses, standardizes the tagged values if applicable, and compares the tagged results vs. the ground truth results found in the same file.
+    For this version of the function, the ground truth columns must be named: 'Tagged Street Address', 'Tagged Pre Street Direction', 'Tagged Street Name', 'Tagged Street Type',
+    'Tagged Post Street Direction', 'Tagged Unit Type', and 'Tagged Unit Number'.
+    :param file1: The location of the source file containing the raw addresses and associated ground truths
+    :param field_rec_id: The name of the field representing the Record_ID for each record in the file. Defaulted to None if not populated
+    :param field_raw_address: The name of the field representing the raw addresses to be parsed and tagged.  Defaulted to "Single String Address"
+    :param to_standardize: A True/False variable denoting whether or not the tagged address components will be standardized (changed to ALL CAPS, long form names, etc.). True = tagged components will be standardized
+    :param missing_cols: A list of columns that do not exist in the source file but need to be added by the program.  If not populated, will be defaulted to ['CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN']
+    :param ground_truth_cols: A list of columns representing the ground truth values in the source files.  This is used to split the raw addresses from the ground truth columns in a subsequent function. It is defaulted to ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street Direction', 'Tagged Street Name',
+                        'Tagged Street Type', 'Tagged Post Street Direction', 'Tagged Unit Type',
+                        'Tagged Unit Number']
+    :return tagger_ground_truths_dict: The function returns a dictionary containing:
+            {'test_data_file': a dataframe containing the raw test file,
+            'crf_tagged_output': a dataframe with the tagged output from the model,
+            'crf_output_w_id': a dataframe with the tagged output plus the record id,
+            'ground_truth_test_file': a dataframe with the ground truth versions of each record,
+            'correctly_tagged': a dataframe with all records correctly tagged by the model (i.e., matches the ground truth tags),
+            'incorrectly_tagged': a dataframe with all records incorrectly matched by the model (i.e., does not match the ground truth tags),
+            'tagger_metrics': a dataframe with metrics for how well the model tagged each column along with the overall accuracy of the model as compared to the ground truths}
+    '''
 
     # Create Dataframe from Raw Files
     test_file = pd.read_excel(file1, keep_default_na=False, dtype=str)
