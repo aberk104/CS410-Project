@@ -92,7 +92,6 @@ class ProbMatcher:
         bigdf2 = df2.iloc[i2, :].reset_index()
 
         probs = self.match_classifier.predict_prob(bigdf1, bigdf2)
-        print(probs)
         out = pd.DataFrame(dict(index_1=bigdf1['index'], index_2=bigdf2['index'], probs=probs))
         return out[probs > t]
 
