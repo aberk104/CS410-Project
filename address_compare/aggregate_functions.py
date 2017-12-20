@@ -309,16 +309,28 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = 
     - 'Record_ID_list_1' - the record IDs from file1
     - 'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
     - 'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
-    :param field_rec_id:
-    :param field_raw_address:
-    :param to_standardize:
-    :param run_mode:
-    :param missing_cols:
-    :param groundtruth_matchtypes:
-    :param matchtype:
-    :param threshold:
-    :param match5zip:
-    :return:
+    :param field_rec_id: The name of the field representing the Record_ID for each record in the files. Defaulted to None if not populated.  This variable applies to both input files
+    :param field_raw_address: The name of the field representing the raw addresses to be parsed and tagged.  Defaulted to "Single String Address".  This variable applies to both input files
+    :param to_standardize: A True/False variable denoting whether or not the tagged address components will be standardized (changed to ALL CAPS, long form names, etc.). True = tagged components will be standardized.  True also means that cities will be standardized to their primary city based on the Zip Code and that the Zip Codes are validated against the populated State field
+    :param run_mode: This can only be populated with "comparer" or "comparer_truths".  Comparer_truths means that the matched records from the model will be compared against the ground truth matches found in the groundtruths file. Comparer means that this function will only match the 2 lists of addresses
+    :param missing_cols: A list of columns that do not exist in the source files but need to be added by the program.  If not populated, will be defaulted to ['CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN']
+    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'
+    :param matchtype: This can only be populated with 'exact_match' or 'probabilistic_match' and is defaulted to 'exact_match'. Exact_match means that only identical records in the 2 files will be matched; 'probabilistic_match' will also return matches that are greater than or equal to the specified threshold according to a random forest model
+    :param threshold: If matchtype == 'probabilistic_match', records with a match score from the random_forest model greater than or equal to the threshold will be considered to be matched.
+    :param match5zip: A True/False variable indicating whether the matcher should utilize the 5 digit zip code or all populated digits in the ZIP_CODE field.  If True, the matcher will only use the first 5 digits of the zip code field
+    :return: The function returns 2 dictionaries. The first dictionary contains the following:
+            {'raw_addresses_list1': a dataframe containing the raw values from file1,
+                'raw_addresses_list2': a dataframe containing the raw values from file2,
+                'zip_errors_list1': a dataframe containing all records from file1 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+                'zip_errors_list2': a dataframe containing all records from file2 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+                'matches': a dataframe containing all matching records between file1 and file2,
+                'unmatched_list_1': the remaining records from file1 that don't have a match in file2,
+                'unmatched_list_2': the remaining records from file2 that don't have a match in file1}
+            The second dictionary will be empty if run_mode == 'comparer'. If run_mode == 'comparer_truths', it contains the following:
+            {'model_vs_truths': a dataframe containing the matching record IDs from the model that can also be found in the ground truths,
+                'truths_not_in_model': a dataframe containing the matching record IDs in the ground truths file that are not in the model,
+                'model_not_in_truths': a dataframe containing the matching record IDs in the model that are not in the ground truths,
+                'all_metrics': a dataframe showing the precision, recall, and f1 score for the modeled matches against the ground truths}
     '''
 
 
