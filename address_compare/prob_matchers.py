@@ -25,6 +25,7 @@ class MatchClassifier:
     def predict_prob(self, a1, a2):
         features = features_from_tagged_addresses(a1, a2)
         return self.model.predict_proba(features)[:, 1]
+        #return self.model.predict_proba(features)[:, 1], features
 
 
 def digit_extract(s):
@@ -58,6 +59,7 @@ def features_from_tagged_addresses(ad1, ad2):
     features = pd.concat([edit_distance_matrix(ad1, ad2), equal_features(ad1, ad2)], axis=1)
     features['STREET_MOD_TEXT_EQUAL'] = number_mod_text_series(ad1['STREET_NAME'], ad2['STREET_NAME'])
     features['const'] = 1
+#    print (features)
     return features
 
 
@@ -92,6 +94,10 @@ class ProbMatcher:
         bigdf2 = df2.iloc[i2, :].reset_index()
 
         probs = self.match_classifier.predict_prob(bigdf1, bigdf2)
+#        probs, features = self.match_classifier.predict_prob(bigdf1, bigdf2)
+#        print (probs)
         out = pd.DataFrame(dict(index_1=bigdf1['index'], index_2=bigdf2['index'], probs=probs))
+#        out = out.join(features)
+#        print (out)
         return out[probs > t]
 

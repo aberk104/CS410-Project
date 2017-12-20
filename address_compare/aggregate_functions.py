@@ -138,6 +138,8 @@ def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, 
         matches_all_cols = matches_all_cols.rename(columns={'Record_ID':'Record_ID_list_1'})
         matches_all_cols = matches_all_cols.merge(grouped_address_list_2,left_on='index_2', right_index=True )
         matches_all_cols = matches_all_cols.rename(columns={'Record_ID':'Record_ID_list_2'})
+#        output_name = 'data\\raw_to_matched_addresses_all_cols_test.xlsx'
+#        matches_all_cols.to_excel(output_name)
         matches = matches_all_cols[['Record_ID_list_1','Record_ID_list_2','probs']]
 
     # Create Separate Dataframe for Unmatched Addresses
