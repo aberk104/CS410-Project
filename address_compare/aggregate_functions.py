@@ -19,6 +19,22 @@ ground_truth_columns = ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street 
 
 
 def __pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground_truth_columns):
+    '''
+    This is a private function and is used within this file to compare the tagged addresses to the ground truth values and return a set of metrics.
+    :param tagged_file: a dataframe with the parsed and tagged addresses from the CRF model
+    :param testfile: a dataframe with the raw data and ground truth columns
+    :param ground_truth_cols: A list of columns representing the ground truth values in the source files.  This is used to split the raw addresses from the ground truth columns in a subsequent function. It is defaulted to ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street Direction', 'Tagged Street Name',
+                        'Tagged Street Type', 'Tagged Post Street Direction', 'Tagged Unit Type',
+                        'Tagged Unit Number']
+    :return: The function returns a dictionary containing:
+            {'test_data_file': a dataframe containing the raw test file,
+            'crf_tagged_output': a dataframe with the tagged output from the model,
+            'crf_output_w_id': a dataframe with the tagged output plus the record id,
+            'ground_truth_test_file': a dataframe with the ground truth versions of each record,
+            'correctly_tagged': a dataframe with all records correctly tagged by the model (i.e., matches the ground truth tags),
+            'incorrectly_tagged': a dataframe with all records incorrectly matched by the model (i.e., does not match the ground truth tags),
+            'tagger_metrics': a dataframe with metrics for how well the model tagged each column along with the overall accuracy of the model as compared to the ground truths}
+    '''
 
     # Add Record_ID Field to Tagged Addresses
     crf_tagged_test_file = tagged_file.join(testfile['Record_ID'])
@@ -89,6 +105,26 @@ def __pvt_tag_vs_ground_truths(tagged_file, testfile, ground_truth_cols = ground
 
 
 def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, runmode = 'comparer', to_standardize=True, matchtype = 'exact_match', threshold = 0.95, match5zip = True):
+    '''
+    This is a private function and is used within this file to compare the 2 tagged address lists against each other.
+    :param rawlist1: a dataframe containing the raw addresses from file1
+    :param rawlist2: a dataframe containing the raw addresses from file2
+    :param taggedlist1: a dataframe containing the tagged addresses from file1 after having been run through the CRF model
+    :param taggedlist2: a dataframe containing the tagged addresses from file2 after having been run through the CRF model
+    :param runmode: either 'comparer', 'comparer_truths','all'.  If 'comparer', this function will group addresses inside each list before matching across lists (to de-dupe).  If 'comparer_truths' or 'all', the function will not group addresses inside each list
+    :param to_standardize: A True/False variable that determines whether or not cities will be standardized to the "primary_city" value per the USPS and whether or not invalid zip codes will be flagged.  True means the cities and zip codes will be standardized/validated
+    :param matchtype: This can only be populated with 'exact_match' or 'probabilistic_match' and is defaulted to 'exact_match'. Exact_match means that only identical records in the 2 files will be matched; 'probabilistic_match' will also return matches that are greater than or equal to the specified threshold according to a random forest model
+    :param threshold: If matchtype == 'probabilistic_match', records with a match score from the random_forest model greater than or equal to the threshold will be considered to be matched.
+    :param match5zip: A True/False variable indicating whether the matcher should utilize the 5 digit zip code or all populated digits in the ZIP_CODE field.  If True, the matcher will only use the first 5 digits of the zip code field
+    :return: The function returns a dictionary containing the following:
+            {'raw_addresses_list1': a dataframe containing the raw values from file1,
+                'raw_addresses_list2': a dataframe containing the raw values from file2,
+                'zip_errors_list1': a dataframe containing all records from file1 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+                'zip_errors_list2': a dataframe containing all records from file2 with errors in the Zip Code field (i.e., the zip code is not valid for the specified state),
+                'matches': a dataframe containing all matching records between file1 and file2,
+                'unmatched_list_1': the remaining records from file1 that don't have a match in file2,
+                'unmatched_list_2': the remaining records from file2 that don't have a match in file1}
+    '''
 
     # Standardize/Fix Cities and States.  Add a column to denote records with Zip Code Errors
     if to_standardize:
