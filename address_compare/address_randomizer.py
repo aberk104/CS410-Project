@@ -14,7 +14,7 @@ NESTED_REF_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'da
 available_unit_types = ['APT','BLDG','STE','FL','PH','UNIT',""]
 available_street_types = ['RD','DR','AVE','LN','BLVD','PKWY',""]
 available_street_names = ['MAPLE','ELM','MAIN','WALL','BROAD','GEORGE ALLEN','FULTON',
-                          'KING GEORGE', 'A', 'B', 'C', 'TWELVE OAKS', 'THE HIGH STREET',
+                          'KING GEORGE', 'A', 'B', 'C', 'TWELVE OAKS', "MARTIN LUTHER KING JR.",
                           'CALIFORNIA']
 available_directionals = ['E','S','N','W','NE','NW','SE','SW',""*5]
 available_unit_nums = ['1','2','3','4','5','6']
