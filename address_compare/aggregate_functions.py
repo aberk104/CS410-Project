@@ -299,6 +299,29 @@ def tagger_vs_ground_truths(file1, field_rec_id=None, field_raw_address='Single 
 
 
 def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'comparer', missing_cols = missing_columns_from_file, groundtruth_matchtypes=["Exact", "Standardized Exact"], matchtype = 'exact_match', threshold = 0.95, match5zip = True):
+    '''
+    This function parses and tags 2 lists of addresses, standardizes the tagged values if applicable, and matches the addresses in the 2 files via the specified matchtype.
+    If run_mode == 'comparer_truths', this function will also compare the matched records to the ground truth values found in the groundtruths file.
+
+    :param file1: The location of the first source file containing the raw addresses to be parsed, tagged, and matched.
+    :param file2: The location of the second source file containing the raw addresses to be parsed, tagged, and matched.
+    :param groundtruths: The location of the file containing the ground truth values for the matched records (i.e., the ground truths for which records should be matched). For this version of the function, this file should contain the following 3 fields:
+    - 'Record_ID_list_1' - the record IDs from file1
+    - 'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
+    - 'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
+    :param field_rec_id:
+    :param field_raw_address:
+    :param to_standardize:
+    :param run_mode:
+    :param missing_cols:
+    :param groundtruth_matchtypes:
+    :param matchtype:
+    :param threshold:
+    :param match5zip:
+    :return:
+    '''
+
+
 
     # Create Dataframe from Raw Files
     raw_address_list_1 = pd.read_excel(file1, keep_default_na=False, dtype=str)
