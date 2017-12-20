@@ -6,6 +6,10 @@ import pandas as pd
 import random
 from itertools import combinations
 from numpy import random as npr
+import json
+import pkg_resources
+
+NESTED_REF_DT_DICT_PATH = pkg_resources.resource_filename('address_compare', 'data/ref_dt_dict.json')
 
 available_unit_types = ['APT','BLDG','STE','FL','PH','UNIT',""]
 available_street_types = ['RD','DR','AVE','LN','BLVD','PKWY',""]
@@ -21,6 +25,13 @@ address_formats_with_unit = [
     "{STREET_NUMBER} {PRE_DIRECTION} {STREET_NAME} {STREET_TYPE} {POST_DIRECTION}, {UNIT_TYPE} {UNIT_NUMBER}",
     "{UNIT_NUMBER} - {STREET_NUMBER} {PRE_DIRECTION} {STREET_NAME} {STREET_TYPE} {POST_DIRECTION}"
 ]
+
+with open(NESTED_REF_DT_DICT_PATH) as json_file:
+    nested_ref_dt_dict = json.load(json_file)
+
+unit_types_dict = nested_ref_dt_dict["UNIT_TYPE"]
+directionals_dict = nested_ref_dt_dict["PRE_DIRECTION"]
+street_types_dict = nested_ref_dt_dict["STREET_TYPE"]
 
 def random_addresses(num_addresses: int, raw_address_col_name = 'Single String Address'):
     '''
@@ -53,8 +64,8 @@ def random_addresses(num_addresses: int, raw_address_col_name = 'Single String A
         street_type = random.choice(available_street_types)
 
         address_formats = {
-            1: [unit_type, unit_num, random.choice(["-",""*10]) if unit_num != None else "", street_num, pre_directional, street_name, post_directional, street_type],
-            2: [street_num, pre_directional, street_name, post_directional, street_type, random.choice([",",""*10]) if unit_num != None else "", unit_type, unit_num]}
+            1: [unit_type, unit_num, random.choice(["-",""*10]) if unit_num != None else "", street_num, pre_directional, street_name, street_type, post_directional],
+            2: [street_num, pre_directional, street_name, street_type, post_directional, random.choice([",",""*10]) if unit_num != None else "", unit_type, unit_num]}
 
         selected_format = random.randint(1,2)
 
@@ -65,10 +76,18 @@ def random_addresses(num_addresses: int, raw_address_col_name = 'Single String A
                 elif len(item) > 0:
                     address += str(" ") + item
         address = str.replace(address," ,",",") if random.choice([True,False]) else address
-        new_addresses.append(address)
+        street_type_long = street_types_dict[street_type] if street_type not in [None,''] else ''
+        unit_type_long = unit_types_dict[unit_type] if unit_type not in [None,''] else ''
+        pre_directional_long = directionals_dict[pre_directional] if pre_directional not in [None,''] else ''
+        post_directional_long = directionals_dict[post_directional] if post_directional not in [None,''] else ''
+        unit_num_long = unit_num.strip('#') if unit_num not in [None,''] else ''
 
-    new_address_df = pd.DataFrame(data=new_addresses, columns=[raw_address_col_name])
+        address_tuple = (address, street_num, pre_directional_long, street_name, street_type_long, post_directional_long, unit_type_long, unit_num_long)
+        new_addresses.append(address_tuple)
 
+    new_address_df = pd.DataFrame(data=new_addresses, columns=[raw_address_col_name,'Tagged Street Number','Tagged Pre Street Direction',
+                                                               'Tagged Street Name','Tagged Street Type','Tagged Post Street Direction',
+                                                               'Tagged Unit Type','Tagged Unit Number'])
     return new_address_df
 
 
@@ -220,3 +239,5 @@ def random_addresses2(n):
             a2s.append(format_address(address2, random.choice(address_formats_with_unit)))
 
     return pd.DataFrame.from_dict({'address_1': a1s, 'address_2': a2s, 'match': match})
+
+
