@@ -216,6 +216,21 @@ def __pvt_compare_2_address_lists(rawlist1, rawlist2, taggedlist1, taggedlist2, 
 
 
 def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, groundtruth_matchtypes=["Exact", "Standardized Exact"]):
+    '''
+    This is a private function and is used within this file to compare the modeled matches against the ground truth matches and return various metrics.
+    :param groundtruths: The location of the file containing the ground truth values for the matched records (i.e., the ground truths for which records should be matched). For this version of the function, this file should contain the following 3 fields:
+    - 'Record_ID_list_1' - the record IDs from file1
+    - 'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
+    - 'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
+    :param compeddict: this is the outputted dictionary from the __pvt_compare_2_address_lists function and is passed into this function
+    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'
+    :return: A dictionary containing the following:
+            {'model_vs_truths': a dataframe containing the matching record IDs from the model that can also be found in the ground truths,
+                'truths_not_in_model': a dataframe containing the matching record IDs in the ground truths file that are not in the model,
+                'model_not_in_truths': a dataframe containing the matching record IDs in the model that are not in the ground truths,
+                'all_metrics': a dataframe showing the precision, recall, and f1 score for the modeled matches against the ground truths}
+    '''
+
     # Create Dataframe for Ground Truths
     manual_matches = pd.read_excel(groundtruths, keep_default_na=False, dtype=str)
 
