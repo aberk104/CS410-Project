@@ -47,7 +47,7 @@ Instructions for how to run the master_file, what each variable means, etc. can 
 
 ### Documentation
 Additional documentation for the recommended functions to be used can be found on [Read the Docs](http://cs410-project-address-tagging-and-matching.readthedocs.io/en/latest/).
-The 3 functions within the aggregate_functions.py file and the main address_randomizer function in the address_randomizer.py file are listed on the site.
+The 3 functions within the aggregate_functions.py file and the main address_randomizer function in the address_randomizer.py file are listed on the site.  The site also includes the doc-strings for the AddressTagger class and the exact matcher function.
 As the remaining functions can be accessed directly from the aggregate_functions.py file, markdowns have been included directly in those files but have not been shared on the site at this time.
 
 ### Contributors
