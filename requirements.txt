@@ -1,0 +1,7 @@
+# Requirements.txt File for Purposes of Read-the-Docs
+
+###### Requirements without Version Specifiers ######
+python-crfsuite
+pandas
+scikit-learn >= 0.18.1
+editdistance
