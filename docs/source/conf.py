@@ -19,7 +19,8 @@
 #
 import os
 import sys
-#sys.path.insert(0, os.path.abspath('C:\Users\Alan\Documents\GitHub\CS410-Project'))
+autodoc_mock_imports = ["_address_compare"]
+sys.path.insert(0, os.path.abspath('C:\Users\Alan\Documents\GitHub\CS410-Project'))
 
 
 # -- General configuration ------------------------------------------------
