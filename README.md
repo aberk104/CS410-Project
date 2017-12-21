@@ -17,10 +17,20 @@ pip install python-crfsuite
 ```
 pip install editdistance
 ```
+
+##### Additional Python Modules
+The following python packages are also being used in the various files.  So please make sure they are installed on your local machine as well (they should all be included as part of the standard python build anyways):
+- pandas
+- json
+- pkg_resources
+- random
+- sklearn.metrics (should be part of scikit-learn)
+- collections
+- itertools
+- pickle
+- re
 - scikit-learn
-```
-conda install scikit-learn
-```
+
 
 ### Running our Functions
 In order to run our functions, please make sure to use Python 3 and install the pre-requisites listed above.  We have not built out functionality to run the files directly within GitHub so please make sure to download the full folder to your local machine.  The easiest way to understand how the 3 main/aggregate functions work is to run the master_file.ipynb file in a jupyter notebook.  Test files for each of the run_modes have been provided in the data folder and are listed in the variable section of the master_file.ipynb file.
