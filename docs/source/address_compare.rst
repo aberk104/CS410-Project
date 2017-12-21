@@ -3,8 +3,6 @@
 API REFERENCE
 =============
 
-.. automodule:: address_compare
-
 
 Aggregate Functions
 -------------------
