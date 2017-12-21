@@ -30,5 +30,5 @@ Address Tagger
 Exact Matcher
 -------------
 
-.. automodule:: matcher
+.. automodule:: address_compare.matcher
     :members:
