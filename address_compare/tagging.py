@@ -1,3 +1,7 @@
+'''
+The tagging.py module contains the AddressTagger class which is used to parse addresses into their components and tag each component.
+'''
+
 # creates the tag functions using the trained CRF model
 
 from collections import OrderedDict
