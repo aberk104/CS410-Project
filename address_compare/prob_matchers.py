@@ -22,8 +22,8 @@ class MatchClassifier:
     def __init__(self, model=MODEL):
         """
         Create the Match Classifier
-        :param model: path to the previously trained model. The model should be trained using the features
-        applied in features_from_tagged_addresses
+
+        :param model: path to the previously trained model. The model should be trained using the features applied in features_from_tagged_addresses
         """
         with open(model, 'rb') as f:
             self.model = pickle.load(f)
@@ -31,6 +31,7 @@ class MatchClassifier:
     def predict_label(self, a1, a2):
         """
         Given tagged addresses in dataframes a1 and a2, determine whether they refer to the same physical address
+
         :param a1: tagged addresses dataframe
         :param a2: tagged addresses dataframe
         :return: boolean series
@@ -42,6 +43,7 @@ class MatchClassifier:
         """
         Given tagged addresses in dataframes a1 and a2, provide a probability that they refer to the same
         physical address.
+
         :param a1: tagged addresses dataframe
         :param a2: tagged addresses dataframe
         :return: numeric series
@@ -53,6 +55,7 @@ class MatchClassifier:
 def digit_extract(s):
     """
     Given a a string like "34th", return "34"
+
     :param s: a string
     :return: a string
     """
@@ -65,6 +68,7 @@ def equal_features(df1: pd.DataFrame, df2: pd.DataFrame):
     """
     Given tagged addresses in dataframes a1 and a2, return a matrix where entry i,j is True if df1[i,j]==df2[i,j].
     Applies to the columns in ADDRESS_COLS.
+
     :param df1: tagged address dataframe
     :param df2: tagged addresses dataframe
     :return: dataframe
@@ -78,6 +82,7 @@ def equal_features(df1: pd.DataFrame, df2: pd.DataFrame):
 def number_mod_text(s1, s2):
     """
     Compares a string like "34" to "34th" and returns true if they're the same number
+
     :param s1: string
     :param s2: string 
     :return: true if the strings refer to the same number.
@@ -94,6 +99,7 @@ def number_mod_text(s1, s2):
 def number_mod_text_series(s1, s2):
     """
     Applies number_mod_text to each element in two series
+
     :param s1: series
     :param s2: series
     :return: boolean series
@@ -104,6 +110,7 @@ def number_mod_text_series(s1, s2):
 def features_from_tagged_addresses(ad1, ad2):
     """
     Applies feature functions to tagged address dataframes.
+
     :param ad1: tagged addresss dataframe
     :param ad2: tagged addresses dataframe
     :return: 
@@ -117,6 +124,7 @@ def features_from_tagged_addresses(ad1, ad2):
 def series_ed(s1: pd.Series, s2: pd.Series):
     """
     vectorizes edit distance over two pandas series
+
     :param s1: series of strings
     :param s2: series of strings
     :return: series of numbers
@@ -127,6 +135,7 @@ def series_ed(s1: pd.Series, s2: pd.Series):
 def edit_distance_matrix(df1: pd.DataFrame, df2: pd.DataFrame):
     """
     Applies edit distance componentwise to two dataframes at columns in DIST_COLS
+
     :param df1: tagged addresses datafame
     :param df2: tagged addresses dataframe
     :return: dataframe with boolean entries
@@ -151,13 +160,13 @@ class ProbMatcher:
 
     def match_probabilities(self, df1: pd.DataFrame, df2: pd.DataFrame, t=0.8):
         """
-        Given two dataframes of parsed addresses, return a a dataframe of matching
-        indices with a column indicating match probability
+        Given two dataframes of parsed addresses, returns a dataframe of matching
+        indices with a column indicating match probability. Only those records with a score greater than or equal to the threshold will be returned.
 
         :param df1: a dataframe of address components (i.e. output from AddressTagger)
         :param df2: a dataframe of address components
-        :param t: Threshold above which matches are returned
-        :return:
+        :param t: Record matches with a score greater than or equal to this threshold will be returned.
+        :return: a dataframe containing 3 columns: the index for the address from the first dataframe, the index for the address from the second dataframe, the model provided score representing the likelihood that 2 addresses are the same
         """
         i1 = list()
         i2 = list()

@@ -37,4 +37,4 @@ Probabilistic Matcher
 ---------------------
 
 .. automodule:: address_compare.prob_matchers
-    :members: ProbMatcher
+    :members:
