@@ -29,7 +29,7 @@ Guide
 
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 3
 
    address_compare
 
