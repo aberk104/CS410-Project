@@ -17,11 +17,6 @@ The various methods within the address_compare project have been built using Pyt
 
    pip install editdistance
 
-- scikit-learn
-
-::
-
-    conda install scikit-learn
 
 
 Guide
