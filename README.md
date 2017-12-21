@@ -30,6 +30,7 @@ The following python packages are also being used in the various files.  So plea
 - pickle
 - re
 - scikit-learn
+- scipy
 
 
 ### Running our Functions

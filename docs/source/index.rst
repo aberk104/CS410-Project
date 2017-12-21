@@ -3,7 +3,7 @@ Welcome to CS410-Project: Address Tagging and Matching's documentation!
 
 Project Goal
 ------------
-Address data in CRM (customer relationship management) tools are typically of poor quality (as one of Alan’s previous bosses used to say, salespeople are not the best data managers).  The poor quality makes it challenging and time consuming to report on a customer base, conduct customer segmentation analyses, etc.  Due to this poor quality and lack of controls, databases typically contain tons of duplicate records/addresses, incomplete addresses, and incorrect addresses/information.  Data stewards/analysts are often tasked with manually fixing the poor quality data, an efficient and time-consuming process.
+Address data in CRM (customer relationship management) tools are typically of poor quality.  The poor quality makes it challenging and time consuming to report on a customer base, conduct customer segmentation analyses, etc.  Due to this poor quality and lack of controls, databases typically contain tons of duplicate records/addresses, incomplete addresses, and incorrect addresses/information.  Data stewards/analysts are often tasked with manually fixing the poor quality data, an efficient and time-consuming process.
 
 Our project focused on creating a suite of tools to parse, tag, standardize, and compare lists of addresses as an alternative to expensive Master Data Management and similar systems.  The goal is to be able to use our tools to find duplicates within a single list of addresses as well as across 2 separate address lists.  In essence, our tools are designed to help master the address data so that a database doesn't have duplicates/triplicates, etc.
 
@@ -35,16 +35,28 @@ The various methods within the address_compare project have been built using Pyt
 Additional Python Packages
 --------------------------
 In addition the pre-requisites listed above, the various files also utilize the following python packages that should be part of the default python build:
+
 - pandas
+
 - json
+
 - pkg_resources
+
 - random
+
 - sklearn.metrics (should be part of scikit-learn)
+
 - collections
+
 - itertools
+
 - pickle
+
 - re
+
 - scikit-learn
+
+- scipy
 
 
 
