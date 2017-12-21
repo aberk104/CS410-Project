@@ -20,17 +20,17 @@ pip install editdistance
 
 ##### Additional Python Modules
 The following python packages are also being used in the various files.  So please make sure they are installed on your local machine as well (they should all be included as part of the standard python build anyways):
-- pandas
-- json
-- pkg_resources
-- random
-- sklearn.metrics (should be part of scikit-learn)
 - collections
 - itertools
+- json
+- pandas
 - pickle
+- pkg_resources
+- random
 - re
-- scikit-learn
 - scipy
+- scikit-learn
+- sklearn.metrics (should be part of scikit-learn)
 
 
 ### Running our Functions
@@ -42,16 +42,22 @@ There are various functions within the reference_data.py file that help with the
 
 If running the master_file.ipynb and writing the output to excel (there is a variable to control whether the output is printed in the notebook or written to excel), the output files will be found in the output folder.
 
-### Example File
+The 3 functions within the aggregate_functions.py file are wrappers for all of the functions and methods required to perform the address tagging and matching on two separate files containing addresses.  These 3 functions are included in the master_file.ipynb discussed below for ease of testing our project.
+
+### Example Files
 The master_file.ipynb located in the [main folder](https://github.com/aberk104/CS410-Project/blob/master/master_file.ipynb) can be run using jupyter notebook.
 This file has separate calls to each of the 3 functions in the aggregate_functions.py file (which themselves are self-contained functions to access the address parser, tagger, and matcher).
 Variables can be set at the top of the master_file.ipynb to control the different run_modes and choose a different set of input files.
 Instructions for how to run the master_file, what each variable means, etc. can be found directly in that file.
 
+The Train Address Classifier.ipynb located in the [main folder](https://github.com/aberk104/CS410-Project/blob/master/Train%20Address%20Classifier.ipynb) shows how the random forest model for probabilistic matching was trained and validated.  As noted in the Future Enhancements section, although the random forest model performed well with the training data, it performed poorly with the test/real data.  Further refinements will be needed to optimize the probabilistic matching.
+
+The Train CRF Model.ipynb located in the [main folder](https://github.com/aberk104/CS410-Project/blob/master/Train%20CRF%20Model.ipynb) walks through how the CRF model was trained in order to tag the address components.
+
 ### Documentation
 Additional documentation for the recommended functions to be used can be found on [Read the Docs](http://cs410-project-address-tagging-and-matching.readthedocs.io/en/latest/).
 The 3 functions within the aggregate_functions.py file and the main address_randomizer function in the address_randomizer.py file are listed on the site.  The site also includes the doc-strings for the AddressTagger class and the exact matcher function.
-As the remaining functions can be accessed directly from the aggregate_functions.py file, markdowns have been included directly in those files but have not been shared on the site at this time.
+As the remaining functions can be accessed directly from the aggregate_functions.py file, doc strings have been included directly in those files but have not been shared on the site at this time.
 
 ### Contributors
 This project was completed by Alan Berk and Colin Fraser as part of CS-410 through UIUC.  
@@ -71,6 +77,8 @@ For our UIUC instructors, we distributed the work as follows:
 ### Potential Enhancements/Next Steps
 The following is a list of potential improvements/enhancements that can be made to further improve the program:
 - Due to its complexity, we tagged items like Highway 17 or County Road 585 with Highway/County Road as STREET_TYPE and 17/585 as STREET_NAME.  However, the USPS defines items like that to all be the STREET_NAME with nothing as the STREET_TYPE.  The additional complexity also lies in the fact that there are examples like Ute Highway where Highway is supposed to be tagged as the STREET_TYPE.  Therefore, a future enhancement would be re-train the CRF model (and include new features) or find an alternative model to be able to change how Highway/County Road/etc. are tagged.
+- Additional improvements can potentially be made to the Address Tagger in terms of the number of features being used.  I.e., potentially adding features to capture Interstate or other things may further improve the Tagger performance.
 - The probabilistic matcher was the last item worked on as an attempted add-on to the program.  We have experienced some issues optimizing the probabilistic matcher and ensuring that it is working correctly with the real address data (working well with the training data).  We are currently seeing issues in scoring the matches correctly so we don't recommend that this be used at this time.  More work/enhancements are needed in order to finalize/optimize the probabilistic matcher.
 - Work was started to do some pre-processing on the Zip Codes before passing them into the probabilistic matcher.  The code was commented out but the goal would be to match on Zip Codes before passing the address lists to the probabilistic matcher (so that only items that are in the same Zip Code are attempted to be matched).
 - All of the functions/methods exist to de-dupe a single address list. It can be compared against itself by having both file inputs to the tag and compare function be the same file.  But an obvious next step would be to create a simple method to just parse, tag, standardize, and de-dupe a single file in a more straightforward manner.
+- As the focus of the address tagger was on the street addresses, state names are not being standardized at this point in time. For this iteration, state names are assumed to be the 2 character USPS abbreviations.
