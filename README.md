@@ -30,13 +30,13 @@ Also note that old_files_for_tech_review_use folder can be ignored.  Those were 
 If running the master_file.ipynb and writing the output to excel (there is a variable to control whether the output is printed in the notebook or written to excel), the output files will be found in the output folder.
 
 ### Example File
-The master_file.ipynb located in the [ main folder ] ( https://github.com/aberk104/CS410-Project/blob/master/master_file.ipynb ) can be run using jupyter notebook.
+The master_file.ipynb located in the [main folder](https://github.com/aberk104/CS410-Project/blob/master/master_file.ipynb) can be run using jupyter notebook.
 This file has separate calls to each of the 3 functions in the aggregate_functions.py file (which themselves are self-contained functions to access the address parser, tagger, and matcher).
 Variables can be set at the top of the master_file.ipynb to control the different run_modes and choose a different set of input files.
 Instructions for how to run the master_file, what each variable means, etc. can be found directly in that file.
 
 ### Documentation
-Additional documentation for the recommended functions to be used can be found on [ Read the Docs ] ( http://cs410-project-address-tagging-and-matching.readthedocs.io/en/latest/ ).
+Additional documentation for the recommended functions to be used can be found on [Read the Docs](http://cs410-project-address-tagging-and-matching.readthedocs.io/en/latest/).
 The 3 functions within the aggregate_functions.py file and the main address_randomizer function in the address_randomizer.py file are listed on the site.
 As the remaining functions can be accessed directly from the aggregate_functions.py file, markdowns have been included directly in those files but have not been shared on the site at this time.
 
