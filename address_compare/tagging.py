@@ -21,16 +21,14 @@ DF_ORDER = ["STREET_NUMBER", "PRE_DIRECTION", "STREET_NAME", "STREET_TYPE", "POS
 
 class AddressTagger(object):
     """
-    An AddressTagger object loads a crfsuite model, stores the feature extractor,
-    and executes tagging
+    An AddressTagger object loads a crfsuite model, stores the feature extractor, and executes tagging
     """
     def __init__(self, model=MODEL, feature_extractor: fe.FeatureExtractor = FE):
         """
 
         :param model: the path to the trained crfsuite model
-        :param feature_extractor: A FeatureExtractor object that goes with the trained
-        model. This should be an instance of the same FeatureExtractor class that was
-        used to train the model.
+        :param feature_extractor: A FeatureExtractor object that goes with the trained model. This should be an instance of the same FeatureExtractor class that was used to train the model.
+
         """
         self.tagger = pycrfsuite.Tagger()
         self.tagger.open(model)
@@ -42,7 +40,9 @@ class AddressTagger(object):
 
         :param s: string to tag
         :param concat: If true, multiple tokens with the same tag are concatenated into a single string.
-        E.g. STREET_NAME: ["George", "Washington"] becomes STREET_NAME: "George Washington"
+
+                        E.g. STREET_NAME: ["George", "Washington"] becomes STREET_NAME: "George Washington"
+
         :param standardize: Should tagged tokens be standardized?
         :return: An OrderedDict with tags as keys and tokens as values.
         """

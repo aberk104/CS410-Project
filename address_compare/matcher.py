@@ -49,9 +49,11 @@ cols_to_join_on = ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','ST
 def exact_matcher(address_dataframe_1, address_dataframe_2, join_on_cols = cols_to_join_on):
     '''
     This function takes 2 dataframes and returns a third dataframe where the columns in join_on_cols are an exact match
+
     :param address_dataframe_1: a dataframe to be matched against dataframe_2
     :param address_dataframe_2: a dataframe to be matched against dataframe_1
     :param join_on_cols: the columns shared by the 2 dataframes that will be used to find records that are exact matches. It is defaulted to ['UNIT_TYPE','UNIT_NUMBER','STREET_NUMBER','PRE_DIRECTION','STREET_NAME','STREET_TYPE','POST_DIRECTION','CITY','STATE','ZIP_CODE','UNKNOWN']
+
     :return: a dataframe containing just the records that are identical between the 2 input dataframes
     '''
 
