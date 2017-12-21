@@ -20,7 +20,7 @@
 import os
 import sys
 #autodoc_mock_imports = ["address_compare.address_randomizer","address_compare.aggregate_functions"]
-sys.path.insert(0, os.path.abspath('\CS410-Project'))
+sys.path.insert(0, os.path.commonpath('\CS410-Project'))
 
 #from address_compare import address_randomizer
 #from address_compare import aggregate_functions
