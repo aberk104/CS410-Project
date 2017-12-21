@@ -29,7 +29,6 @@ Guide
    address_compare
 
 
-* :ref:`api-reference`
 * Example_: Using the aggregate_functions to parse, tag, and match addresses.
 
 .. _Example: https://github.com/aberk104/CS410-Project/blob/master/master_file.ipynb
