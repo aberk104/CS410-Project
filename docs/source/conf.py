@@ -19,7 +19,7 @@
 #
 import os
 import sys
-autodoc_mock_imports = ["_pandas"]
+#autodoc_mock_imports = ["_pandas"]
 sys.path.insert(0, os.path.abspath('/home/docs/checkouts/readthedocs.org/user_builds/cs410-project-address-tagging-and-matching/checkouts/latest/'))
 
 #from address_compare import address_randomizer
