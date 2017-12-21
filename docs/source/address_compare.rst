@@ -32,3 +32,9 @@ Exact Matcher
 
 .. automodule:: address_compare.matcher
     :members:
+
+Probabilistic Matcher
+---------------------
+
+.. automodule:: address_compare.prob_matchers
+    :members: ProbMatcher
