@@ -1,5 +1,5 @@
 '''
-The address_randomizer will create a specified number of random raw addresses that can be used for testing purposes
+The address_randomizer.py file will create a specified number of random raw addresses that can be used for testing purposes via the random_addresses function
 '''
 
 import pandas as pd
@@ -40,7 +40,7 @@ def random_addresses(num_addresses: int, raw_address_col_name = 'Single String A
     :param num_addresses: this is an integer containing the number of addresses the user wants to create
     :param raw_address_col_name: this represents the name of the column for the raw addresses.  it will default to 'Single String Address' if not passed in
 
-    :return new_address_df: a dataframe where the first column, "Single String Address", are the randomized raw addresses and the remaining columns represent the ground truth values for each tag
+    :return: a dataframe where the first column, "Single String Address", is the randomized raw addresses and the remaining columns represent the ground truth values for each tag
     '''
     new_addresses = list()
 

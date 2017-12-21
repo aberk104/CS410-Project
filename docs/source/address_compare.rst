@@ -3,6 +3,8 @@
 API REFERENCE
 =============
 
+.. automodule:: address_compare
+
 
 Aggregate Functions
 -------------------
@@ -18,4 +20,15 @@ Address Randomizer
     :members: random_addresses
 
 
+Address Tagger
+--------------
 
+.. automodule:: address_compare.tagging
+    :members:
+
+
+Exact Matcher
+-------------
+
+.. automodule:: matcher
+    :members:
