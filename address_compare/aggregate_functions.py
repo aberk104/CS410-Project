@@ -221,7 +221,7 @@ def __pvt_address_compare_vs_ground_truths(groundtruths, compeddict, groundtruth
     :param groundtruths: The location of the file containing the ground truth values for the matched records (i.e., the ground truths for which records should be matched). For this version of the function, this file should contain the following 3 fields:
     - 'Record_ID_list_1' - the record IDs from file1
     - 'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
-    - 'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
+    - 'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact','Zip5 Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher. Zip5 Exact represent items that wouldn't have matched using all Zip_Code digits but match looking at only the 5 digit zip codes.
     :param compeddict: this is the outputted dictionary from the __pvt_compare_2_address_lists function and is passed into this function
     :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'
     :return: A dictionary containing the following:
@@ -359,7 +359,7 @@ def tagger_vs_ground_truths(file1, field_rec_id=None, field_raw_address='Single 
 def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = None, field_raw_address = 'Single String Address', to_standardize = True, run_mode = 'comparer', missing_cols = missing_columns_from_file, groundtruth_matchtypes=["Exact", "Standardized Exact"], matchtype = 'exact_match', threshold = 0.95, match5zip = True):
     '''
     This function parses and tags 2 lists of addresses, standardizes the tagged values if applicable, and matches the addresses in the 2 files via the specified matchtype.
-    If run_mode == 'comparer_truths', this function will also compare the matched records to the ground truth values found in the groundtruths file.
+    If run_mode == 'comparer_truths', this function will also compare the matched records to the ground truth values found in the groundtruths file (if matchtype == 'exact_match', it will not include Inexact ground truth matches in the metrics).
 
     :param file1: The location of the first source file containing the raw addresses to be parsed, tagged, and matched.
     :param file2: The location of the second source file containing the raw addresses to be parsed, tagged, and matched.
@@ -369,14 +369,14 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = 
 
                         'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
 
-                        'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
+                        'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact','Zip5 Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher. Zip5 Exact represent items that wouldn't have matched using all Zip_Code digits but match looking at only the 5 digit zip codes.
 
     :param field_rec_id: The name of the field representing the Record_ID for each record in the files. Defaulted to None if not populated.  This variable applies to both input files
     :param field_raw_address: The name of the field representing the raw addresses to be parsed and tagged.  Defaulted to "Single String Address".  This variable applies to both input files
     :param to_standardize: A True/False variable denoting whether or not the tagged address components will be standardized (changed to ALL CAPS, long form names, etc.). True = tagged components will be standardized.  True also means that cities will be standardized to their primary city based on the Zip Code and that the Zip Codes are validated against the populated State field
     :param run_mode: This can only be populated with "comparer" or "comparer_truths".  Comparer_truths means that the matched records from the model will be compared against the ground truth matches found in the groundtruths file. Comparer means that this function will only match the 2 lists of addresses
     :param missing_cols: A list of columns that do not exist in the source files but need to be added by the program.  If not populated, will be defaulted to ['CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN']
-    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'
+    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'.  In addition, Zip5 Exact is automatically added to this list if match5zip == True.
     :param matchtype: This can only be populated with 'exact_match' or 'probabilistic_match' and is defaulted to 'exact_match'. Exact_match means that only identical records in the 2 files will be matched; 'probabilistic_match' will also return matches that are greater than or equal to the specified threshold according to a random forest model
     :param threshold: If matchtype == 'probabilistic_match', records with a match score from the random_forest model greater than or equal to the threshold will be considered to be matched.
     :param match5zip: A True/False variable indicating whether the matcher should utilize the 5 digit zip code or all populated digits in the ZIP_CODE field.  If True, the matcher will only use the first 5 digits of the zip code field
@@ -440,6 +440,8 @@ def tag_and_compare_addresses(file1, file2, groundtruths = None, field_rec_id = 
     if (run_mode == 'comparer_truths'):
         if matchtype != 'exact_match':
             groundtruth_matchtypes=["Exact", "Standardized Exact","Inexact"]
+        if match5zip:
+            groundtruth_matchtypes.append("Zip5 Exact")
         model_comps_vs_truths_dict = __pvt_address_compare_vs_ground_truths(groundtruths, compared_lists_dict, groundtruth_matchtypes)
     else:
         model_comps_vs_truths_dict = dict()
@@ -452,7 +454,7 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id
     '''
     This function is a combination of the tagger_vs_ground_truths and tag_and_compare_addresses functions. It will parse, tag, and standardize the addresses for each file.  It will compare
     the tagged addresses in each file to the ground truth versions and return the corresponding metrics.  It will then match the addresses in the files according to the specifed matchtype and
-    compare how well the matcher performed against the groundtruths.  Similar to the tagger_vs_ground_truths function, for this version of the function, the ground truth columns must be named: 'Tagged Street Address', 'Tagged Pre Street Direction', 'Tagged Street Name', 'Tagged Street Type',
+    compare how well the matcher performed against the groundtruths (if matchtype == 'exact_match', it will not include Inexact ground truth matches in the metrics).  Similar to the tagger_vs_ground_truths function, for this version of the function, the ground truth columns must be named: 'Tagged Street Address', 'Tagged Pre Street Direction', 'Tagged Street Name', 'Tagged Street Type',
     'Tagged Post Street Direction', 'Tagged Unit Type', and 'Tagged Unit Number'.
 
     :param file1: The location of the first source file containing the raw addresses to be parsed, tagged, and matched.
@@ -463,7 +465,7 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id
 
                         'Record_ID_list_2' - the record IDs from file2 matched to the applicable record ID from file 1
 
-                        'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match.  Allowed values are ['Exact','Inexact','Standardized Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher
+                        'Match_Type' - a value indicating whether the records are an exact match, exact match after standardization, inexact match, or exact match using the 5 digit zip code.  Allowed values are ['Exact','Inexact','Standardized Exact','Zip5 Exact'].  Inexact matches are records that are not identical but should be matched via a probabilistic matcher. Zip5 Exact represent items that wouldn't have matched using all Zip_Code digits but match looking at only the 5 digit zip codes.
 
     :param field_rec_id: The name of the field representing the Record_ID for each record in the files. Defaulted to None if not populated.  This variable applies to both input files
     :param field_raw_address: The name of the field representing the raw addresses to be parsed and tagged.  Defaulted to "Single String Address".  This variable applies to both input files
@@ -471,7 +473,7 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id
     :param run_mode: This can only be populated with "comparer" or "comparer_truths".  Comparer_truths means that the matched records from the model will be compared against the ground truth matches found in the groundtruths file. Comparer means that this function will only match the 2 lists of addresses
     :param missing_cols: A list of columns that do not exist in the source files but need to be added by the program.  If not populated, will be defaulted to ['CITY', 'STATE', 'ZIP_CODE', 'UNKNOWN']
     :param ground_truth_cols: A list of columns representing the ground truth values in the source files.  This is used to split the raw addresses from the ground truth columns in a subsequent function. It is defaulted to ['Record_ID', 'Tagged Street Number', 'Tagged Pre Street Direction', 'Tagged Street Name', 'Tagged Street Type', 'Tagged Post Street Direction', 'Tagged Unit Type','Tagged Unit Number']
-    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'
+    :param groundtruth_matchtypes: The types of matches in the Match_Type column of the groundtruths file that should be used to compare against the model results. For this version of the function, this variable is auto populated with Exact, Inexact, Standardized Exact if matchtype != 'exact_match'.  In addition, Zip5 Exact is automatically added to this list if match5zip == True.
     :param matchtype: This can only be populated with 'exact_match' or 'probabilistic_match' and is defaulted to 'exact_match'. Exact_match means that only identical records in the 2 files will be matched; 'probabilistic_match' will also return matches that are greater than or equal to the specified threshold according to a random forest model
     :param threshold: If matchtype == 'probabilistic_match', records with a match score from the random_forest model greater than or equal to the threshold will be considered to be matched.
     :param match5zip: A True/False variable indicating whether the matcher should utilize the 5 digit zip code or all populated digits in the ZIP_CODE field.  If True, the matcher will only use the first 5 digits of the zip code field
@@ -573,6 +575,8 @@ def tag_vs_truths_and_compare_addresses(file1, file2, groundtruths, field_rec_id
     # Model Results vs. Ground Truths
     if matchtype != 'exact_match':
         groundtruth_matchtypes = ["Exact", "Standardized Exact", "Inexact"]
+    if match5zip:
+        groundtruth_matchtypes.append("Zip5 Exact")
     model_comps_vs_truths_dict = __pvt_address_compare_vs_ground_truths(groundtruths, compared_lists_dict, groundtruth_matchtypes)
 
     return tagger_ground_truths_dict_file1, tagger_ground_truths_dict_file2, compared_lists_dict, model_comps_vs_truths_dict

@@ -92,13 +92,13 @@ class ProbMatcher:
 
     def match_probabilities(self, df1: pd.DataFrame, df2: pd.DataFrame, t=0.8):
         """
-        Given two dataframes of parsed addresses, return a a dataframe of matching
-        indices with a column indicating match probability
+        Given two dataframes of parsed addresses, returns a dataframe of matching
+        indices with a column indicating match probability. Only those records with a score greater than or equal to the threshold will be returned.
 
         :param df1: a dataframe of address components (i.e. output from AddressTagger)
         :param df2: a dataframe of address components
-        :param t: Threshold above which matches are returned
-        :return:
+        :param t: Those matches with a score greater than or equal to this threshold will be returned.
+        :return: a dataframe containing 3 columns: the index for the address from the first dataframe, the index for the address from the second dataframe, the model provided score representing the likelihood that 2 addresses are the same
         """
         i1 = list()
         i2 = list()
