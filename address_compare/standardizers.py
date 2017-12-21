@@ -66,11 +66,11 @@ def standardizer(ordered_dict, nested_reference_dictionary = nested_ref_dt_dict)
     '''
     This function is used to standardize the tagged address components after the CRF tagger is used.
     It:
-        - changes all values to ALL CAPS
-        - removes orphan hyphens and commas
-        - removes extra white space at the beginning or end of the word
-        - converts short form street types/unit types/directionals to their long form versions
-        - removes commas, #, and hyphens that are the first or last letter of a word
+    - changes all values to ALL CAPS
+    - removes orphan hyphens and commas
+    - removes extra white space at the beginning or end of the word
+    - converts short form street types/unit types/directionals to their long form versions
+    - removes commas, #, and hyphens that are the first or last letter of a word
     :param ordered_dict: an ordered dictionary after the CRF tagger has been used
     :param nested_reference_dictionary: a nested dictionary where the first keys are the ordered dictionary tags that utilize reference data and the second keys are the short form/abbreviated versions
     :return std_ordered_dict: a new ordered dictionary that has been standardized
