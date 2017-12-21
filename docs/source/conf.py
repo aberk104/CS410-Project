@@ -19,7 +19,7 @@
 #
 import os
 import sys
-autodoc_mock_imports = ["_address_compare"]
+autodoc_mock_imports = ["address_compare.address_randomizer","address_compare.aggregate_functions"]
 sys.path.insert(0, os.path.abspath('C:\Users\Alan\Documents\GitHub\CS410-Project'))
 
 
