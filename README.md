@@ -38,6 +38,8 @@ In order to run our functions, please make sure to use Python 3 and install the 
 
 Also note that old_files_for_tech_review_use folder can be ignored.  Those were sandbox files used as part of the technology review.
 
+There are various functions within the reference_data.py file that help with the standardization of the addresses.  However, as the output of these functions are written to JSON files, this file only needs to be re-run if any of the source reference data files (street types, unit types, cities, states, zip codes, etc.) are changed.  Otherwise, this file can be ignored. 
+
 If running the master_file.ipynb and writing the output to excel (there is a variable to control whether the output is printed in the notebook or written to excel), the output files will be found in the output folder.
 
 ### Example File
