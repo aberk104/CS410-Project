@@ -1,5 +1,5 @@
 '''
-This file contains aggregated functions to tag and match addresses.  These 3 functions can be called independently (self-contained functions) in place of calling separate functions
+This file (aggregate_functions.py) contains aggregated functions to tag and match addresses.  These 3 functions can be called independently (self-contained functions) in place of calling separate functions
 within the standardizers.py, matcher.py, prob_matchers.py, and other associated files in the address_compare folder.
 '''
 
