@@ -23,7 +23,6 @@ Guide
 -----
 
 .. toctree::
-   :hidden:
    :maxdepth: 3
 
    address_compare
