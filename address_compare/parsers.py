@@ -21,4 +21,9 @@ def hyphen_parse(s: str, tolower: bool = True) -> list:
     return [k for sl in parts for k in sl if k and (k != '-')]
 
 def omit_hyphen(s: str) -> list:
+    """
+    turne "1 - 2" into ["1", "2"]
+    :param s: a string
+    :return: s split by spaces, but without any single hyphens.
+    """
     return [k.strip() for k in s.split() if k and (k != '-')]

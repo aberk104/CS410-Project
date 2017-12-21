@@ -94,15 +94,31 @@ def random_addresses(num_addresses: int, raw_address_col_name = 'Single String A
 
 
 def random_unit_number():
+    """
+    Generate a random unit number
+    :return: A random unit number, either a number or letter
+    """
     k = str(random.randint(1, 4000))
     return random.choice([k, 'A', 'B', 'C', 'D'])
 
 def random_street_name():
+    """
+    Generates a random street name. Half the time it's a number from 1 to 200, the
+    other half it's one of the available street names.
+
+    :return: A random street name.
+    """
     if random.random() < 0.5:
         return str(random.randint(1, 200))
     return random.choice(available_street_names)
 
 def num_suffix(n):
+    """
+    Add the English suffix to the end of a number. E.g. num_suffix(1) = 1st.
+    :param n: a string
+    :return: a string with a number suffix on the end if applicable. If n is not a digit
+    then the function just returns n.
+    """
     if not n.isdigit():
         return n
     return n + {"1": 'st', "2": 'nd', "3": 'rd',
@@ -111,6 +127,12 @@ def num_suffix(n):
                 "0": 'th'}[n[-1]]
 
 def random_address(unit_number:bool = True):
+    """
+    Create a random addresses.
+
+    :param unit_number: Should it have a unit number?
+    :return: OrderedDict of address components.
+    """
     address1 = {k: '' for k in ['UNIT_TYPE', 'UNIT_NUMBER', 'STREET_NUMBER',
                                 'STREET_NAME', 'STREET_TYPE', 'PRE_DIRECTION', 'POST_DIRECTION']}
 
@@ -126,13 +148,28 @@ def random_address(unit_number:bool = True):
         address1['UNIT_TYPE'] = random.choice(available_unit_types[:-1])
     return address1
 
-def generate_typo(address):
-    pass
 
 def format_address(a, f):
+    """
+    Formats an ordered dict a as an address string according to the format given in f
+    :param a: an ordered dict of address components.
+    :param f: An address format
+    :return: a string with formatted addresses.
+    """
     return f.format(**a).replace('  ', ' ').replace(' ,', ',')
 
 def random_addresses2(n):
+    """
+    Create a bunch of random addresses. n is a parameter -- this function generates some
+    multiple of n random addresses.. it's something like 25n random addresses.
+    For each address that it generates, it creates two formatted address strings,
+    which either both represent the address or not, along with a column indicating whether they
+    are a match or not. Used for training the address classifier.
+
+    :param n: a parameter saying how many addresses to generate
+    :return: A pandas dataframe containing two address columns and a match column indicating whether
+    the addresses strings refer to the same address
+    """
     # with unit numbers
     address_formats_with_unit = [
         "#{UNIT_NUMBER}, {STREET_NUMBER} {PRE_DIRECTION} {STREET_NAME} {STREET_TYPE} {POST_DIRECTION}",

@@ -79,10 +79,27 @@ def edit_distance_matrix(df1: pd.DataFrame, df2: pd.DataFrame):
 
 
 class ProbMatcher:
+    """
+    This class performs the probabilistic matching
+
+    """
     def __init__(self, match_classifier: MatchClassifier = MatchClassifier()):
+        """
+        Inintialize a probabilistic matcher
+        :param match_classifier: A match classifier for doing the classification
+        """
         self.match_classifier = match_classifier
 
     def match_probabilities(self, df1: pd.DataFrame, df2: pd.DataFrame, t=0.8):
+        """
+        Given two dataframes of parsed addresses, return a a dataframe of matching
+        indices with a column indicating match probability
+
+        :param df1: a dataframe of address components (i.e. output from AddressTagger)
+        :param df2: a dataframe of address components
+        :param t: Threshold above which matches are returned
+        :return:
+        """
         i1 = list()
         i2 = list()
         for a, b in product(df1.index, df2.index):
@@ -93,5 +110,5 @@ class ProbMatcher:
 
         probs = self.match_classifier.predict_prob(bigdf1, bigdf2)
         out = pd.DataFrame(dict(index_1=bigdf1['index'], index_2=bigdf2['index'], probs=probs))
-        return out[probs > t]
+        return out[probs >= t]
 
