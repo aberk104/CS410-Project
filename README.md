@@ -45,14 +45,14 @@ If running the master_file.ipynb and writing the output to excel (there is a var
 The 3 functions within the aggregate_functions.py file are wrappers for all of the functions and methods required to perform the address tagging and matching on two separate files containing addresses.  These 3 functions are included in the master_file.ipynb discussed below for ease of testing our project.
 
 ### Example Files
-The master_file.ipynb located in the [main folder](https://github.com/aberk104/CS410-Project/blob/master/master_file.ipynb) can be run using jupyter notebook.
+The [master_file.ipynb](https://github.com/aberk104/CS410-Project/blob/master/master_file.ipynb) can be run using jupyter notebook.
 This file has separate calls to each of the 3 functions in the aggregate_functions.py file (which themselves are self-contained functions to access the address parser, tagger, and matcher).
 Variables can be set at the top of the master_file.ipynb to control the different run_modes and choose a different set of input files.
 Instructions for how to run the master_file, what each variable means, etc. can be found directly in that file.
 
-The Train Address Classifier.ipynb located in the [main folder](https://github.com/aberk104/CS410-Project/blob/master/Train%20Address%20Classifier.ipynb) shows how the random forest model for probabilistic matching was trained and validated.  As noted in the Future Enhancements section, although the random forest model performed well with the training data, it performed poorly with the test/real data.  Further refinements will be needed to optimize the probabilistic matching.
+The [Train Address Classifier.ipynb](https://github.com/aberk104/CS410-Project/blob/master/Train%20Address%20Classifier.ipynb) as well as the [Matching with the random forest model.ipynb](https://github.com/aberk104/CS410-Project/blob/master/Matching%20with%20the%20random%20forest%20model.ipynb) show how the random forest model for probabilistic matching was trained and validated.  As noted in the Future Enhancements section, although the random forest model performed well with the training data, it performed poorly with the test/real data.  Further refinements will be needed to optimize the probabilistic matching.
 
-The Train CRF Model.ipynb located in the [main folder](https://github.com/aberk104/CS410-Project/blob/master/Train%20CRF%20Model.ipynb) walks through how the CRF model was trained in order to tag the address components.
+The [Train CRF Model.ipynb](https://github.com/aberk104/CS410-Project/blob/master/Train%20CRF%20Model.ipynb) file walks through how the CRF model was trained in order to tag the address components.
 
 ### Documentation
 Additional documentation for the recommended functions to be used can be found on [Read the Docs](http://cs410-project-address-tagging-and-matching.readthedocs.io/en/latest/).
