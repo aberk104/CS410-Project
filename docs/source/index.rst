@@ -36,21 +36,19 @@ Additional Python Packages
 --------------------------
 In addition to the pre-requisites listed above, the various code files also utilize the following python packages. These should be part of a default python build using Anaconda; if not using Anaconda, these may need to be installed as well:
 
-- pandas
-
-- json
-
-- pkg_resources
-
-- random
-
-- sklearn.metrics (should be part of scikit-learn)
-
 - collections
 
 - itertools
 
+- json
+
+- pandas
+
 - pickle
+
+- pkg_resources
+
+- random
 
 - re
 
@@ -58,6 +56,7 @@ In addition to the pre-requisites listed above, the various code files also util
 
 - scipy
 
+- sklearn.metrics (should be part of scikit-learn)
 
 
 Guide
