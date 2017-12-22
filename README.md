@@ -19,7 +19,7 @@ pip install editdistance
 ```
 
 ##### Additional Python Modules
-The following python packages are also being used in the various files.  So please make sure they are installed on your local machine as well (they should all be included as part of the standard python build anyways):
+The following python packages are also being used in the various files.  So please make sure they are installed on your local machine as well (they should all be included as part of the standard python build anyways if using Anaconda):
 - collections
 - itertools
 - json

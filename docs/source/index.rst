@@ -34,7 +34,7 @@ The various methods within the address_compare project have been built using Pyt
 
 Additional Python Packages
 --------------------------
-In addition the pre-requisites listed above, the various files also utilize the following python packages that should be part of the default python build:
+In addition to the pre-requisites listed above, the various code files also utilize the following python packages. These should be part of a default python build using Anaconda; if not using Anaconda, these may need to be installed as well:
 
 - pandas
 
