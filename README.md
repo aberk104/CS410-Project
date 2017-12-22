@@ -59,6 +59,11 @@ Additional documentation for the recommended functions to be used can be found o
 The 3 functions within the aggregate_functions.py file and the main address_randomizer function in the address_randomizer.py file are listed on the site.  The site also includes the doc-strings for the AddressTagger class and the exact matcher function.
 As the remaining functions can be accessed directly from the aggregate_functions.py file, doc strings have been included directly in those files but have not been shared on the site at this time.
 
+### Presentations
+A powerpoint deck describing the different steps of our project, how the tagger works, and the performance can be found by clicking on this [link](https://docs.google.com/presentation/d/1j0d68tpCN3YOiGgo-3gNN9E-0Qbb-jnMm7UCqk6gkLU/edit?usp=sharing).
+
+A voiced presentation (voice-over of the powerpoint deck including a demo of the various functions/modules) can be found by clicking on this [link](https://drive.google.com/file/d/1ZXeZ6jLGoNvRAFzYxuJWbp89l_2fIv5B/view?usp=sharing).
+
 ### Contributors
 This project was completed by Alan Berk and Colin Fraser as part of CS-410 through UIUC.  
 For our UIUC instructors, we distributed the work as follows:
